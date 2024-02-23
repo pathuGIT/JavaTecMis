@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javatecmis.LoginController">
+    <left>
+        <AnchorPane prefHeight="700.0" prefWidth="514.0" style="-fx-background-color: #2F9BBA;" BorderPane.alignment="CENTER" />
+    </left>
+    <right>
+        <AnchorPane prefHeight="700.0" prefWidth="691.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="errorId" alignment="CENTER" layoutX="225.0" layoutY="200.0" prefHeight="18.0" prefWidth="234.0" textAlignment="RIGHT" textFill="#ef2020" />
+                <Label layoutX="151.0" layoutY="247.0" prefHeight="33.0" prefWidth="102.0" text="Username">
+                    <font>
+                        <Font name="Calibri Light" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="151.0" layoutY="299.0" prefHeight="35.0" prefWidth="104.0" text="Password">
+                    <font>
+                        <Font name="Calibri Light" size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="userName" layoutX="268.0" layoutY="250.0" prefHeight="34.0" prefWidth="266.0" />
+                <TextField fx:id="userPwd" layoutX="268.0" layoutY="297.0" prefHeight="38.0" prefWidth="266.0" />
+                <Label layoutX="242.0" layoutY="141.0" prefHeight="38.0" prefWidth="201.0" text="Secure Login">
+                    <font>
+                        <Font name="Bodoni MT" size="36.0" />
+                    </font>
+                </Label>
+                <Button layoutX="151.0" layoutY="388.0" mnemonicParsing="false" onAction="#login" prefHeight="43.0" prefWidth="382.0" style="-fx-background-color: #237EA6; -fx-text-fill: White;" text="LOGIN">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Button>
+                <Button fx:id="cancelButton" layoutX="151.0" layoutY="461.0" mnemonicParsing="false" onAction="#loginCancel" prefHeight="41.0" prefWidth="382.0" style="-fx-background-color: #237EA6; -fx-text-fill: White;" text="CANCEl">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </right>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>
