@@ -5,4 +5,6 @@ module org.example.javatecmis {
 
     opens org.example.javatecmis to javafx.fxml;
     exports org.example.javatecmis;
+    exports org.example.javatecmis.student;
+    opens org.example.javatecmis.student to javafx.fxml;
 }

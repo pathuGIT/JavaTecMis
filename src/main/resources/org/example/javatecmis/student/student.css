@@ -1,0 +1,44 @@
+#logoutId {
+    -fx-background-color:#2B3D50; /* Button background color */
+    -fx-background-radius: 20; /* Button border radius */
+    -fx-padding: 8px 12px; /* Button padding */
+    -fx-text-fill: white;
+}
+#btn{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-font-family: Corbel;
+    -fx-font-size: 14;
+    -fx-padding: 7px 7px;
+}
+#btn:hover{
+    -fx-background-color: #B6B6B6;
+    -fx-background-radius: 20;
+}
+#logoutId:hover {
+    -fx-background-color: white; /* Button background color on hover */
+    -fx-text-fill: black;
+}
+#left_panel{
+    -fx-background-color: #6663A6;
+    -fx-background-color: linear-gradient(to bottom, #026773, #1e99a8);
+}
+#profile{
+    -fx-background-color: #242551;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-padding: 4 15;
+}
+#topPane{
+    -fx-background-color: #F28705;
+    -fx-background-color: linear-gradient(to left, #F28705, #F28705);
+}
+#HomePanelId{
+    -fx-background-color: #FFFFFF;
+}
+#Hbox{
+    -fx-padding: 5 10;
+    -fx-background-radius: 20;
+    -fx-background-color: #d9d7d7;
+}

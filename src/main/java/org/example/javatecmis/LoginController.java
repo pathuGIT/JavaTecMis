@@ -10,19 +10,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.example.javatecmis.connect.DbConnect;
 import org.example.javatecmis.connect.SelectDb;
-import org.example.javatecmis.student.Student;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.util.Objects;
 
 public class LoginController {
     private Stage stage;
     private Scene scene;
-    static String tg;
-    static String pwd;
+    public static String tg;
+    public static String pwd;
 
     @FXML
     private Button cancelButton;
@@ -32,9 +31,11 @@ public class LoginController {
 
     @FXML
     private TextField userName;
+    private String uName = "TG0015";
 
     @FXML
     private TextField userPwd;
+    private String uPwd = "1709e512";
 
     @FXML
     void login(ActionEvent event) {
@@ -51,9 +52,15 @@ public class LoginController {
                 tg = result.getString(1);
                 pwd = result.getString(6);
 
-                if (userName.getText().equals(tg) && userPwd.getText().equals(pwd)) {
-                    LoginController login = new LoginController();
-                    login.loginToStudent(event);
+                //if (userName.getText().equals(tg) && userPwd.getText().equals(pwd)) {
+                if (uName.equals(tg) && uPwd.equals(pwd)) {
+
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("student/student.fxml")));
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    scene.getStylesheets().add(getClass().getResource("student/student.css").toExternalForm());
+                    stage.setScene(scene);
+                    stage.show();
 
                 } else if (userName.getText().equals("admin") && userPwd.getText().equals("1234")) {
                     isAdmin = true;
@@ -77,15 +84,21 @@ public class LoginController {
 
     @FXML
     void loginCancel(ActionEvent event) {
-
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
-    public void loginToStudent(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("student/student.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //stage.initStyle(StageStyle.UNDECORATED);
+    //@FXML
+//    public void BackToLogin(ActionEvent event) throws IOException {
+//        Student std = new Student();
+//        std.logOut(event);
+//    }
+    public void logout(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 }
