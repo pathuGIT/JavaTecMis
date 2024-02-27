@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: rgb(237, 241, 242);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javatecmis.student.Student">
@@ -33,7 +34,7 @@
             <Button fx:id="logoutId" alignment="CENTER" contentDisplay="CENTER" layoutX="754.0" layoutY="18.0" mnemonicParsing="false" onAction="#logout" prefHeight="39.0" prefWidth="87.0" text="LOGOUT" />
             <ButtonBar layoutX="212.0" layoutY="17.0" prefHeight="40.0" prefWidth="513.0">
                <buttons>
-                  <Button fx:id="btn" mnemonicParsing="false" text="Home" />
+                  <Button fx:id="btn" mnemonicParsing="false" onAction="#home" text="Home" />
                   <Button fx:id="btn" mnemonicParsing="false" onAction="#course" text="Course Unit" />
                   <Button fx:id="btn" mnemonicParsing="false" text="Check Eligibility" />
                   <Button fx:id="btn" mnemonicParsing="false" prefHeight="26.0" prefWidth="252.0" text="Student GPA" />
@@ -168,9 +169,14 @@
          <children>
             <Pane layoutX="45.0" layoutY="38.0" prefHeight="419.0" prefWidth="774.0" style="-fx-background-color: white;" styleClass="f">
                <children>
-                  <Pane layoutX="68.0" layoutY="110.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" />
+                  <Circle fx:id="circle" fill="#1f93ff00" layoutX="170.0" layoutY="178.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Line endX="-85.800048828125" endY="259.0" layoutX="438.0" layoutY="160.0" startX="-85.800048828125" startY="-160.0" />
+                  <Button layoutX="142.0" layoutY="300.0" mnemonicParsing="false" onAction="#imgUpload" text="Upload" />
+                  <ImageView fx:id="imgvie" fitHeight="150.0" fitWidth="200.0" layoutX="407.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="441.0" layoutY="358.0" mnemonicParsing="false" onAction="#displayImageFromDB" text="Button" />
                </children>
             </Pane>
-         </children></Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

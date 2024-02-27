@@ -14,13 +14,14 @@ import org.example.javatecmis.connect.DbConnect;
 import org.example.javatecmis.connect.SelectDb;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Objects;
 
 public class LoginController {
     private Stage stage;
     private Scene scene;
-    public static String tg;
+    public static  String tg;
     public static String pwd;
 
     @FXML
@@ -42,8 +43,10 @@ public class LoginController {
         String query = "select * from student";
 
         try {
-            DbConnect connect = new DbConnect();
-            ResultSet result = connect.statement.executeQuery(query);
+            DbConnect obj = new DbConnect();
+            obj.connect();
+            PreparedStatement pre = obj.connect().prepareStatement(query);
+            ResultSet result = pre.executeQuery();
 
             boolean isAdmin = false;
             boolean isDean = false;
@@ -88,11 +91,6 @@ public class LoginController {
         stage.close();
     }
 
-    //@FXML
-//    public void BackToLogin(ActionEvent event) throws IOException {
-//        Student std = new Student();
-//        std.logOut(event);
-//    }
     public void logout(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

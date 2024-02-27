@@ -42,3 +42,6 @@
     -fx-background-radius: 20;
     -fx-background-color: #d9d7d7;
 }
+#imgview{
+    -fx-alignment: center;
+}

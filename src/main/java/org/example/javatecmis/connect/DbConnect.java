@@ -2,15 +2,14 @@ package org.example.javatecmis.connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 
 public class DbConnect {
     String url;
     String user;
     String pswd;
-    public Statement statement;
+    //public Statement statement;
 
-    public DbConnect(){
+    public Connection connect(){
 
         url = "jdbc:mysql://localhost:3306/tecmis_teclms";
         user = "STUDENT";
@@ -18,14 +17,13 @@ public class DbConnect {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url,user,pswd);
-            statement = conn.createStatement();
+            //statement = conn.createStatement();
+            return conn;
 
         }catch (Exception e){
             System.out.println(e);
         }
+        return null;
     }
-
-
-
 
 }
