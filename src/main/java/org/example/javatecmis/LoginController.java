@@ -21,8 +21,10 @@ import java.util.Objects;
 public class LoginController {
     private Stage stage;
     private Scene scene;
-    public static  String tg;
+    public  String tg;
     public static String pwd;
+
+    public static String STDG ;
 
     @FXML
     private Button cancelButton;
@@ -57,6 +59,8 @@ public class LoginController {
 
                 //if (userName.getText().equals(tg) && userPwd.getText().equals(pwd)) {
                 if (uName.equals(tg) && uPwd.equals(pwd)) {
+
+                    STDG = tg;
 
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("student/student.fxml")));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
