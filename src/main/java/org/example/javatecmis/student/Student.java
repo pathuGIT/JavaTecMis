@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -50,15 +51,20 @@ public class Student {
     @FXML
     private Pane ProfilePane;
     @FXML
-    private ImageView imgvie;
+    private Circle userImg;
     @FXML
     private Circle circle;
+    @FXML
+    private Label userName;
+    @FXML
+    private TextField edit_email;
+    @FXML
+    private TextField edit_number;
 
     @FXML
     public void logout(ActionEvent event) throws IOException {
         LoginController o = new LoginController();
         o.logout(event);
-
     }
 
     @FXML
@@ -103,9 +109,6 @@ public class Student {
         }
     }
 
-
-
-
     @FXML
     public void displayImageFromDB() {
         try {
@@ -120,18 +123,28 @@ public class Student {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                // Construct the absolute path to the image file
-                String relativeImagePath = rs.getString("Image");
-                String absoluteImagePath = Paths.get(System.getProperty("user.dir"), relativeImagePath).toString();
+                if(rs.getString("Image") != null){
+                    // Construct the absolute path to the image file
+                    String relativeImagePath = rs.getString("Image");
+                    String absoluteImagePath = Paths.get(System.getProperty("user.dir"), relativeImagePath).toString();
 
-                // Load the image file and display it in the ImageView
-                File imageFile = new File(absoluteImagePath);
-                if (imageFile.exists()) {
+                    // Load the image file and display it in the ImageView
+                    File imageFile = new File(absoluteImagePath);
+                    if (imageFile.exists()) {
+                        Image image = new Image(imageFile.toURI().toString());
+                        circle.setFill(new ImagePattern(image));
+                        userImg.setFill(new ImagePattern(image));
+                    } else {
+                        System.out.println("Image file not found: " + absoluteImagePath);
+                    }
+                }else{
+                    String path = "img/account.png";
+                    File imageFile = new File(path);
                     Image image = new Image(imageFile.toURI().toString());
                     circle.setFill(new ImagePattern(image));
-                } else {
-                    System.out.println("Image file not found: " + absoluteImagePath);
+                    userImg.setFill(new ImagePattern(image));
                 }
+
             } else {
                 System.out.println("No image found for the student with ID: " + TG);
             }
@@ -141,7 +154,61 @@ public class Student {
         }
     }
 
+    @FXML
+    void deleteImage(){
+        DbConnect DB = new DbConnect();
+        LoginController login = new LoginController();
+        String TG = login.tg;
+        try {
+            String sql = "update student set Image = NULL where Std_id = '"+TG+"'";
+            PreparedStatement ptr = DB.connect().prepareStatement(sql);
+            ptr.executeUpdate();
 
+            String path = "img/account.png";
+            File imageFile = new File(path);
+            Image image = new Image(imageFile.toURI().toString());
+            circle.setFill(new ImagePattern(image));
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    @FXML
+    void updateStudentData() {
+        try {
+            String sql = "SELECT * FROM student WHERE Std_id = ?";
+            DbConnect DB = new DbConnect();
+
+            LoginController login = new LoginController();
+            String TG = login.tg;
+
+            if(edit_email.getText().isEmpty() && edit_number.getText().isEmpty()){
+
+                PreparedStatement pst = DB.connect().prepareStatement(sql);
+                pst.setString(1, TG);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    edit_email.setText(rs.getString(3));
+                    edit_number.setText(rs.getString(4));
+                } else {
+                    System.out.println("No Data for the student with ID: " + TG);
+                }
+
+            }else{
+                String query = "UPDATE student SET Email = ?, Contact = ? WHERE Std_id = ?";
+
+                PreparedStatement pst = DB.connect().prepareStatement(query);
+                pst.setString(1, edit_email.getText());
+                pst.setString(2, edit_number.getText());
+                pst.setString(3, TG);
+                pst.executeUpdate();
+            }
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 
     @FXML
     void home(ActionEvent event) {
@@ -164,6 +231,7 @@ public class Student {
         }else{
             ProfilePane.setVisible(true);
             S = 1;
+            displayImageFromDB();
         }
     }
 
@@ -185,6 +253,7 @@ public class Student {
                 sMail.setText(result.getString(3));
                 sNic.setText(result.getString(5));
                 System.out.println(result.getString(2));
+                userName.setText(result.getString(2));
             }
         }catch(Exception e){
             System.out.println(e);
@@ -192,9 +261,9 @@ public class Student {
     }
 
     public void initialize(){
-        System.out.println("here");
         showStudentData();
         profile();
         displayImageFromDB();
+        updateStudentData();
     }
 }

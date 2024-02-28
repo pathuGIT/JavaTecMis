@@ -45,3 +45,9 @@
 #imgview{
     -fx-alignment: center;
 }
+#edit_email{
+    -fx-background-color: #a8a8a8;
+}
+#edit_number{
+    -fx-background-color: #a8a8a8;
+}
