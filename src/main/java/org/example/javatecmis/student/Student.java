@@ -1,12 +1,13 @@
 package org.example.javatecmis.student;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -26,6 +27,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,7 +39,6 @@ public class Student{
 
     private Stage stage;
     private Scene scene;
-    private int S = 1;
 
     @FXML
     private Label sName;
@@ -72,6 +74,25 @@ public class Student{
     private TextField edit_number;
     @FXML
     ChoiceBox<String> mychoice;
+
+    @FXML
+    private TableView<Course> courseTable;
+
+    @FXML
+    private TableColumn<Course, String> colId;
+
+    @FXML
+    private TableColumn<Course, String> colName;
+
+    @FXML
+    private TableColumn<Course, String> colType;
+
+    @FXML
+    private TableColumn<Course, Integer> colCredit;
+
+    @FXML
+    private TableColumn<Course, String> colLecture;
+
 
     private String userSession(){
         LoginController login = new LoginController();
@@ -274,10 +295,7 @@ public class Student{
     }
 
     @FXML
-    void eligibility(ActionEvent event) {
-        choosePanel("eligible");
-
-    }
+    void eligibility(ActionEvent event) { choosePanel("eligible"); }
 
     @FXML
     void Gpa(ActionEvent event) {
@@ -314,11 +332,84 @@ public class Student{
 
     public void initialize(){
         Course o = new Course();
+        String value = "Default";
 
         showStudentData();
         home();
         displayImageFromDB();
         updateStudentData();
+        setValueFactory();
+        displayCourse(value);
         mychoice.getItems().addAll(o.filter); //Add items to the mychoose box [course]
+
+        mychoice.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // Check if newValue is not null and perform the desired action
+            if (newValue != null) {
+                displayCourse(newValue);
+            }
+        });
     }
+
+    public void setValueFactory(){
+        colId.setCellValueFactory(new PropertyValueFactory<>("CourseId"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
+        colType.setCellValueFactory(new PropertyValueFactory<>("CourseType"));
+        colCredit.setCellValueFactory(new PropertyValueFactory<>("CourseCredit"));
+        colLecture.setCellValueFactory(new PropertyValueFactory<>("CourseLecture"));
+    }
+
+    //Get course details from course table and display in the courseTable
+    public void displayCourse(String selectedOption) {
+
+        String Id;
+        String name;
+        String Type;
+        int Credit;
+        String Lecturer;
+
+        try {
+            String query;
+            DbConnect conn = new DbConnect();
+            PreparedStatement ptr = null;
+            switch (selectedOption) {
+                case "Default":
+                    query = "select c.Crs_id,c.Name,c.Type,c.Credit,l.Lec_id from course c left join lecture l on c.Lec_id = l.Lec_id";
+                    ptr = conn.connect().prepareStatement(query);
+                    break;
+                case "Theory":
+                    query = "select c.Crs_id,c.Name,c.Type,c.Credit,l.Lec_id from course c left join lecture l on c.Lec_id = l.Lec_id where Type = 'Theory'";
+                    ptr = conn.connect().prepareStatement(query);
+                    break;
+                case "Practical":
+                    query = "select c.Crs_id,c.Name,c.Type,c.Credit,l.Lec_id from course c left join lecture l on c.Lec_id = l.Lec_id where Type = 'Practical'";
+                    ptr = conn.connect().prepareStatement(query);
+                    break;
+                case "Both":
+                    query = "select c.Crs_id,c.Name,c.Type,c.Credit,l.Lec_id from course c left join lecture l on c.Lec_id = l.Lec_id where Type = 'Both'";
+                    ptr = conn.connect().prepareStatement(query);
+                    break;
+                // Add cases for other options as needed
+                default:
+                    System.out.println("Unknown option selected");
+
+            }
+            courseTable.getItems().clear();
+            ResultSet rs = ptr.executeQuery();
+
+            while (rs.next()) {
+                Id = rs.getString(1);
+                name = rs.getString(2);
+                Type = rs.getString(3);
+                Credit = rs.getInt(4);
+                Lecturer = rs.getString(5);
+
+                Course course_record = new Course(Id,name,Type,Credit,Lecturer);
+                courseTable.getItems().add(course_record);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+    }
+
 }
