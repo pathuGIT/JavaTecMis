@@ -30,6 +30,13 @@
     -fx-font-size: 15;
     -fx-padding: 4 15;
 }
+#notice{
+    -fx-background-color: #242551;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-padding: 4 15;
+}
 #topPane{
     -fx-background-color: #F28705;
     -fx-background-color: linear-gradient(to left, #F28705, #F28705);
@@ -91,3 +98,26 @@
     -fx-background-color: #add8e6;
 }
 
+/*Notice table styles*/
+#noticeTable .column-header {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 10px;
+    -fx-border-color: grey;
+}
+
+#noticeTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 2px 0px 2px 10px;
+}
+#noticeTable .table-row-cell{
+    -fx-background-color: white;
+}
+#noticeTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+.centered-text-field {
+    -fx-alignment: center;
+}

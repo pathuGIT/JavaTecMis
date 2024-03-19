@@ -59,6 +59,8 @@ public class Student{
     @FXML
     private Pane HomePanelId;
     @FXML
+    private Pane noticePane;
+    @FXML
     private Pane EligibilityPane;
     @FXML
     private Pane GpaPane;
@@ -78,6 +80,12 @@ public class Student{
     private Label sgpa;
     @FXML
     private Label cgpa;
+    @FXML
+    TextArea msg;
+
+    public void setMsg(String msg1) {
+        msg.setText(msg1);
+    }
 
     @FXML
     private TableView<Course> courseTable;
@@ -105,6 +113,17 @@ public class Student{
 
     @FXML
     private TableColumn<Grade, String> colgrade;
+
+    @FXML
+    private TableView<Notice> noticeTable;
+
+    @FXML
+    private TableColumn<Notice, String> dateCol;
+
+    @FXML
+    private TableColumn<Notice, String> noticeCol;
+    @FXML
+    private TableColumn<Notice, String> clickCol;
 
 
     private String userSession(){
@@ -264,6 +283,7 @@ public class Student{
                 EligibilityPane.setVisible(false);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
+                noticePane.setVisible(false);
                 break;
             case "course":
                 HomePanelId.setVisible(false);
@@ -271,6 +291,7 @@ public class Student{
                 EligibilityPane.setVisible(false);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
+                noticePane.setVisible(false);
                 break;
             case "timetable":
                 HomePanelId.setVisible(false);
@@ -278,6 +299,7 @@ public class Student{
                 EligibilityPane.setVisible(true);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
+                noticePane.setVisible(false);
                 break;
             case "gpa":
                 HomePanelId.setVisible(false);
@@ -285,6 +307,7 @@ public class Student{
                 EligibilityPane.setVisible(false);
                 GpaPane.setVisible(true);
                 ProfilePane.setVisible(false);
+                noticePane.setVisible(false);
                 break;
             case "profile":
                 HomePanelId.setVisible(false);
@@ -292,6 +315,15 @@ public class Student{
                 EligibilityPane.setVisible(false);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(true);
+                noticePane.setVisible(false);
+                break;
+            case "notice":
+                HomePanelId.setVisible(false);
+                CoursePane.setVisible(false);
+                EligibilityPane.setVisible(false);
+                GpaPane.setVisible(false);
+                ProfilePane.setVisible(false);
+                noticePane.setVisible(true);
                 break;
         }
     }
@@ -323,6 +355,11 @@ public class Student{
     @FXML
     void test(){
         System.out.println("He");
+    }
+
+    @FXML
+    void notice(){
+        choosePanel("notice");
     }
 
     void showStudentData(){
@@ -367,6 +404,7 @@ public class Student{
             }
         });
         showGrades();
+        showNotice();
     }
 
     public void setValueFactory(){
@@ -377,6 +415,9 @@ public class Student{
         colLecture.setCellValueFactory(new PropertyValueFactory<>("CourseLecture"));
         colgrade.setCellValueFactory(new PropertyValueFactory<>("Grade"));
         colname.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        noticeCol.setCellValueFactory(new PropertyValueFactory<>("Notice"));
+        clickCol.setCellValueFactory(new PropertyValueFactory<>("View"));
     }
 
     //Get course details from course table and display in the courseTable
@@ -432,6 +473,7 @@ public class Student{
         }
     }
 
+    //Get grade details from grade table and display in the gradeTable
     public void showGrades(){
         sgpa.setText(new Grade(userSession()).getSGPA());
         cgpa.setText(new Grade(userSession()).getCGPA());
@@ -458,6 +500,37 @@ public class Student{
             System.out.println(e);
         }
     }
+
+    //Get notice details from notice table and display in the noticeTable
+        public void showNotice(){
+
+        String date;
+        String notice;
+        String view;
+        String id;
+
+        try {
+            DbConnect conn = new DbConnect();
+            PreparedStatement ptr = null;
+            String query = "SELECT * FROM notice ORDER BY date DESC";
+            ptr = conn.connect().prepareStatement(query);
+
+            noticeTable.getItems().clear();
+            ResultSet rs = ptr.executeQuery();
+
+            while (rs.next()) {
+                date = rs.getString(4);
+                notice = rs.getString(2);
+                view = "View";
+                id = rs.getString(1);
+                Notice notice_record = new Notice(date,notice,view,id,msg);
+                noticeTable.getItems().add(notice_record);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+        }
 
 
 }
