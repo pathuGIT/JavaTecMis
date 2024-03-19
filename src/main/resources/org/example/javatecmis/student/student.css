@@ -51,3 +51,43 @@
 #edit_number{
     -fx-background-color: #a8a8a8;
 }
+/*Course table style*/
+#courseTable .column-header{
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: grey;
+}
+#courseTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 3px 0px 3px 10px;
+}
+#courseTable .table-row-cell{
+    -fx-background-color: white;
+}
+#courseTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+
+/*Grade table styles*/
+#GradeTable .column-header {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 10px;
+    -fx-border-color: grey;
+}
+
+#GradeTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 2px 0px 2px 10px;
+}
+#GradeTable .table-row-cell{
+    -fx-background-color: white;
+}
+#GradeTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+

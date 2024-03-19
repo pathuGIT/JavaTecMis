@@ -39,8 +39,8 @@
             <ButtonBar layoutX="212.0" layoutY="17.0" prefHeight="40.0" prefWidth="513.0">
                <buttons>
                   <Button fx:id="btn" mnemonicParsing="false" onAction="#home" text="Home" />
-                  <Button fx:id="btn" mnemonicParsing="false" onAction="#course" text="Course Unit" />
-                  <Button fx:id="btn" mnemonicParsing="false" onAction="#eligibility" text="Check Eligibility" />
+                  <Button fx:id="btn" mnemonicParsing="false" onAction="#course" text="Courses" />
+                  <Button fx:id="btn" mnemonicParsing="false" onAction="#timetable" text="Time Table" />
                   <Button fx:id="btn" mnemonicParsing="false" onAction="#Gpa" prefHeight="26.0" prefWidth="252.0" text="Student GPA" />
                </buttons>
             </ButtonBar>
@@ -73,8 +73,6 @@
             </Pane>
          </children>
       </Pane>
-      <Pane fx:id="GpaPane" layoutX="339.0" layoutY="73.0" prefHeight="630.0" prefWidth="862.0" />
-      <Pane fx:id="EligibilityPane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" />
       <Pane fx:id="HomePanelId" layoutX="338.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0">
          <children>
             <HBox fx:id="Hbox" layoutX="150.0" layoutY="240.0" prefHeight="27.0" prefWidth="562.0">
@@ -215,6 +213,54 @@
                   <TableColumn fx:id="colLecture" prefWidth="150.0" text="Lecture Name" />
               </columns>
             </TableView>
+         </children>
+      </Pane>
+      <Pane fx:id="EligibilityPane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" />
+      <Pane fx:id="GpaPane" layoutX="339.0" layoutY="73.0" prefHeight="630.0" prefWidth="862.0">
+         <children>
+            <TableView fx:id="GradeTable" layoutX="78.0" layoutY="134.0" prefHeight="311.0" prefWidth="327.0">
+              <columns>
+                <TableColumn fx:id="colname" prefWidth="161.59994506835938" text="Course" />
+                <TableColumn fx:id="colgrade" prefWidth="162.4000244140625" text="Grade" />
+              </columns>
+            </TableView>
+            <Pane layoutX="474.0" layoutY="208.0" prefHeight="180.0" prefWidth="311.0">
+               <children>
+                  <Label layoutX="25.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Type">
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Line endX="210.0" layoutX="101.0" layoutY="54.0" startX="-100.0" />
+                  <Line endX="210.0" endY="-65.60003662109375" layoutX="101.0" layoutY="184.0" startX="-101.0" startY="-65.60003662109375" />
+                  <Line endX="-37.4000244140625" endY="70.0" layoutX="156.0" layoutY="110.0" startX="-37.4000244140625" startY="-110.0" />
+                  <Label layoutX="142.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="GPA">
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="73.0" text="CGPA : ">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="134.0" text="SGPA : ">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cgpa" layoutX="142.0" layoutY="69.0" prefHeight="30.0" prefWidth="104.0" text="answer">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="sgpa" layoutX="142.0" layoutY="130.0" prefHeight="30.0" prefWidth="104.0" text="answer">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

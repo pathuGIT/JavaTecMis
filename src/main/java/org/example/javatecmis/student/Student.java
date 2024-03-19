@@ -74,6 +74,10 @@ public class Student{
     private TextField edit_number;
     @FXML
     ChoiceBox<String> mychoice;
+    @FXML
+    private Label sgpa;
+    @FXML
+    private Label cgpa;
 
     @FXML
     private TableView<Course> courseTable;
@@ -92,6 +96,15 @@ public class Student{
 
     @FXML
     private TableColumn<Course, String> colLecture;
+
+    @FXML
+    private TableView<Grade> GradeTable;
+
+    @FXML
+    private TableColumn<Grade, String> colname;
+
+    @FXML
+    private TableColumn<Grade, String> colgrade;
 
 
     private String userSession(){
@@ -259,7 +272,7 @@ public class Student{
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 break;
-            case "eligible":
+            case "timetable":
                 HomePanelId.setVisible(false);
                 CoursePane.setVisible(false);
                 EligibilityPane.setVisible(true);
@@ -295,7 +308,7 @@ public class Student{
     }
 
     @FXML
-    void eligibility(ActionEvent event) { choosePanel("eligible"); }
+    void timetable (ActionEvent event) { choosePanel("timetable"); }
 
     @FXML
     void Gpa(ActionEvent event) {
@@ -305,6 +318,11 @@ public class Student{
     @FXML
     void profile(){
         choosePanel("profile");
+    }
+
+    @FXML
+    void test(){
+        System.out.println("He");
     }
 
     void showStudentData(){
@@ -339,15 +357,16 @@ public class Student{
         displayImageFromDB();
         updateStudentData();
         setValueFactory();
-        displayCourse(value);
+        showCourse(value);
         mychoice.getItems().addAll(o.filter); //Add items to the mychoose box [course]
 
         mychoice.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // Check if newValue is not null and perform the desired action
             if (newValue != null) {
-                displayCourse(newValue);
+                showCourse(newValue);
             }
         });
+        showGrades();
     }
 
     public void setValueFactory(){
@@ -356,10 +375,12 @@ public class Student{
         colType.setCellValueFactory(new PropertyValueFactory<>("CourseType"));
         colCredit.setCellValueFactory(new PropertyValueFactory<>("CourseCredit"));
         colLecture.setCellValueFactory(new PropertyValueFactory<>("CourseLecture"));
+        colgrade.setCellValueFactory(new PropertyValueFactory<>("Grade"));
+        colname.setCellValueFactory(new PropertyValueFactory<>("Name"));
     }
 
     //Get course details from course table and display in the courseTable
-    public void displayCourse(String selectedOption) {
+    public void showCourse(String selectedOption) {
 
         String Id;
         String name;
@@ -409,7 +430,34 @@ public class Student{
         }catch (Exception e){
             System.out.println(e);
         }
-
     }
+
+    public void showGrades(){
+        sgpa.setText(new Grade(userSession()).getSGPA());
+        cgpa.setText(new Grade(userSession()).getCGPA());
+
+        String name;
+        String grade;
+
+        try {
+            DbConnect conn = new DbConnect();
+            PreparedStatement ptr = null;
+                    String query = "select * from mark where Std_id = '"+userSession()+"'";
+                    ptr = conn.connect().prepareStatement(query);
+
+            GradeTable.getItems().clear();
+            ResultSet rs = ptr.executeQuery();
+
+            while (rs.next()) {
+                name = rs.getString(2);
+                grade = rs.getString(5);
+                Grade grade_record = new Grade(name,grade);
+                GradeTable.getItems().add(grade_record);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
 
 }

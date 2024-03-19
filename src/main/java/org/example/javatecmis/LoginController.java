@@ -34,11 +34,11 @@ public class LoginController {
 
     @FXML
     private TextField userName;
-    private String uName = "TG0015";
+    private String uName = "TG0007";
 
     @FXML
     private TextField userPwd;
-    private String uPwd = "1709e512";
+    private String uPwd = "4af10197";
 
     @FXML
     void login(ActionEvent event) {
