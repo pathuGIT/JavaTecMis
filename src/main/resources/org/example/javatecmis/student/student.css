@@ -118,6 +118,28 @@
 #noticeTable .table-row-cell:selected {
     -fx-background-color: #add8e6;
 }
+
+/*Attendance table styles*/
+#attTable .column-header {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 10px;
+    -fx-border-color: grey;
+}
+
+#attTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 2px 0px 2px 10px;
+}
+#attTable .table-row-cell{
+    -fx-background-color: white;
+}
+#attTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+
 .centered-text-field {
     -fx-alignment: center;
 }

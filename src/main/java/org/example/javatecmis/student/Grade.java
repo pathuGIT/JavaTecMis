@@ -1,15 +1,14 @@
 package org.example.javatecmis.student;
 
-import org.example.javatecmis.connect.DbConnect;
+import org.example.javatecmis.connect.studentConnect;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Grade {
     private String TgNumber;
-    private String name;
-    private String grade;
+    private String name = null;
+    private String grade = null;
 
     public Grade(String tgNumber) {
         TgNumber = tgNumber;
@@ -32,7 +31,7 @@ public class Grade {
 
         try{
             String sgpaQuery = "Select * from student_sgpa where Std_id = '"+TgNumber+"'";
-            DbConnect conn = new DbConnect();
+            studentConnect conn = new studentConnect();
             PreparedStatement ptr = conn.connect().prepareStatement(sgpaQuery);
             ResultSet result = ptr.executeQuery();
 
@@ -53,7 +52,7 @@ public class Grade {
 
         try{
             String sgpaQuery = "Select * from student_cgpa where Std_id = '"+TgNumber+"'";
-            DbConnect conn = new DbConnect();
+            studentConnect conn = new studentConnect();
             PreparedStatement ptr = conn.connect().prepareStatement(sgpaQuery);
             ResultSet result = ptr.executeQuery();
 

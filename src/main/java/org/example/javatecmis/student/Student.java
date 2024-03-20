@@ -16,7 +16,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import org.example.javatecmis.LoginController;
-import org.example.javatecmis.connect.DbConnect;
+import org.example.javatecmis.connect.studentConnect;
 import javafx.stage.FileChooser;
 import java.io.File;
 
@@ -61,7 +61,7 @@ public class Student{
     @FXML
     private Pane noticePane;
     @FXML
-    private Pane EligibilityPane;
+    private Pane AttendancePane;
     @FXML
     private Pane GpaPane;
     @FXML
@@ -83,9 +83,6 @@ public class Student{
     @FXML
     TextArea msg;
 
-    public void setMsg(String msg1) {
-        msg.setText(msg1);
-    }
 
     @FXML
     private TableView<Course> courseTable;
@@ -122,8 +119,18 @@ public class Student{
 
     @FXML
     private TableColumn<Notice, String> noticeCol;
+
     @FXML
     private TableColumn<Notice, String> clickCol;
+
+    @FXML
+    private TableView<Attendance> attTable;
+
+    @FXML
+    private TableColumn<Attendance, String> courseCol;
+
+    @FXML
+    private TableColumn<Attendance, String> attCol;
 
 
     private String userSession(){
@@ -164,7 +171,7 @@ public class Student{
             String sql = "UPDATE student SET Image = ? WHERE Std_id = ?";
 
             try {
-                DbConnect DB = new DbConnect();
+                studentConnect DB = new studentConnect();
 
                 PreparedStatement pst = DB.connect().prepareStatement(sql);
                 pst.setString(1, imagePath);
@@ -183,7 +190,7 @@ public class Student{
         try {
             // Retrieve the image path from the database for the specific student
             String sql = "SELECT Image FROM student WHERE Std_id = ?";
-            DbConnect DB = new DbConnect();
+            studentConnect DB = new studentConnect();
 
             PreparedStatement pst = DB.connect().prepareStatement(sql);
             pst.setString(1, userSession());
@@ -223,7 +230,7 @@ public class Student{
 
     @FXML
     void deleteImage(){
-        DbConnect DB = new DbConnect();
+        studentConnect DB = new studentConnect();
 
         try {
             String sql = "update student set Image = NULL where Std_id = '"+userSession()+"'";
@@ -244,7 +251,7 @@ public class Student{
     void updateStudentData() {
         try {
             String sql = "SELECT * FROM student WHERE Std_id = ?";
-            DbConnect DB = new DbConnect();
+            studentConnect DB = new studentConnect();
 
 
             if(edit_email.getText().isEmpty() && edit_number.getText().isEmpty()){
@@ -280,7 +287,7 @@ public class Student{
             case "home":
                 HomePanelId.setVisible(true);
                 CoursePane.setVisible(false);
-                EligibilityPane.setVisible(false);
+                AttendancePane.setVisible(false);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
@@ -288,15 +295,15 @@ public class Student{
             case "course":
                 HomePanelId.setVisible(false);
                 CoursePane.setVisible(true);
-                EligibilityPane.setVisible(false);
+                AttendancePane.setVisible(false);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
                 break;
-            case "timetable":
+            case "attendance":
                 HomePanelId.setVisible(false);
                 CoursePane.setVisible(false);
-                EligibilityPane.setVisible(true);
+                AttendancePane.setVisible(true);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
@@ -304,7 +311,7 @@ public class Student{
             case "gpa":
                 HomePanelId.setVisible(false);
                 CoursePane.setVisible(false);
-                EligibilityPane.setVisible(false);
+                AttendancePane.setVisible(false);
                 GpaPane.setVisible(true);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
@@ -312,7 +319,7 @@ public class Student{
             case "profile":
                 HomePanelId.setVisible(false);
                 CoursePane.setVisible(false);
-                EligibilityPane.setVisible(false);
+                AttendancePane.setVisible(false);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(true);
                 noticePane.setVisible(false);
@@ -320,7 +327,7 @@ public class Student{
             case "notice":
                 HomePanelId.setVisible(false);
                 CoursePane.setVisible(false);
-                EligibilityPane.setVisible(false);
+                AttendancePane.setVisible(false);
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(true);
@@ -340,7 +347,7 @@ public class Student{
     }
 
     @FXML
-    void timetable (ActionEvent event) { choosePanel("timetable"); }
+    void attendance (ActionEvent event) { choosePanel("attendance"); }
 
     @FXML
     void Gpa(ActionEvent event) {
@@ -366,7 +373,7 @@ public class Student{
         try{
             String query = "Select * from student where Std_id = '"+userSession()+"'";
 
-            DbConnect connect = new DbConnect();
+            studentConnect connect = new studentConnect();
             PreparedStatement ptr = connect.connect().prepareStatement(query);
             ResultSet result = ptr.executeQuery();
 
@@ -405,6 +412,7 @@ public class Student{
         });
         showGrades();
         showNotice();
+        showAttendance();
     }
 
     public void setValueFactory(){
@@ -418,6 +426,8 @@ public class Student{
         dateCol.setCellValueFactory(new PropertyValueFactory<>("Date"));
         noticeCol.setCellValueFactory(new PropertyValueFactory<>("Notice"));
         clickCol.setCellValueFactory(new PropertyValueFactory<>("View"));
+        courseCol.setCellValueFactory(new PropertyValueFactory<>("Course"));
+        attCol.setCellValueFactory(new PropertyValueFactory<>("Att"));
     }
 
     //Get course details from course table and display in the courseTable
@@ -431,7 +441,7 @@ public class Student{
 
         try {
             String query;
-            DbConnect conn = new DbConnect();
+            studentConnect conn = new studentConnect();
             PreparedStatement ptr = null;
             switch (selectedOption) {
                 case "Default":
@@ -482,7 +492,7 @@ public class Student{
         String grade;
 
         try {
-            DbConnect conn = new DbConnect();
+            studentConnect conn = new studentConnect();
             PreparedStatement ptr = null;
                     String query = "select * from mark where Std_id = '"+userSession()+"'";
                     ptr = conn.connect().prepareStatement(query);
@@ -504,33 +514,54 @@ public class Student{
     //Get notice details from notice table and display in the noticeTable
         public void showNotice(){
 
-        String date;
-        String notice;
-        String view;
-        String id;
+            String date;
+            String notice;
+            String view;
+            String id;
 
+            try {
+                studentConnect conn = new studentConnect();
+                PreparedStatement ptr = null;
+                String query = "SELECT * FROM notice ORDER BY date DESC";
+                ptr = conn.connect().prepareStatement(query);
+
+                noticeTable.getItems().clear();
+                ResultSet rs = ptr.executeQuery();
+
+                while (rs.next()) {
+                    date = rs.getString(4);
+                    notice = rs.getString(2);
+                    view = "View";
+                    id = rs.getString(1);
+                    Notice notice_record = new Notice(date,notice,view,id,msg);
+                    noticeTable.getItems().add(notice_record);
+                }
+            }catch (Exception e){
+                System.out.println(e);
+            }
+
+        }
+
+    //Get Attendance details attendance table and display in the attTable
+    void showAttendance(){
+        String course;
+        String att;
         try {
-            DbConnect conn = new DbConnect();
-            PreparedStatement ptr = null;
-            String query = "SELECT * FROM notice ORDER BY date DESC";
-            ptr = conn.connect().prepareStatement(query);
+            studentConnect conn = new studentConnect();
+            String query = "SELECT * FROM attendance WHERE Std_id = '"+userSession()+"'";
+            PreparedStatement ptr = conn.connect().prepareStatement(query);
 
-            noticeTable.getItems().clear();
+            attTable.getItems().clear();
             ResultSet rs = ptr.executeQuery();
 
             while (rs.next()) {
-                date = rs.getString(4);
-                notice = rs.getString(2);
-                view = "View";
-                id = rs.getString(1);
-                Notice notice_record = new Notice(date,notice,view,id,msg);
-                noticeTable.getItems().add(notice_record);
+                course = rs.getString(4);
+                att = rs.getString(2);
+                Attendance att_record = new Attendance(course,att);
+                attTable.getItems().add(att_record);
             }
         }catch (Exception e){
             System.out.println(e);
         }
-
-        }
-
-
+    }
 }
