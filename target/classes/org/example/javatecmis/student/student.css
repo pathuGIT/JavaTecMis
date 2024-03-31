@@ -1,0 +1,145 @@
+#logoutId {
+    -fx-background-color:#2B3D50; /* Button background color */
+    -fx-background-radius: 20; /* Button border radius */
+    -fx-padding: 8px 12px; /* Button padding */
+    -fx-text-fill: white;
+}
+#btn{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-font-family: Corbel;
+    -fx-font-size: 14;
+    -fx-padding: 7px 7px;
+}
+#btn:hover{
+    -fx-background-color: #B6B6B6;
+    -fx-background-radius: 20;
+}
+#logoutId:hover {
+    -fx-background-color: white; /* Button background color on hover */
+    -fx-text-fill: black;
+}
+#left_panel{
+    -fx-background-color: #6663A6;
+    -fx-background-color: linear-gradient(to bottom, #026773, #1e99a8);
+}
+#profile{
+    -fx-background-color: #242551;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-padding: 4 15;
+}
+#notice{
+    -fx-background-color: #242551;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-padding: 4 15;
+}
+#topPane{
+    -fx-background-color: #F28705;
+    -fx-background-color: linear-gradient(to left, #F28705, #F28705);
+}
+#HomePanelId,#CoursePane,#EligibilityPane,#GpaPane{
+    -fx-background-color: #FFFFFF;
+}
+#Hbox{
+    -fx-padding: 5 10;
+    -fx-background-radius: 20;
+    -fx-background-color: #d9d7d7;
+}
+#imgview{
+    -fx-alignment: center;
+}
+#edit_email{
+    -fx-background-color: #a8a8a8;
+}
+#edit_number{
+    -fx-background-color: #a8a8a8;
+}
+/*Course table style*/
+#courseTable .column-header{
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: grey;
+}
+#courseTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 3px 0px 3px 10px;
+}
+#courseTable .table-row-cell{
+    -fx-background-color: white;
+}
+#courseTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+
+/*Grade table styles*/
+#GradeTable .column-header {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 10px;
+    -fx-border-color: grey;
+}
+
+#GradeTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 2px 0px 2px 10px;
+}
+#GradeTable .table-row-cell{
+    -fx-background-color: white;
+}
+#GradeTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+
+/*Notice table styles*/
+#noticeTable .column-header {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 10px;
+    -fx-border-color: grey;
+}
+
+#noticeTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 2px 0px 2px 10px;
+}
+#noticeTable .table-row-cell{
+    -fx-background-color: white;
+}
+#noticeTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+
+/*Attendance table styles*/
+#attTable .column-header {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 10px;
+    -fx-border-color: grey;
+}
+
+#attTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 2px 0px 2px 10px;
+}
+#attTable .table-row-cell{
+    -fx-background-color: white;
+}
+#attTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+
+.centered-text-field {
+    -fx-alignment: center;
+}

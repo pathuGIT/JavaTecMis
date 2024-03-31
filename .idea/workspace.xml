@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6626a5cc-f7fa-4501-8431-543231272c01" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2cmI7pETbNj0YdHv41ZYBxSwjqa" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.App.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/GitHub/JavaTecMis/src/main/resources/org/example/javatecmis/technicalOfficer&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\resources\org\example\javatecmis\technicalOfficer" />
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\resources\org\example\javatecmis\lecturer" />
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\java\org\example\javatecmis\admin" />
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\resources\org\example\javatecmis\admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\resources\org\example\javatecmis\technicalOfficer" />
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\resources\org\example\javatecmis" />
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\resources\org\example\javatecmis\lecturer" />
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\resources\org\example\javatecmis\admin" />
+      <recent name="C:\Users\Acer\Documents\GitHub\JavaTecMis\src\main\resources\org\example\javatecmis\student" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example.javatecmis.technicalOfficer" />
+      <recent name="org.example.javatecmis" />
+      <recent name="org.example.javatecmis.lecturer" />
+      <recent name="org.example.javatecmis.admin" />
+      <recent name="org.example.javatecmis.student" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.javatecmis.technicalOfficer" />
+      <recent name="org.example.javatecmis.lecturer" />
+      <recent name="org.example.javatecmis.admin" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.javatecmis.App" />
+      <module name="LoginApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.javatecmis.student.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6626a5cc-f7fa-4501-8431-543231272c01" name="Changes" comment="" />
+      <created>1708710165709</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708710165709</updated>
+      <workItem from="1708710166677" duration="34000" />
+      <workItem from="1708710247513" duration="45000" />
+      <workItem from="1708710333302" duration="86000" />
+      <workItem from="1708710437368" duration="548000" />
+      <workItem from="1708711109640" duration="235000" />
+      <workItem from="1708711417223" duration="274000" />
+      <workItem from="1708711704420" duration="400000" />
+      <workItem from="1708712119404" duration="184000" />
+      <workItem from="1708712329407" duration="3782000" />
+      <workItem from="1708716414749" duration="1179000" />
+      <workItem from="1708758123056" duration="31000" />
+      <workItem from="1708758171830" duration="25015000" />
+      <workItem from="1708850625377" duration="22423000" />
+      <workItem from="1708945428186" duration="7131000" />
+      <workItem from="1709056102825" duration="111000" />
+      <workItem from="1709109755219" duration="20996000" />
+      <workItem from="1709215772146" duration="6932000" />
+      <workItem from="1709223164981" duration="750000" />
+      <workItem from="1709226720376" duration="5243000" />
+      <workItem from="1709318467184" duration="73000" />
+      <workItem from="1709435095571" duration="7937000" />
+      <workItem from="1709821626326" duration="64000" />
+      <workItem from="1710573002018" duration="614000" />
+      <workItem from="1710776653419" duration="9754000" />
+      <workItem from="1710839559439" duration="23058000" />
+      <workItem from="1710913426927" duration="4776000" />
+      <workItem from="1710918229928" duration="4224000" />
+      <workItem from="1710924467601" duration="9957000" />
+      <workItem from="1710996267222" duration="3670000" />
+      <workItem from="1711038998403" duration="47000" />
+      <workItem from="1711040567967" duration="37000" />
+      <workItem from="1711551015127" duration="631000" />
+      <workItem from="1711792478084" duration="1095000" />
+      <workItem from="1711890041472" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/javatecmis/LoginController.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
