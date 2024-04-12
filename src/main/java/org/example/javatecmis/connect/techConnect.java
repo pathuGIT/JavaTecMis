@@ -12,7 +12,7 @@ public class techConnect {
     public Connection connect(){
 
         url = "jdbc:mysql://localhost:3306/tecmis_teclms";
-        user = "TECHNICAL_OFFICER";
+        user = "TECHNICAL_OFFICER";//user
         pswd = "1234";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
