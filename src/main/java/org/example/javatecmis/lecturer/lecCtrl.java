@@ -24,6 +24,11 @@ public class lecCtrl {
         l.setText("Kamal");
     }
 
+    private String userSession(){
+        LoginController login = new LoginController();
+        return login.LETG;
+    }
+
     public void loginToLecturer(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lecturer.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -41,6 +46,6 @@ public class lecCtrl {
 
 
     public void initialize(){
-
+        System.out.println(userSession());
     }
 }
