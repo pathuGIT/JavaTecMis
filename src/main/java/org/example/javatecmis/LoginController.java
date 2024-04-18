@@ -27,6 +27,7 @@ public class LoginController {
     public static String pwd;
 
     public static String STDG ;
+    public static String LETG;
 
     @FXML
     private Button cancelButton;
@@ -44,7 +45,8 @@ public class LoginController {
 
     @FXML
     void login(ActionEvent event) {
-        String query = "select * from student";
+        //String query = "select * from student";
+        String query = "SELECT Lec_id AS ID, 'lecturer' AS Type, Password FROM lecture UNION SELECT Std_id AS ID, 'student' AS Type, Password FROM student";
         try {
             studentConnect obj = new studentConnect();
             obj.connect();
@@ -56,9 +58,9 @@ public class LoginController {
 
             while (result.next()) {
                 tg = result.getString(1);
-                pwd = result.getString(6);
+                pwd = result.getString(3);
 
-                if (userName.getText().equals(tg) && userPwd.getText().equals(pwd)) {
+                if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(2).equals("student")) {
                 //if (uName.equals(tg) && uPwd.equals(pwd)) {
                     System.out.println(tg+" "+pwd);
                     STDG = tg;
@@ -75,7 +77,9 @@ public class LoginController {
                     ad.loginToAdmin(event);
                     break;
 
-                } else if (userName.getText().equals("lecturer") && userPwd.getText().equals("1234")) {
+                //} else if (userName.getText().equals("lecturer") && userPwd.getText().equals("1234")) {
+                } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(2).equals("lecturer")) {
+                    LETG = tg;
                     lecCtrl ad = new lecCtrl();
                     ad.loginToLecturer(event);
                     break;
