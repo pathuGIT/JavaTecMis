@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.javatecmis.admin.adminCtrl;
+import org.example.javatecmis.connect.adminConnect;
 import org.example.javatecmis.connect.studentConnect;
 import org.example.javatecmis.lecturer.lecCtrl;
 import org.example.javatecmis.technicalOfficer.techCtrl;
@@ -46,9 +47,9 @@ public class LoginController {
     @FXML
     void login(ActionEvent event) {
         //String query = "select * from student";
-        String query = "SELECT Lec_id AS ID, 'lecturer' AS Type, Password FROM lecture UNION SELECT Std_id AS ID, 'student' AS Type, Password FROM student";
+        String query = "SELECT ID, Password, 'Technical_Officer' AS Position FROM Technical_Officer UNION SELECT Lec_id AS ID, Password, 'Lecture' AS Position FROM Lecture UNION SELECT username AS ID, Password, 'Admin' AS Position FROM Admin UNION SELECT Std_id AS ID, Password, 'Student' AS Position FROM Student";
         try {
-            studentConnect obj = new studentConnect();
+            adminConnect obj = new adminConnect();
             obj.connect();
             PreparedStatement pre = obj.connect().prepareStatement(query);
             ResultSet result = pre.executeQuery();
@@ -58,9 +59,9 @@ public class LoginController {
 
             while (result.next()) {
                 tg = result.getString(1);
-                pwd = result.getString(3);
+                pwd = result.getString(2);
 
-                if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(2).equals("student")) {
+                if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Student")) {
                 //if (uName.equals(tg) && uPwd.equals(pwd)) {
                     System.out.println(tg+" "+pwd);
                     STDG = tg;
@@ -72,19 +73,19 @@ public class LoginController {
                     stage.setScene(scene);
                     stage.show();
 
-                } else if (userName.getText().equals("admin") && userPwd.getText().equals("1234")) {
+                } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Admin")) {
                     adminCtrl ad = new adminCtrl();
                     ad.loginToAdmin(event);
                     break;
 
                 //} else if (userName.getText().equals("lecturer") && userPwd.getText().equals("1234")) {
-                } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(2).equals("lecturer")) {
+                } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Lecture")) {
                     LETG = tg;
                     lecCtrl ad = new lecCtrl();
                     ad.loginToLecturer(event);
                     break;
 
-                } else if (userName.getText().equals("techOfficer") && userPwd.getText().equals("1234")) {
+                } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Technical_Officer")) {
                     System.out.println("hel");
                     techCtrl ad = new techCtrl();
                     ad.loginToTechofficer(event);
