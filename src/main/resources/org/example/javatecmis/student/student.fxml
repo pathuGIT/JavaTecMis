@@ -61,7 +61,7 @@
             </ButtonBar>
          </children>
       </Pane>
-      <Pane fx:id="ProfilePane" layoutX="339.0" layoutY="73.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: red;">
+      <Pane fx:id="ProfilePane" layoutX="339.0" layoutY="73.0" prefHeight="630.0" prefWidth="862.0">
          <children>
             <Pane layoutX="45.0" layoutY="38.0" prefHeight="419.0" prefWidth="774.0" style="-fx-background-color: white;" styleClass="f">
                <children>
@@ -306,6 +306,11 @@
                 <TableColumn fx:id="attCol" prefWidth="175.99993896484375" text="Total attendance" />
               </columns>
             </TableView>
+            <ImageView fitHeight="283.0" fitWidth="342.0" layoutX="516.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Downloads/Untitled%20video%20-%20Made%20with%20Clipchamp%20(1).gif" />
+               </image>
+            </ImageView>
          </children></Pane>
    </children>
 </AnchorPane>
