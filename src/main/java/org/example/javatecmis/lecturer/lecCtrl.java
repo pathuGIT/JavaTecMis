@@ -1,28 +1,22 @@
 package org.example.javatecmis.lecturer;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-=======
->>>>>>> main
-=======
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
+
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -49,27 +43,20 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
+
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.example.javatecmis.LoginController;
 
 import java.io.IOException;
 import java.util.Objects;
-<<<<<<< HEAD
->>>>>>> main
-=======
 
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
 
 public class lecCtrl {
     private Stage stage;
     private Scene scene;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
+
     //For Panes
     @FXML
     private Pane ProfileDetailsPane;
@@ -378,7 +365,7 @@ public class lecCtrl {
     @FXML
     private Button logoutbtn;
 
-<<<<<<< HEAD
+
 
 
 
@@ -397,12 +384,7 @@ public class lecCtrl {
 <<<<<<< HEAD
 <<<<<<< HEAD
 */
-=======
 
->>>>>>> main
-=======
-
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
     private String userSession(){
         LoginController login = new LoginController();
         return login.LETG;
@@ -422,11 +404,7 @@ public class lecCtrl {
         o.logout(event);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
     @FXML
     void imgUpload(ActionEvent event)throws IOException, SQLException {
         FileChooser fileChooser = new FileChooser();
@@ -769,19 +747,11 @@ public class lecCtrl {
 
 
 
-<<<<<<< HEAD
-=======
->>>>>>> main
+
 
 
     public void initialize(){
         System.out.println(userSession());
-<<<<<<< HEAD
-=======
-
-    public void initialize(){
-        System.out.println(userSession());
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
         showLectureDetails();
         showStudentDetails();
         ShowStudentResults();
@@ -790,13 +760,5 @@ public class lecCtrl {
     }
 
 
-<<<<<<< HEAD
 
-
-=======
-    }
->>>>>>> main
-=======
-    }
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
 }
