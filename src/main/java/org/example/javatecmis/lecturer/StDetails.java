@@ -4,28 +4,37 @@ package org.example.javatecmis.lecturer;
 public class StDetails {
 
 
-    private String sId = null;
-    private String sName = null;
-    private String sEmail = null;
-    private String sContact = null;
-    private String sNIC = null;
+    private String Sid = null;
+    private String Sname = null;
+    private String Semail = null;
+    private String Scontact = null;
+    private String Snic = null;
 
-
-    public StDetails(String stid,String sname, String semail,String scontact,String snic){
-        sId = stid;
-        sName = sname;
-        sEmail = semail;
-        sContact = scontact;
-        sNIC = snic;
-
+    public StDetails(String sid, String sname, String semail, String scontact, String snic) {
+        Sid = sid;
+        Sname = sname;
+        Semail = semail;
+        Scontact = scontact;
+        Snic = snic;
     }
 
-    public String getSId(){return sId;}
-    public String getSName(){return sName;}
-    public  String getSEmail(){return sEmail;}
-    public String getSContact(){return sContact;}
-    public String getSNIC(){return sNIC;}
+    public String getSid() {
+        return Sid;
+    }
 
+    public String getSname() {
+        return Sname;
+    }
 
+    public String getSemail() {
+        return Semail;
+    }
 
+    public String getScontact() {
+        return Scontact;
+    }
+
+    public String getSnic() {
+        return Snic;
+    }
 }

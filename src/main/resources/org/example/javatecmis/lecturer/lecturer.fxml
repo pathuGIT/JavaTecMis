@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -28,57 +23,65 @@
    <children>
       <Pane fx:id="ButtonPane" layoutX="300.0" prefHeight="86.0" prefWidth="904.0">
          <children>
-            <HBox id="navi" fx:id="navicontent" alignment="CENTER" layoutY="-6.0" prefHeight="93.0" prefWidth="904.0" style="-fx-background-color: #fc8403;" styleClass="navi" stylesheets="@../../../../../../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css">
+            <HBox id="navi" fx:id="navicontent" alignment="CENTER" layoutY="-6.0" prefHeight="93.0" prefWidth="904.0" style="-fx-background-color: #fc8403;" styleClass="navi">
                <children>
                   <ButtonBar prefHeight="94.0" prefWidth="846.0">
                      <buttons>
-                        <Button fx:id="homeBtn" maxHeight="30.0" maxWidth="110.0" mnemonicParsing="false" onAction="#homeAction" text="Home" textFill="WHITE">
+                        <Button fx:id="homeBtn" maxHeight="30.0" maxWidth="110.0" mnemonicParsing="false" onAction="#homeAction" stylesheets="@style.css" text="Home" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="updocBtn" maxHeight="30.0" maxWidth="160.0" mnemonicParsing="false" onAction="#uploadDocumentAction" prefHeight="30.0" prefWidth="138.0" text="Upload Document" textFill="WHITE">
+                        <Button fx:id="updocBtn" maxHeight="30.0" maxWidth="160.0" mnemonicParsing="false" onAction="#uploadDocumentAction" prefHeight="30.0" prefWidth="138.0" stylesheets="@style.css" text="Upload Document" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="upmarksBtn" maxHeight="30.0" maxWidth="150.0" mnemonicParsing="false" onAction="#uploadMarksAction" prefHeight="30.0" prefWidth="150.0" text="Upload Marks" textFill="WHITE">
+                        <Button fx:id="upmarksBtn" maxHeight="30.0" maxWidth="150.0" mnemonicParsing="false" onAction="#uploadMarksAction" prefHeight="30.0" prefWidth="150.0" stylesheets="@style.css" text="Upload Marks" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="stdetBtn" maxHeight="30.0" maxWidth="130.0" mnemonicParsing="false" onAction="#studentDetailsAction" text="Student Details" textFill="WHITE">
+                        <Button fx:id="stdetBtn" maxHeight="30.0" maxWidth="130.0" mnemonicParsing="false" onAction="#studentDetailsAction" stylesheets="@style.css" text="Student Details" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="stelBtn" maxHeight="30.0" maxWidth="150.0" mnemonicParsing="false" onAction="#studentEligibilityAction" text="Student Eligibility" textFill="WHITE">
+                        <Button fx:id="stelBtn" maxHeight="30.0" maxWidth="150.0" mnemonicParsing="false" onAction="#studentEligibilityAction" stylesheets="@style.css" text="Student Eligibility" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="resultBtn" maxHeight="30.0" maxWidth="110.0" mnemonicParsing="false" onAction="#ResultAction" text="Results" textFill="WHITE">
+                        <Button fx:id="resultBtn" maxHeight="30.0" maxWidth="110.0" mnemonicParsing="false" onAction="#ResultAction" stylesheets="@style.css" text="Results" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
                      </buttons>
                   </ButtonBar>
-                  <Button fx:id="logoutbtn" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #111111;" styleClass="lout" stylesheets="@../../../../../../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css" text="Logout" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="logoutbtn" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #111111;" styleClass="lout" text="Logout" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="50.0" right="10.0" />
                      </HBox.margin>
+<!--                     <stylesheets>-->
+<!--                        <URL value="@../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css" />-->
+<!--                        <URL value="@style.css" />-->
+<!--                     </stylesheets>-->
                   </Button>
                </children>
+<!--               <stylesheets>-->
+<!--                  <URL value="@../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css" />-->
+<!--                  <URL value="@style.css" />-->
+<!--               </stylesheets>-->
             </HBox>
          </children>
       </Pane>
       <Pane fx:id="ProfileDetailsPane" prefHeight="700.0" prefWidth="299.0">
          <children>
-            <VBox layoutY="-6.0" prefHeight="706.0" prefWidth="300.0" styleClass="primary-color" stylesheets="@../../../../../../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css">
+            <VBox layoutY="-6.0" prefHeight="706.0" prefWidth="300.0" styleClass="primary-color">
                <children>
                   <VBox alignment="CENTER" prefHeight="242.0" prefWidth="300.0">
                      <VBox.margin>
@@ -87,7 +90,7 @@
                      <children>
                         <ImageView fx:id="profImg" fitHeight="114.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/Profile.png" />
+                              <Image url="@Profile.png" />
                            </image>
                         </ImageView>
                         <Label fx:id="profName" prefHeight="27.0" prefWidth="101.0" textAlignment="CENTER" textFill="#ccc4c4">
@@ -106,13 +109,13 @@
                            <children>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/student/image/Profile.png" />
+                                    <Image url="@Profile.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="50.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Button fx:id="lecprofileBtn" mnemonicParsing="false" onAction="#LectureProfileAction" prefHeight="35.0" prefWidth="180.0" text="Lecture Profile" textFill="WHITE">
+                              <Button fx:id="lecprofileBtn" mnemonicParsing="false" onAction="#LectureProfileAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@style.css" text="Lecture Profile" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="20.0" top="50.0" />
                                  </HBox.margin>
@@ -126,10 +129,10 @@
                            <children>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/student/image/bell.png" />
+                                    <Image url="@bell.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="noticeBtn" mnemonicParsing="false" onAction="#NoticeAction" prefHeight="35.0" prefWidth="180.0" text="Notice" textFill="WHITE">
+                              <Button fx:id="noticeBtn" mnemonicParsing="false" onAction="#NoticeAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@style.css" text="Notice" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -142,6 +145,10 @@
                      </VBox.margin>
                   </VBox>
                </children>
+<!--               <stylesheets>-->
+<!--                  <URL value="@../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css" />-->
+<!--                  <URL value="@style.css" />-->
+<!--               </stylesheets>-->
             </VBox>
          </children>
       </Pane>
@@ -262,39 +269,6 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="profileLecPane" layoutX="298.0" layoutY="85.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
-         <children>
-            <Pane layoutX="55.0" layoutY="66.0" prefHeight="444.0" prefWidth="804.0" style="-fx-background-color: #708090;" styleClass="f">
-               <children>
-                  <Circle fx:id="circle" fill="#1f93ff00" layoutX="170.0" layoutY="178.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Line endX="-85.800048828125" endY="284.0" layoutX="438.0" layoutY="160.0" startX="-85.800048828125" startY="-160.0" />
-                  <Button fx:id="profileUploadBtn" layoutX="107.0" layoutY="285.0" mnemonicParsing="false" onAction="#imgUpload" text="Upload" />
-                  <Button layoutX="180.0" layoutY="285.0" mnemonicParsing="false" onAction="#deleteImage" text="Delete" />
-                  <Label layoutX="417.0" layoutY="149.0" text="Email">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="edit_email" layoutX="504.0" layoutY="149.0" prefHeight="26.0" prefWidth="180.0" />
-                  <Label layoutX="417.0" layoutY="210.0" text="Number">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="edit_number" layoutX="504.0" layoutY="210.0" prefHeight="26.0" prefWidth="180.0" />
-                  <Button layoutX="504.0" layoutY="270.0" mnemonicParsing="false" onAction="#updateLectureData" prefHeight="30.0" prefWidth="180.0" text="Update" />
-                  <Label layoutX="87.0" layoutY="42.0" prefHeight="27.0" prefWidth="206.0" text="Edit your profile image" textFill="#eaeaea">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label layoutX="504.0" layoutY="42.0" text="Edit Your persional details" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
       <Pane fx:id="noticePane" layoutX="300.0" layoutY="87.0" prefHeight="622.0" prefWidth="904.0" style="-fx-background-color: white;">
          <children>
             <TableView fx:id="noticeTable" layoutX="211.0" layoutY="56.0" prefHeight="180.0" prefWidth="491.0">
@@ -351,23 +325,40 @@
                </font>
             </Label>
          </children></Pane>
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: rgb(237, 241, 242);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javatecmis.lecturer.lecCtrl">
-   <children>
-      <Label fx:id="l" layoutX="230.0" layoutY="55.0" text="Lecturer" />
-      <Button layoutX="838.0" layoutY="42.0" mnemonicParsing="false" onAction="#logout" text="logout" />
-<<<<<<< HEAD
->>>>>>> main
-=======
-
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
+      <Pane fx:id="profileLecPane" layoutX="298.0" layoutY="85.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="55.0" layoutY="66.0" prefHeight="444.0" prefWidth="804.0" style="-fx-background-color: #708090;" styleClass="f">
+               <children>
+                  <Circle fx:id="circle" fill="#1f93ff00" layoutX="170.0" layoutY="178.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Line endX="-85.800048828125" endY="284.0" layoutX="438.0" layoutY="160.0" startX="-85.800048828125" startY="-160.0" />
+                  <Button fx:id="profileUploadBtn" layoutX="107.0" layoutY="285.0" mnemonicParsing="false" onAction="#imgUpload" text="Upload" />
+                  <Button layoutX="180.0" layoutY="285.0" mnemonicParsing="false" onAction="#deleteImage" text="Delete" />
+                  <Label layoutX="417.0" layoutY="149.0" text="Email">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="edit_email" layoutX="504.0" layoutY="149.0" prefHeight="26.0" prefWidth="180.0" />
+                  <Label layoutX="417.0" layoutY="210.0" text="Number">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="edit_number" layoutX="504.0" layoutY="210.0" prefHeight="26.0" prefWidth="180.0" />
+                  <Button layoutX="504.0" layoutY="270.0" mnemonicParsing="false" onAction="#updateLectureData" prefHeight="30.0" prefWidth="180.0" text="Update" />
+                  <Label layoutX="87.0" layoutY="42.0" prefHeight="27.0" prefWidth="206.0" text="Edit your profile image" textFill="#eaeaea">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="504.0" layoutY="42.0" text="Edit Your persional details" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
