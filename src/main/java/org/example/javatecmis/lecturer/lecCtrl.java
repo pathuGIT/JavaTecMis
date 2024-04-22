@@ -3,6 +3,7 @@ package org.example.javatecmis.lecturer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +36,14 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import org.example.javatecmis.LoginController;
+
+import java.io.IOException;
+import java.util.Objects;
+
 
 public class lecCtrl {
     private Stage stage;
@@ -348,18 +357,13 @@ public class lecCtrl {
     @FXML
     private Button logoutbtn;
 
-
-
-
-
-/*
     @FXML
     private Label l;
     @FXML
     void btn(ActionEvent event) {
         l.setText("Kamal");
     }
-*/
+
     private String userSession(){
         LoginController login = new LoginController();
         return login.LETG;
@@ -378,6 +382,7 @@ public class lecCtrl {
         LoginController o = new LoginController();
         o.logout(event);
     }
+
 
     @FXML
     void imgUpload(ActionEvent event)throws IOException, SQLException {
@@ -722,7 +727,6 @@ public class lecCtrl {
 
 
 
-
     public void initialize(){
         System.out.println(userSession());
         showLectureDetails();
@@ -733,6 +737,5 @@ public class lecCtrl {
     }
 
 
-
-
+    }
 }

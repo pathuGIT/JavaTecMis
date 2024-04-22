@@ -3,7 +3,7 @@ package org.example.javatecmis.connect;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DbConnect {
+public class adminConnect {
     String url;
     String user;
     String pswd;
@@ -12,7 +12,7 @@ public class DbConnect {
     public Connection connect(){
 
         url = "jdbc:mysql://localhost:3306/tecmis_teclms";
-        user = "STUDENT";
+        user = "ADMIN";
         pswd = "1234";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -25,5 +25,4 @@ public class DbConnect {
         }
         return null;
     }
-
 }
