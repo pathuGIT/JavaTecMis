@@ -143,3 +143,6 @@
 .centered-text-field {
     -fx-alignment: center;
 }
+#ProfilePane{
+    -fx-background-color: #e1e1e1;
+}
