@@ -1,14 +1,18 @@
 package org.example.javatecmis.lecturer;
 
+<<<<<<< HEAD
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+=======
+>>>>>>> main
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+<<<<<<< HEAD
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -35,11 +39,20 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import org.example.javatecmis.LoginController;
+
+import java.io.IOException;
+import java.util.Objects;
+>>>>>>> main
 
 public class lecCtrl {
     private Stage stage;
     private Scene scene;
 
+<<<<<<< HEAD
     //For Panes
     @FXML
     private Pane ProfileDetailsPane;
@@ -353,13 +366,19 @@ public class lecCtrl {
 
 
 /*
+=======
+>>>>>>> main
     @FXML
     private Label l;
     @FXML
     void btn(ActionEvent event) {
         l.setText("Kamal");
     }
+<<<<<<< HEAD
 */
+=======
+
+>>>>>>> main
     private String userSession(){
         LoginController login = new LoginController();
         return login.LETG;
@@ -379,6 +398,7 @@ public class lecCtrl {
         o.logout(event);
     }
 
+<<<<<<< HEAD
     @FXML
     void imgUpload(ActionEvent event)throws IOException, SQLException {
         FileChooser fileChooser = new FileChooser();
@@ -721,10 +741,13 @@ public class lecCtrl {
 
 
 
+=======
+>>>>>>> main
 
 
     public void initialize(){
         System.out.println(userSession());
+<<<<<<< HEAD
         showLectureDetails();
         showStudentDetails();
         ShowStudentResults();
@@ -735,4 +758,7 @@ public class lecCtrl {
 
 
 
+=======
+    }
+>>>>>>> main
 }

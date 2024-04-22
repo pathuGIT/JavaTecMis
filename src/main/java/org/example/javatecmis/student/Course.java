@@ -3,11 +3,11 @@ package org.example.javatecmis.student;
 import javafx.scene.control.ChoiceBox;
 
 public class Course{
-    private String CourseId;
-    private String CourseName;
-    private String CourseType;
-    private int CourseCredit;
-    private String CourseLecture;
+    private String CourseId = null;
+    private String CourseName = null;
+    private String CourseType = null;
+    private int CourseCredit = 0;
+    private String CourseLecture = null;
     public Course(){
        // super();
     }
@@ -36,7 +36,7 @@ public class Course{
     }
 
 
-    String[] filter = {"Default","Theory","Practical","Both"};
+    public String[] filter = {"Default","Theory","Practical","Both"};
 
 
 }
