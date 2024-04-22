@@ -61,6 +61,9 @@ public class adminCtrl {
     private TextField st_in_regno;
 
     @FXML
+    private TextField st_in_pass1;
+
+    @FXML
     private TableColumn<StudentTable, String> st_mail;
 
     @FXML
@@ -79,6 +82,9 @@ public class adminCtrl {
     private TableColumn<StudentTable, String> st_dep1;
 
     @FXML
+    private TableColumn<StudentTable, String> st_pass;
+
+    @FXML
     private TableView<StudentTable> student_table;
     //End  student table
 
@@ -92,32 +98,33 @@ public class adminCtrl {
     //@FXML
     //void logout(ActionEvent event) {
 
-   // }
-   //-------------home pane ------------
-   @FXML
-   void home_pane(ActionEvent event) {
-       studentpain.setVisible(false);
-       homepane.setVisible(true);
-   }
-//------Student details display part +++Student pane ++++ ---------
-   @FXML
-   void student_pane(ActionEvent event) {
-    studentpain.setVisible(true);
-    homepane.setVisible(false);
-    StuTable();
-   }
+    // }
+    //-------------home pane ------------
+    @FXML
+    void home_pane(ActionEvent event) {
+        studentpain.setVisible(false);
+        homepane.setVisible(true);
+    }
+    //------Student details display part +++Student pane ++++ ---------
+    @FXML
+    void student_pane(ActionEvent event) {
+        studentpain.setVisible(true);
+        homepane.setVisible(false);
+        StuTable();
+    }
     @FXML
     void student_add(ActionEvent event) {
-        String std_id1, std_name1, std_email1, std_nic1, std_dep1, std_contact1;
+        String std_id1, std_name1, std_email1, std_nic1, std_dep1, std_contact1,std_pass1;
         std_id1 = st_in_regno.getText();
         std_name1 = st_in_name.getText();
         std_email1 = st_in_email.getText();
         std_nic1 = st_in_nic.getText();
         std_dep1 = st_in_dep.getText();
         std_contact1 = st_in_mobile.getText();
+        std_pass1 = st_in_pass1.getText();
 
         try {
-            String sql = "INSERT INTO student(Std_id,Name,Email,NIC,Dep_id,Contact) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO student(Std_id,Name,Email,NIC,Dep_id,Contact,Password) VALUES (?,?,?,?,?,?,?)";
             adminConnect conn = new adminConnect();
             PreparedStatement pst = conn.connect().prepareStatement(sql);
 
@@ -127,6 +134,7 @@ public class adminCtrl {
             pst.setString(4,std_nic1);
             pst.setString(5,std_dep1);
             pst.setString(6,std_contact1);
+            pst.setString(7,std_pass1);
             pst.executeUpdate();
 
             Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
@@ -143,6 +151,7 @@ public class adminCtrl {
             st_in_nic.setText("Enter NIC ");
             st_in_dep.setText("Enter department");
             st_in_mobile.setText("Enter Mobile Number");
+            st_in_pass1.setText("Enter Password");
 
 
         } catch (SQLException e) {
@@ -153,7 +162,7 @@ public class adminCtrl {
         adminConnect conn = new adminConnect();
         ObservableList<StudentTable> students = FXCollections.observableArrayList();
         try{
-            String sql = "SELECT Std_id,Name,Email,NIC,Dep_id,Contact FROM student";
+            String sql = "SELECT Std_id,Name,Email,NIC,Dep_id,Contact,Password FROM student";
             PreparedStatement pst = conn.connect().prepareStatement(sql);
 
             //student_table.getItems().clear();
@@ -167,10 +176,11 @@ public class adminCtrl {
                 st.setStd_nic1(rs.getString(4));
                 st.setStd_dep1(rs.getString(5));
                 st.setStd_contact1(rs.getString(6));
+                st.setStd_pass1(rs.getString(7));
                 students.add(st);
 
                 //StudentTable stable = new StudentTable(Id,name,Email,NIC,Dep,Contact);
-               // student_table.getItems().add(stable);
+                // student_table.getItems().add(stable);
 
             }
             student_table.setItems(students);
@@ -180,6 +190,7 @@ public class adminCtrl {
             st_nic.setCellValueFactory(f -> f.getValue().std_nic1Property());
             st_dep1.setCellValueFactory(f -> f.getValue().std_dep1Property());
             st_mobile.setCellValueFactory(f -> f.getValue().std_contact1Property());
+            st_pass.setCellValueFactory(f -> f.getValue().std_pass1Property());
 
 
 
@@ -198,6 +209,7 @@ public class adminCtrl {
                     st_in_nic.setText(student_table.getItems().get(myIndex).getStd_nic1());
                     st_in_dep.setText(student_table.getItems().get(myIndex).getStd_dep1());
                     st_in_mobile.setText((student_table.getItems().get(myIndex).getStd_contact1()));
+                    st_in_pass1.setText((student_table.getItems().get(myIndex).getStd_pass1()));
 
 
                 }
@@ -206,43 +218,45 @@ public class adminCtrl {
         });
     }
 
-        @FXML
+    @FXML
     void student_delete(ActionEvent event) {
-            String stu_id = st_in_regno.getText();
-            adminConnect conn = new adminConnect();
-            PreparedStatement pst;
-            try{
-                String sql = "DELETE FROM student WHERE Std_id=?";
-                pst = conn.connect().prepareStatement(sql);
-                pst.setString(1,stu_id);
-                pst.executeUpdate();
+        String stu_id = st_in_regno.getText();
+        adminConnect conn = new adminConnect();
+        PreparedStatement pst;
+        try{
+            String sql = "DELETE FROM student WHERE Std_id=?";
+            pst = conn.connect().prepareStatement(sql);
+            pst.setString(1,stu_id);
+            pst.executeUpdate();
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Student details");
-                alert.setHeaderText("Student Form");
-                alert.setContentText("Successfully Deleted");
-                alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Student details");
+            alert.setHeaderText("Student Form");
+            alert.setContentText("Successfully Deleted");
+            alert.showAndWait();
 
-                StuTable();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            StuTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void student_edit(ActionEvent event) {
-        String std_id1, std_name1, std_email1, std_nic1, std_dep1, std_contact1;
+        String std_id1, std_name1, std_email1, std_nic1, std_dep1, std_contact1,std_pass1;
         std_id1 = st_in_regno.getText();
         std_name1 = st_in_name.getText();
         std_email1 = st_in_email.getText();
         std_nic1 = st_in_nic.getText();
         std_dep1 = st_in_dep.getText();
         std_contact1 = st_in_mobile.getText();
+        std_pass1 = st_in_pass1.getText();
 
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
         try{
-            String sql = "UPDATE student SET Std_id=?, Name=?, Email=?, NIC=?, Dep_id=?, Contact=? WHERE Std_id=?";
+            String sql = "UPDATE student SET Std_id=?, Name=?, Email=?, NIC=?, Dep_id=?, Contact=?, Password=? WHERE Std_id=?";
+
             pst = conn.connect().prepareStatement(sql);
             pst.setString(1,std_id1);
             pst.setString(2,std_name1);
@@ -250,7 +264,8 @@ public class adminCtrl {
             pst.setString(4,std_nic1);
             pst.setString(5,std_dep1);
             pst.setString(6,std_contact1);
-            pst.setString(7,std_id1);
+            pst.setString(7,std_pass1);
+            pst.setString(8,std_id1);
             pst.executeUpdate();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -264,6 +279,10 @@ public class adminCtrl {
             throw new RuntimeException(e);
         }
     }
+
+    //+++++++++++++++Lecture++++++++++++++++++++
+
+
     @FXML
     private Label l;
     @FXML

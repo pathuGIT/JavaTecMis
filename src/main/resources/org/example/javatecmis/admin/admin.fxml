@@ -47,46 +47,47 @@
       <Pane fx:id="homepane" layoutX="285.0" layoutY="80.0" prefHeight="626.0" prefWidth="916.0" />
       <Pane fx:id="studentpain" layoutX="286.0" layoutY="82.0" prefHeight="618.0" prefWidth="916.0">
          <children>
-            <TableView fx:id="student_table" layoutX="23.0" layoutY="32.0" prefHeight="347.0" prefWidth="870.0">
+            <TableView fx:id="student_table" layoutX="23.0" layoutY="32.0" prefHeight="347.0" prefWidth="888.0">
               <columns>
                 <TableColumn fx:id="st_regno" prefWidth="104.79998779296875" text="Student Reg_No" />
-                <TableColumn fx:id="st_name" prefWidth="156.79995727539062" text="Name" />
-                  <TableColumn fx:id="st_mail" prefWidth="193.60003662109375" text="E-Mail" />
-                  <TableColumn fx:id="st_nic" minWidth="2.40008544921875" prefWidth="148.0" text="National Identy Card" />
-                  <TableColumn fx:id="st_dep1" prefWidth="139.99993896484375" text="Department" />
-                  <TableColumn fx:id="st_mobile" prefWidth="124.0001220703125" text="Contact Number" />
+                <TableColumn fx:id="st_name" prefWidth="125.59994506835938" text="Name" />
+                  <TableColumn fx:id="st_mail" prefWidth="176.00006103515625" text="E-Mail" />
+                  <TableColumn fx:id="st_nic" minWidth="2.40008544921875" prefWidth="161.5999755859375" text="National Identy Card" />
+                  <TableColumn fx:id="st_dep1" prefWidth="116.0" text="Department" />
+                  <TableColumn fx:id="st_mobile" prefWidth="118.39990234375" text="Contact Number" />
+                  <TableColumn fx:id="st_pass" prefWidth="84.0" text="Password" />
               </columns>
             </TableView>
-            <Label layoutX="59.0" layoutY="436.0" text="Name">
+            <Label layoutX="56.0" layoutY="419.0" text="Name">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="61.0" layoutY="405.0" text="Reg.No">
+            <Label layoutX="58.0" layoutY="388.0" text="Reg.No">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="59.0" layoutY="472.0" text="E-Mail">
+            <Label layoutX="56.0" layoutY="455.0" text="E-Mail">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="59.0" layoutY="508.0" text="NIC">
+            <Label layoutX="56.0" layoutY="491.0" text="NIC">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="st_in_regno" layoutX="204.0" layoutY="407.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_name" layoutX="204.0" layoutY="441.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_email" layoutX="204.0" layoutY="477.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_nic" layoutX="204.0" layoutY="513.0" prefHeight="25.0" prefWidth="205.0" />
-            <Label layoutX="59.0" layoutY="545.0" text="Department">
+            <TextField fx:id="st_in_regno" layoutX="200.0" layoutY="387.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_name" layoutX="200.0" layoutY="421.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_email" layoutX="200.0" layoutY="457.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_nic" layoutX="200.0" layoutY="493.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label layoutX="56.0" layoutY="528.0" text="Department">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="st_in_dep" layoutX="204.0" layoutY="550.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_dep" layoutX="200.0" layoutY="530.0" prefHeight="25.0" prefWidth="205.0" />
             <Button fx:id="st_btn_add" layoutX="432.0" layoutY="436.0" mnemonicParsing="false" onAction="#student_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
@@ -102,12 +103,18 @@
                   <Font name="Arial" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="61.0" layoutY="579.0" text="Contact Number">
+            <Label layoutX="58.0" layoutY="562.0" text="Contact Number">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="st_in_mobile" layoutX="206.0" layoutY="584.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_mobile" layoutX="202.0" layoutY="564.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_pass1" layoutX="202.0" layoutY="592.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label layoutX="58.0" layoutY="591.0" text="Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

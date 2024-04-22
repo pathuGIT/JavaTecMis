@@ -10,6 +10,7 @@ public class StudentTable {
         private final StringProperty std_nic1;
         private final StringProperty std_dep1;
         private final StringProperty std_contact1;
+        private final StringProperty std_pass1;
 
         public StudentTable() {
                 std_id1 = new SimpleStringProperty(this,"Id") ;
@@ -17,7 +18,9 @@ public class StudentTable {
                 std_email1 = new SimpleStringProperty(this,"email") ;
                 std_nic1 = new SimpleStringProperty(this,"nic");
                 std_dep1 = new SimpleStringProperty(this,"dep");
-                std_contact1 = new SimpleStringProperty(this,"Contact") ;
+                std_contact1 = new SimpleStringProperty(this,"Contact");
+                std_pass1 = new SimpleStringProperty(this,"password");
+
         }
         public StringProperty std_id1Property(){return std_id1;}
         public String getStd_id1() {
@@ -54,5 +57,7 @@ public class StudentTable {
         public String getStd_contact1() {return std_contact1.get();}
         public void setStd_contact1(String newContact){std_contact1.set(newContact);}
 
-
+        public StringProperty std_pass1Property(){return std_pass1;}
+        public String getStd_pass1(){return std_pass1.get();}
+        public void setStd_pass1(String newPass){std_pass1.set(newPass);}
 }
