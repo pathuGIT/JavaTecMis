@@ -114,7 +114,7 @@ public class lecCtrl {
     @FXML
     private Pane stuDetLecPane;
         @FXML
-        private TableView<?> stuDetTable;
+        private TableView<StDetails> stuDetTable;
         @FXML
         private TableColumn<StDetails, String> Std_id_Details;
         @FXML
@@ -701,11 +701,12 @@ public class lecCtrl {
 
 
     public void setValueFactory(){
-        Std_id_Details.setCellValueFactory(new PropertyValueFactory<>("SId"));
-        Name_Details.setCellValueFactory(new PropertyValueFactory<>("SName"));
-        Email_Details.setCellValueFactory(new PropertyValueFactory<>("SEmail"));
-        Contact_Details.setCellValueFactory(new PropertyValueFactory<>("SContact"));
-        NIC_Details.setCellValueFactory(new PropertyValueFactory<>("SNIC"));
+        Std_id_Details.setCellValueFactory(new PropertyValueFactory<>("Sid"));
+        Name_Details.setCellValueFactory(new PropertyValueFactory<>("Sname"));
+        Email_Details.setCellValueFactory(new PropertyValueFactory<>("Semail"));
+        Contact_Details.setCellValueFactory(new PropertyValueFactory<>("Scontact"));
+        NIC_Details.setCellValueFactory(new PropertyValueFactory<>("Snic"));
+
     }
 
     void showStudentDetails(){
@@ -732,10 +733,9 @@ public class lecCtrl {
                 scontact = rs.getString(4);
                 snic = rs.getString(5);
 
-                System.out.println(stid);
-
-                    //StDetails record = new StDetails(stid,sname,semail,scontact,snic);
-                    //stuDetTable.getItems().add(record);
+                System.out.println(stid+sname+semail+scontact+snic);
+                StDetails rec = new StDetails(stid,sname,semail,scontact,snic);
+                stuDetTable.getItems().add(rec);
             }
 
 

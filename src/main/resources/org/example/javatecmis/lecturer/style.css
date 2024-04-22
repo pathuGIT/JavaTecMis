@@ -1,0 +1,30 @@
+.primary-color{
+    -fx-background-color: #4682B4;
+}
+
+.secondary-color{
+    -fx-background-color: #00002c;
+}
+
+.button{
+    -fx-background-color: #242551;
+    -fx-background-radius: 45;
+}
+
+.button:hover{
+    -fx-background-color: #d59ab1;
+}
+
+
+/*
+.lout:hover{
+    -fx-background-color: #ffffff;
+    color: #111111;
+
+}
+*/
+
+.navi {
+    -fx-background-color: #fca903;
+}
+
