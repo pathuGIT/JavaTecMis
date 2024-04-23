@@ -198,7 +198,7 @@ public class adminCtrl {
             pst.executeUpdate();
 
             Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
-            add_alert.setTitle("Test Connection");
+            add_alert.setTitle("Student details");
             add_alert.setHeaderText("Student Form");
             add_alert.setContentText("Succsessfull Insert");
             add_alert.showAndWait();
@@ -415,7 +415,7 @@ public class adminCtrl {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Lecture Details");
             alert.setHeaderText("Lecture Form");
-            alert.setContentText("Successfully Deleted");
+            alert.setContentText("Successfully Added");
             alert.showAndWait();
 
             LecTable();
@@ -474,7 +474,7 @@ public class adminCtrl {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Lecture Details");
             alert.setHeaderText("Lecture Form");
-            alert.setContentText("Successfully Deleted");
+            alert.setContentText("Successfully Updated");
             alert.showAndWait();
 
             LecTable();
