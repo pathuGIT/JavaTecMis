@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: rgb(237, 241, 242);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javatecmis.admin.adminCtrl">
    <children>
@@ -37,15 +38,14 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="506.0" layoutY="21.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="100.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 16;" text="Lecturers">
+            <Button layoutX="506.0" layoutY="21.0" mnemonicParsing="false" onAction="#lecture_pain" prefHeight="41.0" prefWidth="100.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 16;" text="Lecturers">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="homepane" layoutX="285.0" layoutY="80.0" prefHeight="626.0" prefWidth="916.0" />
-      <Pane fx:id="studentpain" layoutX="286.0" layoutY="82.0" prefHeight="618.0" prefWidth="916.0">
+      <Pane fx:id="studentpain" layoutX="286.0" layoutY="82.0" prefHeight="618.0" prefWidth="916.0" style="-fx-background-color: white;">
          <children>
             <TableView fx:id="student_table" layoutX="23.0" layoutY="32.0" prefHeight="347.0" prefWidth="888.0">
               <columns>
@@ -115,6 +115,80 @@
                   <Font size="18.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="homepane" layoutX="285.0" layoutY="80.0" prefHeight="626.0" prefWidth="916.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="264.0" layoutY="313.0" prefHeight="70.0" prefWidth="221.0" text="Home">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <Pane fx:id="lecturepain" layoutX="285.0" layoutY="77.0" prefHeight="626.0" prefWidth="916.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="lecture_table" layoutX="9.0" layoutY="15.0" prefHeight="339.0" prefWidth="901.0">
+              <columns>
+                <TableColumn fx:id="lec_id" prefWidth="77.60000610351562" text="Lec_id" />
+                <TableColumn fx:id="lec_name" prefWidth="120.80001831054688" text="Name" />
+                  <TableColumn fx:id="lec_email" prefWidth="150.39993286132812" text="Email" />
+                  <TableColumn fx:id="lec_pass" prefWidth="142.39996337890625" text="Password" />
+                  <TableColumn fx:id="lec_cont" prefWidth="144.79998779296875" text="Contact" />
+                  <TableColumn fx:id="lec_dep" prefWidth="274.39996337890625" text="Department" />
+              </columns>
+            </TableView>
+            <Label layoutX="24.0" layoutY="377.0" prefHeight="21.0" prefWidth="85.0" text="Lec_id">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="406.0" prefHeight="21.0" prefWidth="85.0" text="Name">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="437.0" prefHeight="21.0" prefWidth="85.0" text="Email">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="467.0" prefHeight="21.0" prefWidth="85.0" text="Password">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="495.0" prefHeight="21.0" prefWidth="85.0" text="Contact">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="523.0" prefHeight="21.0" prefWidth="100.0" text="Department">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lec_in_id" layoutX="179.0" layoutY="375.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_name" layoutX="179.0" layoutY="404.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_email" layoutX="179.0" layoutY="435.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_pass" layoutX="179.0" layoutY="465.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_con" layoutX="179.0" layoutY="493.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_dep" layoutX="179.0" layoutY="521.0" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="lec_btn_add" layoutX="411.0" layoutY="397.0" mnemonicParsing="false" onAction="#lecture_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="lec_btn_edit" layoutX="411.0" layoutY="446.0" mnemonicParsing="false" onAction="#lecture_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="lec_btn_delete" layoutX="411.0" layoutY="497.0" mnemonicParsing="false" onAction="#lecture_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Text layoutX="24.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D01 = Information and Comminication Technology D02 =  Bio System Technology D03 = Engeneering Technology D04 = Multy Dicyplinary" wrappingWidth="546.9366455078125" />
          </children>
       </Pane>
    </children>
