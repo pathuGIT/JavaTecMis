@@ -1,12 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: rgb(237, 241, 242);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javatecmis.technicalOfficer.techCtrl">
    <children>
-      <Label fx:id="l" layoutX="230.0" layoutY="55.0" text="Technical Officer" />
-      <Button layoutX="838.0" layoutY="42.0" mnemonicParsing="false" onAction="#logout" text="logout" />
+      <Pane fx:id="topPane" layoutX="279.0" prefHeight="78.0" prefWidth="924.0" style="-fx-background-color: rgb(175,238,238);">
+         <children>
+            <Button layoutX="822.0" layoutY="27.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: rgb(255,110,74);" text="logout" />
+            <ButtonBar layoutX="114.0" layoutY="20.0" prefHeight="40.0" prefWidth="649.0">
+              <buttons>
+                  <Button mnemonicParsing="false" onAction="#homeFun" text="Home" />
+                <Button fx:id="attenbtn" mnemonicParsing="false" onAction="#AttendanceFun" prefHeight="26.0" prefWidth="186.0" text=" Maintain Attendance" />
+                  <Button fx:id="timebtn" mnemonicParsing="false" onAction="#timeFun" text=" Timetables" />
+                  <Button fx:id="profilbtn" mnemonicParsing="false" onAction="#profileFun" text="Update Profile " />
+              </buttons>
+            </ButtonBar>
+         </children>
+      </Pane>
+      <Pane fx:id="leftPane" prefHeight="700.0" prefWidth="280.0" style="-fx-background-color: rgb(155,221,255);">
+         <children>
+            <Label fx:id="l" layoutX="100.0" layoutY="62.0" text="Technical Officer" />
+            <Button fx:id="noticebtn" layoutX="95.0" layoutY="627.0" mnemonicParsing="false" onAction="#noticeFun" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: rgb(100,149,237);" text="Notice" />
+            <ImageView fitHeight="26.0" fitWidth="35.0" layoutX="28.0" layoutY="627.0">
+               <image>
+                  <Image url="@bell.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="108.0" fitWidth="141.0" layoutX="70.0" layoutY="125.0">
+               <image>
+                  <Image url="@Profile.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="attendplane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0" style="-fx-background-color: grey;" visible="false">
+         <children>
+            <TableView fx:id="attentable" layoutX="44.0" layoutY="14.0" prefHeight="498.0" prefWidth="685.0">
+              <columns>
+                <TableColumn fx:id="recol" prefWidth="205.5999755859375" text="Registation number " />
+                <TableColumn fx:id="cousecol" prefWidth="285.60003662109375" text="Couse Neme " />
+                  <TableColumn fx:id="countcol" prefWidth="193.5999755859375" text="Attendance Count" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane fx:id="noticepane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0" style="-fx-background-color: red;" visible="false">
+         <children>
+            <TextArea layoutX="26.0" layoutY="337.0" prefHeight="181.0" prefWidth="740.0" />
+            <TableView layoutX="28.0" layoutY="9.0" prefHeight="298.0" prefWidth="723.0">
+              <columns>
+                <TableColumn prefWidth="139.20001220703125" text="Date" />
+                <TableColumn prefWidth="420.0" text="Notice" />
+                  <TableColumn prefWidth="163.99993896484375" text="Viwe" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane fx:id="TimetablePane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0" style="-fx-background-color: green;" />
+      <Pane fx:id="profilePane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0" style="-fx-background-color: yellow;" />
+      <Pane fx:id="homePane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0" style="-fx-background-color: pink;" />
    </children>
 </AnchorPane>
