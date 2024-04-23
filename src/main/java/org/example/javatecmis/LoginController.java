@@ -38,11 +38,11 @@ public class LoginController {
 
     @FXML
     private TextField userName;
-    private String uName = "techOfficer";
+    private String uName = "TG0001";
 
     @FXML
     private TextField userPwd;
-    private String uPwd = "1234";
+    private String uPwd = "336ebe3a";
 
     @FXML
     void login(ActionEvent event) {
@@ -61,8 +61,8 @@ public class LoginController {
                 tg = result.getString(1);
                 pwd = result.getString(2);
 
-                if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Student")) {
-                    //if (uName.equals(tg) && uPwd.equals(pwd)) {
+                //if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Student")) {
+                if (uName.equals(tg) && uPwd.equals(pwd)) {
                     System.out.println(tg+" "+pwd);
                     STDG = tg;
 

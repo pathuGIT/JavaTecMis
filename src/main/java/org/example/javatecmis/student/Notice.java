@@ -2,6 +2,7 @@ package org.example.javatecmis.student;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import org.example.javatecmis.connect.studentConnect;
 

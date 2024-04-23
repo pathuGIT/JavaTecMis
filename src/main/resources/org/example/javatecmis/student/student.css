@@ -140,6 +140,27 @@
     -fx-background-color: #add8e6;
 }
 
+/*Time Table Style*/
+#timeTable .column-header {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 2px;
+    -fx-border-color: grey;
+}
+
+#timeTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 3px 0px 3px 10px;
+}
+#timeTable .table-row-cell{
+    -fx-background-color: white;
+}
+#timeTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+
 .centered-text-field {
     -fx-alignment: center;
 }
