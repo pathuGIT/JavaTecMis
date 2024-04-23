@@ -62,7 +62,7 @@ public class LoginController {
                 pwd = result.getString(2);
 
                 if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Student")) {
-                //if (uName.equals(tg) && uPwd.equals(pwd)) {
+                    //if (uName.equals(tg) && uPwd.equals(pwd)) {
                     System.out.println(tg+" "+pwd);
                     STDG = tg;
 
@@ -78,7 +78,7 @@ public class LoginController {
                     ad.loginToAdmin(event);
                     break;
 
-                //} else if (userName.getText().equals("lecturer") && userPwd.getText().equals("1234")) {
+                    //} else if (userName.getText().equals("lecturer") && userPwd.getText().equals("1234")) {
                 } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Lecture")) {
                     LETG = tg;
                     lecCtrl ad = new lecCtrl();
