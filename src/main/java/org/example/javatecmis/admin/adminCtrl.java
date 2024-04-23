@@ -86,13 +86,64 @@ public class adminCtrl {
 
     @FXML
     private TableView<StudentTable> student_table;
-    //End  student table
+    //End  student table.
+
+    //lecture table
+    @FXML
+    private Button lec_btn_add;
 
     @FXML
-    //Student Pain
+    private Button lec_btn_delete;
+
+    @FXML
+    private Button lec_btn_edit;
+
+    @FXML
+    private TableColumn<LectureTable, String> lec_cont;
+
+    @FXML
+    private TableColumn<LectureTable, String> lec_dep;
+
+    @FXML
+    private TableColumn<LectureTable, String> lec_email;
+
+    @FXML
+    private TableColumn<LectureTable, String> lec_id;
+
+    @FXML
+    private TextField lec_in_con;
+
+    @FXML
+    private TextField lec_in_dep;
+
+    @FXML
+    private TextField lec_in_email;
+
+    @FXML
+    private TextField lec_in_id;
+
+    @FXML
+    private TextField lec_in_name;
+
+    @FXML
+    private TextField lec_in_pass;
+
+    @FXML
+    private TableColumn<LectureTable, String> lec_name;
+
+    @FXML
+    private TableColumn<LectureTable, String> lec_pass;
+
+    @FXML
+    private TableView<LectureTable> lecture_table;
+
+    @FXML
+    // Pains
     private Pane studentpain;
     @FXML
     private Pane homepane;
+    @FXML
+    private Pane lecturepain;
 
 
     //@FXML
@@ -104,13 +155,22 @@ public class adminCtrl {
     void home_pane(ActionEvent event) {
         studentpain.setVisible(false);
         homepane.setVisible(true);
+        lecturepain.setVisible(false);
     }
     //------Student details display part +++Student pane ++++ ---------
     @FXML
     void student_pane(ActionEvent event) {
         studentpain.setVisible(true);
         homepane.setVisible(false);
+        lecturepain.setVisible(false);
         StuTable();
+    }
+    @FXML
+    void lecture_pain(ActionEvent event) {
+        studentpain.setVisible(false);
+        homepane.setVisible(false);
+        lecturepain.setVisible(true);
+        LecTable();
     }
     @FXML
     void student_add(ActionEvent event) {
@@ -143,8 +203,6 @@ public class adminCtrl {
             add_alert.setContentText("Succsessfull Insert");
             add_alert.showAndWait();
 
-            //StuTable();
-
             st_in_regno.setText("Enter Reg_no");
             st_in_name.setText("Enter Name");
             st_in_email.setText("Enter Email");
@@ -153,7 +211,7 @@ public class adminCtrl {
             st_in_mobile.setText("Enter Mobile Number");
             st_in_pass1.setText("Enter Password");
 
-
+            StuTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -281,6 +339,149 @@ public class adminCtrl {
     }
 
     //+++++++++++++++Lecture++++++++++++++++++++
+    public void LecTable(){
+        adminConnect conn = new adminConnect();
+        ObservableList<LectureTable> lecture = FXCollections.observableArrayList();
+        try {
+            String sql = "SELECT lecture.Lec_id, lecture.Name, lecture.Email, lecture.Password, lecture.Contact, department.Name FROM lecture JOIN department ON lecture.Dep_id = department.Dep_id;";
+            PreparedStatement pst = conn.connect().prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()){
+                LectureTable lt = new LectureTable();
+                lt.setLec_id1(rs.getString(1));
+                lt.setLec_name1(rs.getString(2));
+                lt.setLec_email1(rs.getString(3));
+                lt.setLec_pass1(rs.getString(4));
+                lt.setLec_cont1(rs.getString(5));
+                lt.setLec_dep1(rs.getString(6));
+                lecture.add(lt);
+
+            }
+
+            lecture_table.setItems(lecture);
+            lec_id.setCellValueFactory(f -> f.getValue().lec_id1Property());
+            lec_name.setCellValueFactory(f -> f.getValue().lec_name1Property());
+            lec_email.setCellValueFactory(f -> f.getValue().lec_email1Property());
+            lec_pass.setCellValueFactory(f -> f.getValue().lec_pass1Property());
+            lec_cont.setCellValueFactory(f -> f.getValue().lec_cont1Property());
+            lec_dep.setCellValueFactory(f -> f.getValue().lec_dep1Property());
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        lecture_table.setRowFactory(tv -> {
+            TableRow<LectureTable> tRow = new TableRow<>();
+            tRow.setOnMouseClicked(event -> {
+                if(event.getClickCount() == 1 && (!tRow.isEmpty())){
+                    myIndex = lecture_table.getSelectionModel().getFocusedIndex();
+                    lec_in_id.setText(lecture_table.getItems().get(myIndex).getLec_id1());
+                    lec_in_name.setText(lecture_table.getItems().get(myIndex).getLec_name1());
+                    lec_in_email.setText(lecture_table.getItems().get(myIndex).getLec_email1());
+                    lec_in_pass.setText(lecture_table.getItems().get(myIndex).getLec_pass1());
+                    lec_in_con.setText(lecture_table.getItems().get(myIndex).getLec_cont1());
+                    lec_in_dep.setText(lecture_table.getItems().get(myIndex).getLec_dep1());
+
+                }
+            });
+            return tRow;
+        });
+
+    }
+    @FXML
+    void lecture_add(ActionEvent event) {
+        String lec_id,lec_name,lec_mail,lec_pass,lec_cont,lec_dep;
+        lec_id = lec_in_id.getText();
+        lec_name = lec_in_name.getText();
+        lec_mail = lec_in_email.getText();
+        lec_pass = lec_in_pass.getText();
+        lec_cont = lec_in_con.getText();
+        lec_dep = lec_in_dep.getText();
+
+        String sql = "INSERT INTO lecture(Lec_id,Name,Email,Password,Contact,Dep_id) VALUE(?,?,?,?,?,?);";
+        try{
+            adminConnect conn = new adminConnect();
+            PreparedStatement pst = conn.connect().prepareStatement(sql);
+
+            pst.setString(1,lec_id);
+            pst.setString(2,lec_name);
+            pst.setString(3,lec_mail);
+            pst.setString(4,lec_pass);
+            pst.setString(5,lec_cont);
+            pst.setString(6,lec_dep);
+            pst.executeUpdate();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Lecture Details");
+            alert.setHeaderText("Lecture Form");
+            alert.setContentText("Successfully Deleted");
+            alert.showAndWait();
+
+            LecTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void lecture_delete(ActionEvent event) {
+        String lec_id = lec_in_id.getText();
+        adminConnect conn = new adminConnect();
+        PreparedStatement pst;
+        String sql = "DELETE FROM lecture WHERE Lec_id=?";
+        try{
+            pst = conn.connect().prepareStatement(sql);
+            pst.setString(1,lec_id);
+            pst.executeUpdate();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Lecture Details");
+            alert.setHeaderText("Lecture Form");
+            alert.setContentText("Successfully Deleted");
+            alert.showAndWait();
+
+            LecTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void lecture_edit(ActionEvent event) {
+        String lec_id,lec_name,lec_mail,lec_pass,lec_cont,lec_dep;
+        lec_id = lec_in_id.getText();
+        lec_name = lec_in_name.getText();
+        lec_mail = lec_in_email.getText();
+        lec_pass = lec_in_pass.getText();
+        lec_cont = lec_in_con.getText();
+        lec_dep = lec_in_dep.getText();
+
+        adminConnect conn = new adminConnect();
+        PreparedStatement pst;
+        String sql = "UPDATE lecture SET Lec_id=?, Name=?, Email=?, Password=?, Contact=?, Dep_id=? WHERE Lec_id=?";
+        try{
+            pst = conn.connect().prepareStatement(sql);
+            pst.setString(1,lec_id);
+            pst.setString(2,lec_name);
+            pst.setString(3,lec_mail);
+            pst.setString(4,lec_pass);
+            pst.setString(5,lec_cont);
+            pst.setString(6,lec_dep);
+            pst.setString(7,lec_id);
+            pst.executeUpdate();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Lecture Details");
+            alert.setHeaderText("Lecture Form");
+            alert.setContentText("Successfully Deleted");
+            alert.showAndWait();
+
+            LecTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @FXML
@@ -310,5 +511,6 @@ public class adminCtrl {
         //StuTable();
         homepane.setVisible(true);
         studentpain.setVisible(false);
+        lecturepain.setVisible(false);
     }
 }
