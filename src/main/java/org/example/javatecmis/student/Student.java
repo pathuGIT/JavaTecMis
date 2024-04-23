@@ -63,6 +63,8 @@ public class Student{
     @FXML
     private Pane AttendancePane;
     @FXML
+    private Pane TimeTablePane;
+    @FXML
     private Pane GpaPane;
     @FXML
     private Circle userImg;
@@ -82,6 +84,10 @@ public class Student{
     private Label cgpa;
     @FXML
     TextArea msg;
+    @FXML
+    Button dwnld;
+    @FXML
+    private Label Tmsg;
 
 
     @FXML
@@ -122,6 +128,15 @@ public class Student{
 
     @FXML
     private TableColumn<Notice, String> clickCol;
+
+    @FXML
+    private TableView<Timetable> timeTable;
+
+    @FXML
+    private TableColumn<Timetable, String> timeDepCol;
+
+    @FXML
+    private TableColumn<Notice, String> timeDowCol;
 
     @FXML
     private TableView<Attendance> attTable;
@@ -291,6 +306,7 @@ public class Student{
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
+                TimeTablePane.setVisible(false);
                 break;
             case "course":
                 HomePanelId.setVisible(false);
@@ -299,6 +315,7 @@ public class Student{
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
+                TimeTablePane.setVisible(false);
                 break;
             case "attendance":
                 HomePanelId.setVisible(false);
@@ -307,6 +324,7 @@ public class Student{
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
+                TimeTablePane.setVisible(false);
                 break;
             case "gpa":
                 HomePanelId.setVisible(false);
@@ -315,6 +333,7 @@ public class Student{
                 GpaPane.setVisible(true);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
+                TimeTablePane.setVisible(false);
                 break;
             case "profile":
                 HomePanelId.setVisible(false);
@@ -323,6 +342,7 @@ public class Student{
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(true);
                 noticePane.setVisible(false);
+                TimeTablePane.setVisible(false);
                 break;
             case "notice":
                 HomePanelId.setVisible(false);
@@ -331,6 +351,16 @@ public class Student{
                 GpaPane.setVisible(false);
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(true);
+                TimeTablePane.setVisible(false);
+                break;
+            case "timeTable":
+                HomePanelId.setVisible(false);
+                CoursePane.setVisible(false);
+                AttendancePane.setVisible(false);
+                GpaPane.setVisible(false);
+                ProfilePane.setVisible(false);
+                noticePane.setVisible(false);
+                TimeTablePane.setVisible(true);
                 break;
         }
     }
@@ -367,6 +397,11 @@ public class Student{
     @FXML
     void notice(){
         choosePanel("notice");
+    }
+
+    @FXML
+    void timeTable(){
+        choosePanel("timeTable");
     }
 
     void showStudentData(){
@@ -413,6 +448,7 @@ public class Student{
         showGrades();
         showNotice();
         showAttendance();
+        showTimetable();
     }
 
     public void setValueFactory(){
@@ -428,6 +464,8 @@ public class Student{
         clickCol.setCellValueFactory(new PropertyValueFactory<>("View"));
         courseCol.setCellValueFactory(new PropertyValueFactory<>("Course"));
         attCol.setCellValueFactory(new PropertyValueFactory<>("Att"));
+        timeDepCol.setCellValueFactory(new PropertyValueFactory<>("Department"));
+        timeDowCol.setCellValueFactory(new PropertyValueFactory<>("Dwnld"));
     }
 
     //Get course details from course table and display in the courseTable
@@ -563,5 +601,33 @@ public class Student{
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    //show timetable
+    public void showTimetable(){
+
+        String id;
+        String department;
+        String dwPath;
+        try {
+            studentConnect conn = new studentConnect();
+            PreparedStatement ptr = null;
+            String query = "SELECT * FROM timetable";
+            ptr = conn.connect().prepareStatement(query);
+
+            timeTable.getItems().clear();
+            ResultSet rs = ptr.executeQuery();
+
+            while (rs.next()) {
+                id = rs.getString(1);
+                department = rs.getString(2);
+                dwPath = rs.getString(3);
+                Timetable notice_record = new Timetable(id,department,dwPath,dwnld,Tmsg);
+                timeTable.getItems().add(notice_record);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
     }
 }
