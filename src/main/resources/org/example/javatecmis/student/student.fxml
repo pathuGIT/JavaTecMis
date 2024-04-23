@@ -308,7 +308,7 @@
             </TableView>
             <ImageView fitHeight="283.0" fitWidth="342.0" layoutX="516.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../Downloads/Untitled%20video%20-%20Made%20with%20Clipchamp%20(1).gif" />
+                  <Image url="@image/mark.png" />
                </image>
             </ImageView>
          </children></Pane>
