@@ -22,6 +22,10 @@ import java.sql.ResultSet;
 import java.util.Objects;
 
 public class LoginController {
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     private Stage stage;
     private Scene scene;
     public  String tg;
@@ -45,7 +49,7 @@ public class LoginController {
     private String uPwd = "336ebe3a";
 
     @FXML
-    void login(ActionEvent event) {
+    void login(ActionEvent event1) {
         //String query = "select * from student";
         String query = "SELECT ID, Password, 'Technical_Officer' AS Position FROM Technical_Officer UNION SELECT Lec_id AS ID, Password, 'Lecture' AS Position FROM Lecture UNION SELECT username AS ID, Password, 'Admin' AS Position FROM Admin UNION SELECT Std_id AS ID, Password, 'Student' AS Position FROM Student";
         try {
@@ -67,28 +71,41 @@ public class LoginController {
                     STDG = tg;
 
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("student/student.fxml")));
-                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage = (Stage) ((Node) event1.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     scene.getStylesheets().add(getClass().getResource("student/student.css").toExternalForm());
+
+//                    X & Y move access from mouse
+                    root.setOnMousePressed(event -> {
+                        xOffset = event.getSceneX();
+                        yOffset = event.getSceneY();
+                    });
+                    root.setOnMouseDragged(event -> {
+                        stage.setX(event.getScreenX() - xOffset);
+                        stage.setY(event.getScreenY() - yOffset);
+                    });
+
+                    stage.setScene(scene);
+                    stage.show();
                     stage.setScene(scene);
                     stage.show();
 
                 } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Admin")) {
                     adminCtrl ad = new adminCtrl();
-                    ad.loginToAdmin(event);
+                    ad.loginToAdmin(event1);
                     break;
 
                     //} else if (userName.getText().equals("lecturer") && userPwd.getText().equals("1234")) {
                 } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Lecture")) {
                     LETG = tg;
                     lecCtrl ad = new lecCtrl();
-                    ad.loginToLecturer(event);
+                    ad.loginToLecturer(event1);
                     break;
 
                 } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Technical_Officer")) {
                     System.out.println("hel");
                     techCtrl ad = new techCtrl();
-                    ad.loginToTechofficer(event);
+                    ad.loginToTechofficer(event1);
                     break;
                 }else {
                     errorId.setText("Wrong credentials...");
@@ -107,10 +124,22 @@ public class LoginController {
         stage.close();
     }
 
-    public void logout(ActionEvent event) throws IOException {
+    public void logout(ActionEvent event1) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event1.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("login.css").toExternalForm());
+
+//      X & Y move access from mouse
+        root.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+        root.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
+
         stage.setScene(scene);
         stage.show();
 
