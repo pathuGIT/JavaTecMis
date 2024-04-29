@@ -4,22 +4,22 @@ package org.example.javatecmis.lecturer;
 public class StDetails {
 
 
-    private String Sid = null;
+    private String Stid = null;
     private String Sname = null;
     private String Semail = null;
     private String Scontact = null;
     private String Snic = null;
 
-    public StDetails(String sid, String sname, String semail, String scontact, String snic) {
-        Sid = sid;
+    public StDetails(String stid, String sname, String semail, String scontact, String snic) {
+        Stid = stid;
         Sname = sname;
         Semail = semail;
         Scontact = scontact;
         Snic = snic;
     }
 
-    public String getSid() {
-        return Sid;
+    public String getStid() {
+        return Stid;
     }
 
     public String getSname() {

@@ -1,0 +1,52 @@
+/* Style for alternate rows */
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9; /* Light grayish background */
+}
+
+/* Style for header row */
+.table-header {
+    -fx-background-color: #444; /* Dark gray background */
+    -fx-text-fill: white; /* White text color */
+    -fx-font-weight: bold; /* Bold font */
+}
+
+/* Hover effect for rows */
+.table-row-cell:hover {
+    -fx-background-color: #e8e8e8; /* Light gray background on hover */
+}
+
+/* Style for selected rows */
+.table-row-cell:selected {
+    -fx-background-color: #5cb85c; /* Light green background for selected rows */
+    -fx-text-fill: white; /* White text color for selected rows */
+}
+
+/* Custom formatting for cell content */
+.table-cell {
+    -fx-alignment: CENTER; /* Center-align cell content */
+    -fx-font-size: 14px; /* Font size */
+}
+
+/* Border and grid lines */
+.table-view {
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-color: #ddd; /* Light gray border color */
+    -fx-padding: 10px; /* Padding around the table */
+    -fx-background-color: #fff; /* White background */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10,0,0,1 ); /* Shadow effect */
+}
+
+
+
+/*
+.lout:hover{
+    -fx-background-color: #ffffff;
+    color: #111111;
+
+}
+*/
+
+.navi {
+    -fx-background-color: #fca903;
+}
+
