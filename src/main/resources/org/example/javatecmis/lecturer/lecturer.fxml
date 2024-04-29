@@ -21,79 +21,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: rgb(237, 241, 242);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javatecmis.lecturer.lecCtrl">
    <children>
-      <Pane fx:id="ButtonPane" layoutX="300.0" prefHeight="86.0" prefWidth="904.0">
-         <children>
-            <HBox id="navi" fx:id="navicontent" alignment="CENTER" layoutY="-6.0" prefHeight="93.0" prefWidth="904.0" style="-fx-background-color: #fc8403;" styleClass="navi">
-               <children>
-                  <ButtonBar prefHeight="94.0" prefWidth="846.0">
-                     <buttons>
-                        <Button fx:id="homeBtn" maxHeight="30.0" maxWidth="110.0" mnemonicParsing="false" onAction="#homeAction" stylesheets="@style.css" text="Home" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="updocBtn" maxHeight="30.0" maxWidth="160.0" mnemonicParsing="false" onAction="#uploadDocumentAction" prefHeight="30.0" prefWidth="138.0" stylesheets="@style.css" text="Upload Document" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="upmarksBtn" maxHeight="30.0" maxWidth="150.0" mnemonicParsing="false" onAction="#uploadMarksAction" prefHeight="30.0" prefWidth="150.0" stylesheets="@style.css" text="Upload Marks" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="stdetBtn" maxHeight="30.0" maxWidth="130.0" mnemonicParsing="false" onAction="#studentDetailsAction" stylesheets="@style.css" text="Student Details" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="stelBtn" maxHeight="30.0" maxWidth="150.0" mnemonicParsing="false" onAction="#studentEligibilityAction" stylesheets="@style.css" text="Student Eligibility" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="resultBtn" maxHeight="30.0" maxWidth="110.0" mnemonicParsing="false" onAction="#ResultAction" stylesheets="@style.css" text="Results" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                     </buttons>
-                  </ButtonBar>
-                  <Button fx:id="logoutbtn" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #111111;" styleClass="lout" text="Logout" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="50.0" right="10.0" />
-                     </HBox.margin>
-<!--                     <stylesheets>-->
-<!--                        <URL value="@../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css" />-->
-<!--                        <URL value="@style.css" />-->
-<!--                     </stylesheets>-->
-                  </Button>
-               </children>
-<!--               <stylesheets>-->
-<!--                  <URL value="@../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css" />-->
-<!--                  <URL value="@style.css" />-->
-<!--               </stylesheets>-->
-            </HBox>
-         </children>
-      </Pane>
       <Pane fx:id="ProfileDetailsPane" prefHeight="700.0" prefWidth="299.0">
          <children>
-            <VBox layoutY="-6.0" prefHeight="706.0" prefWidth="300.0" styleClass="primary-color">
+            <VBox layoutY="-6.0" prefHeight="706.0" prefWidth="300.0" style="-fx-background-color: #5F9EA0;" styleClass="primary-color">
                <children>
                   <VBox alignment="CENTER" prefHeight="242.0" prefWidth="300.0">
                      <VBox.margin>
                         <Insets top="50.0" />
                      </VBox.margin>
                      <children>
-                        <ImageView fx:id="profImg" fitHeight="114.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="profImg" fitHeight="134.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Profile.png" />
+                              <Image url="@../../../../../../../img/account.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="profName" prefHeight="27.0" prefWidth="101.0" textAlignment="CENTER" textFill="#ccc4c4">
+                        <Label fx:id="profName" prefHeight="27.0" prefWidth="111.0" textAlignment="CENTER" textFill="#ccc4c4">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -152,23 +94,94 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="upmarksLecPane" layoutX="299.0" layoutY="88.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;" />
-      <Pane fx:id="updocLecPane" layoutX="300.0" layoutY="88.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
+      <Pane fx:id="ButtonPane" layoutX="300.0" prefHeight="86.0" prefWidth="904.0">
          <children>
-            <Pane layoutX="50.0" layoutY="85.0" prefHeight="444.0" prefWidth="804.0" style="-fx-background-color: white;" styleClass="f">
+            <HBox id="navi" fx:id="navicontent" alignment="CENTER" layoutY="-6.0" prefHeight="93.0" prefWidth="904.0" style="-fx-background-color: #fc8403;" styleClass="navi">
                <children>
-                  <Line endX="-85.800048828125" endY="284.0" layoutX="438.0" layoutY="160.0" startX="-85.800048828125" startY="-160.0" />
-                  <Button fx:id="documentUpdateBtn" layoutX="126.0" layoutY="388.0" mnemonicParsing="false" onAction="#uploadDocumentsForCourse" text="Upload" />
-                  <Button fx:id="docDeleteBtn" layoutX="527.0" layoutY="388.0" mnemonicParsing="false" onAction="#deleteDocumentsInCourse" text="Delete" />
-                  <Label layoutX="24.0" layoutY="14.0" text="Upload Documents" />
-                  <Label layoutX="402.0" layoutY="14.0" text="Delete Documents" />
+                  <ButtonBar prefHeight="94.0" prefWidth="846.0">
+                     <buttons>
+                        <Button fx:id="homeBtn" maxHeight="30.0" maxWidth="110.0" mnemonicParsing="false" onAction="#homeAction" stylesheets="@style.css" text="Home" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="updocBtn" maxHeight="30.0" maxWidth="160.0" mnemonicParsing="false" onAction="#uploadDocumentAction" prefHeight="30.0" prefWidth="138.0" stylesheets="@style.css" text="Upload Document" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="upmarksBtn" maxHeight="30.0" maxWidth="150.0" mnemonicParsing="false" onAction="#uploadMarksAction" prefHeight="30.0" prefWidth="150.0" stylesheets="@style.css" text="Upload Marks" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="stdetBtn" maxHeight="30.0" maxWidth="130.0" mnemonicParsing="false" onAction="#studentDetailsAction" stylesheets="@style.css" text="Student Details" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="stelBtn" maxHeight="30.0" maxWidth="150.0" mnemonicParsing="false" onAction="#studentEligibilityAction" stylesheets="@style.css" text="Student Eligibility" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="resultBtn" maxHeight="30.0" maxWidth="110.0" mnemonicParsing="false" onAction="#ResultAction" stylesheets="@style.css" text="Results" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </buttons>
+                  </ButtonBar>
+                  <Button fx:id="logoutbtn" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #111111;" styleClass="lout" text="Logout" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" right="10.0" />
+                     </HBox.margin>
+<!--                     <stylesheets>-->
+<!--                        <URL value="@../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css" />-->
+<!--                        <URL value="@style.css" />-->
+<!--                     </stylesheets>-->
+                  </Button>
                </children>
-            </Pane>
+<!--               <stylesheets>-->
+<!--                  <URL value="@../../../../../Campus%20Ruhuna/Level%202%20nd%20Ist%20sem/Java%20Mini%20project/JavaTecMis-main/target/classes/org/example/javatecmis/lecturer/style.css" />-->
+<!--                  <URL value="@style.css" />-->
+<!--               </stylesheets>-->
+            </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="noticePane" layoutX="300.0" layoutY="87.0" prefHeight="622.0" prefWidth="904.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="noticeTableLec" layoutX="187.0" layoutY="139.0" prefHeight="180.0" prefWidth="488.0" stylesheets="@style%20_tables.css">
+               <columns>
+                  <TableColumn fx:id="dateCol" prefWidth="133.59994506835938" text="Published Date" />
+                  <TableColumn fx:id="noticeCol" prefWidth="247.20001220703125" text="Notice" />
+                  <TableColumn fx:id="clickCol" prefWidth="105.60003662109375" text="Click" />
+               </columns>
+            </TableView>
+            <TextArea fx:id="msg" layoutX="120.0" layoutY="352.0" prefHeight="168.0" prefWidth="663.0" promptText="Notice Here.." scaleShape="false" style="-fx-background-color: white;" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+               </padding>
+            </TextArea>
+            <Label layoutX="58.0" layoutY="61.0" prefHeight="30.0" prefWidth="108.0" text="Notices" textFill="#7b7878" underline="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane fx:id="resLecPane" layoutX="299.0" layoutY="85.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
          <children>
-            <TableView fx:id="studentResultTable" layoutX="74.0" layoutY="153.0" prefHeight="326.0" prefWidth="696.0">
+            <TableView fx:id="studentResultTable" layoutX="74.0" layoutY="153.0" prefHeight="326.0" prefWidth="696.0" stylesheets="@style%20_tables.css">
               <columns>
                 <TableColumn fx:id="Std_id_result" prefWidth="131.20001220703125" text="Std_id" />
                 <TableColumn fx:id="Crs_id_result" prefWidth="150.39993286132812" text="Crs_id" />
@@ -184,113 +197,6 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane fx:id="homeLecPane" layoutX="300.0" layoutY="86.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
-         <children>
-            <HBox fx:id="HboxForLec_id" layoutX="55.0" layoutY="134.0" prefHeight="26.0" prefWidth="491.0" style="-fx-background-color: #708090;">
-               <children>
-                  <Label prefHeight="27.0" prefWidth="138.0" text="Lec_id" textFill="#05095e">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label graphicTextGap="5.0" prefHeight="27.0" prefWidth="38.0" text="|">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="l_id" prefHeight="27.0" prefWidth="327.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox fx:id="HboxForLec_name" layoutX="55.0" layoutY="188.0" prefHeight="10.0" prefWidth="491.0" style="-fx-background-color: #708090;">
-               <children>
-                  <Label prefHeight="27.0" prefWidth="138.0" text="Name" textFill="#05095e">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label graphicTextGap="5.0" prefHeight="27.0" prefWidth="38.0" text="|">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="l_name" prefHeight="27.0" prefWidth="327.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox fx:id="HboxForLec_email" layoutX="54.0" layoutY="239.0" prefHeight="27.0" prefWidth="491.0" style="-fx-background-color: #708090;">
-               <children>
-                  <Label prefHeight="27.0" prefWidth="138.0" text="Email" textFill="#05095e">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label graphicTextGap="5.0" prefHeight="27.0" prefWidth="38.0" text="|">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="l_email" prefHeight="27.0" prefWidth="327.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox fx:id="HboxForLec_contact" layoutX="55.0" layoutY="289.0" prefHeight="27.0" prefWidth="491.0" style="-fx-background-color: #708090;">
-               <children>
-                  <Label prefHeight="27.0" prefWidth="138.0" text="Contact" textFill="#05095e">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label graphicTextGap="5.0" prefHeight="27.0" prefWidth="38.0" text="|">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="l_contact" prefHeight="27.0" prefWidth="327.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <Label layoutX="53.0" layoutY="59.0" prefHeight="30.0" prefWidth="162.0" text="Lecturer Details" textFill="#868383" underline="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane fx:id="noticePane" layoutX="300.0" layoutY="87.0" prefHeight="622.0" prefWidth="904.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="noticeTable" layoutX="211.0" layoutY="56.0" prefHeight="180.0" prefWidth="491.0">
-               <columns>
-                  <TableColumn fx:id="dateCol" prefWidth="133.59994506835938" text="Published Date" />
-                  <TableColumn fx:id="noticeCol" prefWidth="247.20001220703125" text="Notice" />
-                  <TableColumn fx:id="clickCol" prefWidth="105.60003662109375" text="Click" />
-               </columns>
-            </TableView>
-            <TextArea fx:id="msg" layoutX="148.0" layoutY="278.0" prefHeight="168.0" prefWidth="663.0" promptText="Notice Here.." scaleShape="false" style="-fx-background-color: white;" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor>
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
-               </padding>
-            </TextArea>
-         </children>
-      </Pane>
       <Pane fx:id="stuElLecPane" layoutX="300.0" layoutY="86.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="58.0" layoutY="35.0" prefHeight="35.0" prefWidth="345.0" text="Students' Eligibility" textFill="#919191">
@@ -298,7 +204,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="tableEligibility" layoutX="59.0" layoutY="113.0" prefHeight="320.0" prefWidth="798.0">
+            <TableView fx:id="tableEligibility" layoutX="59.0" layoutY="113.0" prefHeight="320.0" prefWidth="798.0" stylesheets="@style%20_tables.css">
               <columns>
                 <TableColumn fx:id="Std_id_Eligibility" prefWidth="132.79998779296875" text="Std_id" />
                 <TableColumn fx:id="Crs_id_Eligibility" prefWidth="163.19998168945312" text="Crs_id" />
@@ -307,10 +213,11 @@
                   <TableColumn fx:id="Eligibility_Eligibility" prefWidth="175.20001220703125" text="Eligibility" />
               </columns>
             </TableView>
-         </children></Pane>
+         </children>
+      </Pane>
       <Pane fx:id="stuDetLecPane" layoutX="298.0" layoutY="87.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
          <children>
-            <TableView fx:id="stuDetTable" layoutX="85.0" layoutY="106.0" prefHeight="399.0" prefWidth="734.0">
+            <TableView fx:id="stuDetTable" layoutX="85.0" layoutY="106.0" prefHeight="399.0" prefWidth="734.0" stylesheets="@style%20_tables.css">
               <columns>
                 <TableColumn fx:id="Std_id_Details" prefWidth="91.19998168945312" text="Std_id" />
                 <TableColumn fx:id="Name_Details" prefWidth="148.0" text="Name" />
@@ -325,6 +232,198 @@
                </font>
             </Label>
          </children></Pane>
+      <Pane fx:id="updocLecPane" layoutX="300.0" layoutY="88.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="50.0" layoutY="85.0" prefHeight="444.0" prefWidth="804.0" style="-fx-background-color: white;" styleClass="f">
+               <children>
+                  <Line endX="-85.800048828125" endY="284.0" layoutX="438.0" layoutY="160.0" startX="-85.800048828125" startY="-160.0" />
+                  <Button fx:id="documentUpdateBtn" layoutX="18.0" layoutY="388.0" mnemonicParsing="false" onAction="#uploadDocumentsForCourse" prefHeight="25.0" prefWidth="162.0" text="Upload" />
+                  <Button fx:id="docDeleteBtn" layoutX="527.0" layoutY="388.0" mnemonicParsing="false" onAction="#deleteDocumentsInCourse" prefHeight="25.0" prefWidth="189.0" text="Delete" />
+                  <Label layoutX="24.0" layoutY="14.0" text="Upload Documents" />
+                  <Label layoutX="402.0" layoutY="14.0" text="Delete Documents" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="upmarksLecPane" layoutX="299.0" layoutY="88.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="36.0" layoutY="14.0" text="Upload Mid Marks" textFill="#bf7017">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="299.0" text="Upload End Marks" textFill="#bf7017">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Line endX="11.79998779296875" endY="554.0" layoutX="270.0" layoutY="43.0" startX="11.79998779296875" startY="-26.800033569335938" />
+            <Line endX="338.5999755859375" endY="543.2000122070312" layoutX="280.0" layoutY="53.0" startX="331.39996337890625" startY="-37.60002136230469" />
+            <Label layoutX="655.0" layoutY="27.0" text="Upload Assignment Marks" textFill="#bf7017">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="351.0" layoutY="27.0" prefHeight="25.0" prefWidth="162.0" text="Upload Quiz Marks" textFill="#bf7017">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="170.0" text="Enter Marks" />
+            <Label layoutX="43.0" layoutY="100.0" prefHeight="17.0" prefWidth="102.0" text="Enter Student Id" />
+            <Label layoutX="43.0" layoutY="134.0" text="Enter Course ID" />
+            <TextField fx:id="stId_forMid" layoutX="137.0" layoutY="96.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="crsId_forMid" layoutX="137.0" layoutY="130.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="marks_forMid" layoutX="137.0" layoutY="166.0" prefHeight="25.0" prefWidth="134.0" />
+            <Button fx:id="btnMid" layoutX="72.0" layoutY="214.0" mnemonicParsing="false" onAction="#uploadMidMarks" prefHeight="25.0" prefWidth="162.0" text="Upload To Mid" />
+            <Label layoutX="44.0" layoutY="448.0" text="Enter Marks" />
+            <Label layoutX="44.0" layoutY="378.0" prefHeight="17.0" prefWidth="102.0" text="Enter Student Id" />
+            <Label layoutX="44.0" layoutY="412.0" text="Enter Course ID" />
+            <TextField fx:id="stdId_forEnd" layoutX="138.0" layoutY="374.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="crsId_forEnd" layoutX="138.0" layoutY="408.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="marks_forEnd" layoutX="138.0" layoutY="444.0" prefHeight="25.0" prefWidth="134.0" />
+            <Button fx:id="btnEnd" layoutX="72.0" layoutY="487.0" mnemonicParsing="false" onAction="#uploadEndMarks" prefHeight="25.0" prefWidth="162.0" text="Upload To End" />
+            <Label layoutX="47.0" layoutY="64.0" prefHeight="17.0" prefWidth="91.0" text="Enter Mid Id" />
+            <TextField fx:id="midId_forMid" layoutX="137.0" layoutY="60.0" prefHeight="25.0" prefWidth="134.0" />
+            <Label fx:id="labelEnd" layoutX="62.0" layoutY="525.0" prefHeight="30.0" prefWidth="180.0" textAlignment="CENTER" textFill="#1cc49a">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label layoutX="46.0" layoutY="338.0" prefHeight="17.0" prefWidth="91.0" text="Enter End Id" />
+            <TextField fx:id="endId_forEnd" layoutX="140.0" layoutY="334.0" prefHeight="25.0" prefWidth="134.0" />
+            <Label layoutX="627.0" layoutY="205.0" text="Student Id" />
+            <Label layoutX="627.0" layoutY="135.0" prefHeight="17.0" prefWidth="117.0" text="Enter Assignment No" />
+            <Label layoutX="627.0" layoutY="169.0" text="Assignment Mark" />
+            <TextField fx:id="assNo_forAssignment" layoutX="750.0" layoutY="131.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="mark_forAssignment" layoutX="750.0" layoutY="167.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="std_d_forAssignment" layoutX="750.0" layoutY="201.0" prefHeight="25.0" prefWidth="134.0" />
+            <Label layoutX="624.0" layoutY="99.0" prefHeight="17.0" prefWidth="117.0" text="Enter Assignment Id" />
+            <TextField fx:id="assId_forAssignment" layoutX="750.0" layoutY="97.0" prefHeight="25.0" prefWidth="134.0" />
+            <Label layoutX="629.0" layoutY="240.0" prefHeight="17.0" prefWidth="82.0" text="Course Id" />
+            <TextField fx:id="crsId_forAssignment" layoutX="750.0" layoutY="236.0" prefHeight="25.0" prefWidth="134.0" />
+            <Button fx:id="btnAssignment" layoutX="688.0" layoutY="305.0" mnemonicParsing="false" onAction="#uploadAssignmentMarks" prefHeight="25.0" prefWidth="162.0" text="Upload To Assignment" />
+            <Label fx:id="labelAssignment" layoutX="680.0" layoutY="349.0" prefHeight="30.0" prefWidth="180.0" textFill="#1cc49a">
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font></Label>
+            <Label layoutX="317.0" layoutY="208.0" text="Student Id" />
+            <Label layoutX="317.0" layoutY="138.0" prefHeight="17.0" prefWidth="117.0" text="Enter Quiz No" />
+            <Label layoutX="317.0" layoutY="172.0" text="Quiz Mark" />
+            <TextField fx:id="quizNo_forQuiz" layoutX="440.0" layoutY="134.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="marks_forQuiz" layoutX="440.0" layoutY="170.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="stdId_forQuiz" layoutX="440.0" layoutY="204.0" prefHeight="25.0" prefWidth="134.0" />
+            <Label layoutX="314.0" layoutY="102.0" prefHeight="17.0" prefWidth="117.0" text="Enter Quiz Id" />
+            <TextField fx:id="quizId_forQuiz" layoutX="440.0" layoutY="100.0" prefHeight="25.0" prefWidth="134.0" />
+            <Label layoutX="319.0" layoutY="243.0" prefHeight="17.0" prefWidth="82.0" text="Course Id" />
+            <TextField fx:id="crsId_forQuiz" layoutX="440.0" layoutY="239.0" prefHeight="25.0" prefWidth="134.0" />
+            <Button fx:id="btnQuiz" layoutX="372.0" layoutY="305.0" mnemonicParsing="false" onAction="#uploadQuizMarks" prefHeight="25.0" prefWidth="162.0" text="Upload To Quiz" />
+            <Label fx:id="labelQuiz" layoutX="365.0" layoutY="362.0" prefHeight="30.0" prefWidth="180.0" textAlignment="CENTER" textFill="#1cc49a">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="labelMid1" layoutX="54.0" layoutY="249.0" prefHeight="30.0" prefWidth="198.0" textAlignment="CENTER" textFill="#1cc49a">
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <Pane fx:id="homeLecPane" layoutX="300.0" layoutY="86.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
+         <children>
+            <HBox fx:id="HboxForLec_id" layoutX="55.0" layoutY="129.0" prefHeight="35.0" prefWidth="575.0" style="-fx-border-color: green; -fx-background-color: #f0f0f0;">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="164.0" text="Lecture ID" textFill="#152769" underline="true">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <Label graphicTextGap="5.0" prefHeight="27.0" prefWidth="38.0" text="|">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="l_id" prefHeight="27.0" prefWidth="327.0" textFill="#716767">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="HboxForLec_name" layoutX="55.0" layoutY="183.0" prefHeight="35.0" prefWidth="575.0" style="-fx-border-color: green; -fx-background-color: #f0f0f0;">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="164.0" text="Lecture Name" textFill="#152769" underline="true">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <Label graphicTextGap="5.0" prefHeight="27.0" prefWidth="38.0" text="|">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="l_name" prefHeight="27.0" prefWidth="327.0" textFill="#716767">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="HboxForLec_email" layoutX="54.0" layoutY="234.0" prefHeight="35.0" prefWidth="575.0" style="-fx-border-color: green; -fx-background-color: #f0f0f0;">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="165.0" text="E-mail" textFill="#152769" underline="true">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <Label graphicTextGap="5.0" prefHeight="27.0" prefWidth="38.0" text="|">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="l_email" prefHeight="27.0" prefWidth="327.0" textFill="#716767">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="HboxForLec_contact" layoutX="55.0" layoutY="284.0" prefHeight="35.0" prefWidth="575.0" style="-fx-border-color: green; -fx-background-color: #f0f0f0;">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="165.0" text="Contact" textFill="#152769" underline="true">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <Label graphicTextGap="5.0" prefHeight="27.0" prefWidth="38.0" text="|">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="l_contact" prefHeight="27.0" prefWidth="327.0" textFill="#716767">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label layoutX="53.0" layoutY="38.0" prefHeight="51.0" prefWidth="180.0" text="Lecturer Details" textAlignment="CENTER" textFill="#868383" underline="true">
+               <font>
+                  <Font name="Agency FB Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
       <Pane fx:id="profileLecPane" layoutX="298.0" layoutY="85.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
          <children>
             <Pane layoutX="55.0" layoutY="66.0" prefHeight="444.0" prefWidth="804.0" style="-fx-background-color: #708090;" styleClass="f">

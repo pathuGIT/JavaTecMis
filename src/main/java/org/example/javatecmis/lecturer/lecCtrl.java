@@ -1,27 +1,15 @@
 package org.example.javatecmis.lecturer;
 
-
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -30,6 +18,8 @@ import javafx.stage.Stage;
 import org.example.javatecmis.LoginController;
 import org.example.javatecmis.connect.lecturerConnect;
 import org.example.javatecmis.connect.studentConnect;
+import org.example.javatecmis.lecturer.LecNotices;
+//import org.example.javatecmis.student.Notice;
 import org.example.javatecmis.student.Student;
 
 import java.io.File;
@@ -40,19 +30,16 @@ import java.nio.file.StandardCopyOption;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import org.example.javatecmis.LoginController;
-
-import java.io.IOException;
-import java.util.Objects;
-
-
 public class lecCtrl {
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     private Stage stage;
     private Scene scene;
 
@@ -67,8 +54,7 @@ public class lecCtrl {
         @FXML
         private Label profName;
 
-        @FXML
-        private Button lecprofileBtn;
+
         @FXML
         void LectureProfile(ActionEvent event) {
 
@@ -105,6 +91,85 @@ public class lecCtrl {
     @FXML
     private Pane upmarksLecPane;
 
+        //For MidTable
+        @FXML
+        private TextField midId_forMid;
+
+        @FXML
+        private TextField stId_forMid;
+
+        @FXML
+        private TextField crsId_forMid;
+
+        @FXML
+        private TextField marks_forMid;
+
+        @FXML
+        private Label labelMid1;
+
+
+        //For EndTable
+        @FXML
+        private TextField endId_forEnd;
+
+        @FXML
+        private TextField stdId_forEnd;
+
+        @FXML
+        private TextField crsId_forEnd;
+
+        @FXML
+        private TextField marks_forEnd;
+
+
+
+        @FXML
+        private Label labelEnd;
+
+
+        //For QuizTable
+        @FXML
+        private TextField quizId_forQuiz;
+
+        @FXML
+        private TextField quizNo_forQuiz;
+
+        @FXML
+        private TextField marks_forQuiz;
+
+        @FXML
+        private TextField stdId_forQuiz;
+
+        @FXML
+        private TextField crsId_forQuiz;
+
+        @FXML
+        private Label labelQuiz;
+
+
+        //For AssignmentTable
+        @FXML
+        private TextField assId_forAssignment;
+
+        @FXML
+        private TextField assNo_forAssignment;
+
+        @FXML
+        private TextField mark_forAssignment;
+
+        @FXML
+        private TextField std_d_forAssignment;
+
+        @FXML
+        private TextField crsId_forAssignment;
+
+
+        @FXML
+        private Label labelAssignment;
+
+
+
+
         @FXML
         void uploadMarksAction(ActionEvent event) {
             choosePanel("uploadMarks");
@@ -137,22 +202,22 @@ public class lecCtrl {
     private Pane stuElLecPane;
 
         @FXML
-        private TableView<?> tableEligibility;
+        private TableView<StEligibility> tableEligibility;
 
         @FXML
-        private TableColumn<?, ?> Std_id_Eligibility;
+        private TableColumn<StEligibility, String> Std_id_Eligibility;
 
         @FXML
-        private TableColumn<?, ?> Crs_id_Eligibility;
+        private TableColumn<StEligibility, String> Crs_id_Eligibility;
 
         @FXML
-        private TableColumn<?, ?> Total_Attendance_Eligibility;
+        private TableColumn<StEligibility, String> Total_Attendance_Eligibility;
 
         @FXML
-        private TableColumn<?, ?> CA_Mark_Eligibility;
+        private TableColumn<StEligibility, String> CA_Mark_Eligibility;
 
         @FXML
-        private TableColumn<?, ?> Eligibility_Eligibility;
+        private TableColumn<StEligibility, String> Eligibility_Eligibility;
 
         @FXML
         void studentEligibilityAction(ActionEvent event) {
@@ -161,102 +226,28 @@ public class lecCtrl {
 
     @FXML
     private Pane resLecPane;
-//        @FXML
-//        private TableView<DataResult> studentResultTable;
+        @FXML
+        private TableView<StResults> studentResultTable;
 
         @FXML
-        private TableColumn<DataResult, String> Std_id_result;
+        private TableColumn<StResults, String> Std_id_result;
 
         @FXML
-        private TableColumn<DataResult, String> Crs_id_result;
+        private TableColumn<StResults, String> Crs_id_result;
 
         @FXML
-        private TableColumn<DataResult, Integer> Mark_result;
+        private TableColumn<StResults, String> Mark_result;
 
         @FXML
-        private TableColumn<DataResult, String> Grade_result;
+        private TableColumn<StResults, String> Grade_result;
 
         @FXML
-        private TableColumn<DataResult, Double> SGPA_result;
+        private TableColumn<StResults, String> SGPA_result;
 
         @FXML
-        private TableColumn<DataResult, Double> CGPA_result;
+        private TableColumn<StResults, String> CGPA_result;
 
-    public class DataResult {
-        private String stdId;
-        private String crsId;
-        private Integer totalMark;
-        private String grade;
-        private Double sgpa;
-        private Double cgpa;
 
-        public DataResult(String stdId, String crsId, Integer totalMark, String grade, Double sgpa, Double cgpa) {
-            this.stdId = stdId;
-            this.crsId = crsId;
-            this.totalMark = totalMark;
-            this.grade = grade;
-            this.sgpa = sgpa;
-            this.cgpa = cgpa;
-        }
-
-        public String getStdId() {
-            return stdId;
-        }
-
-        public void setStdId(String stdId) {
-            this.stdId = stdId;
-        }
-
-        public String getCrsId() {
-            return crsId;
-        }
-
-        public void setCrsId(String crsId) {
-            this.crsId = crsId;
-        }
-
-        public Integer getTotalMark() {
-            return totalMark;
-        }
-
-        public void setTotalMark(Integer totalMark) {
-            this.totalMark = totalMark;
-        }
-
-        public String getGrade() {
-            return grade;
-        }
-
-        public void setGrade(String grade) {
-            this.grade = grade;
-        }
-
-        public Double getSgpa() {
-            return sgpa;
-        }
-
-        public void setSgpa(double sgpa) {
-            this.sgpa = Double.valueOf(sgpa);
-        }
-
-        public Double getCgpa() {
-            return cgpa;
-        }
-
-        public void setCgpa(double cgpa) {
-            this.cgpa = Double.valueOf(cgpa);
-        }
-
-        public Double getSGPA() {
-            return sgpa;
-        }
-
-        public Double getCGPA() {
-            return cgpa;
-        }
-
-        // Constructor, getters, and setters
-    }
         @FXML
         void ResultAction(ActionEvent event) {
             choosePanel("studentResult");
@@ -265,19 +256,20 @@ public class lecCtrl {
     @FXML
     private Pane noticePane;
         @FXML
-        private TableView<?> noticeTable;
+        private TableView<LecNotices> noticeTableLec;
 
         @FXML
-        private TableColumn<?, ?> clickCol;
+        private TableColumn<LecNotices, String> clickCol;
 
         @FXML
-        private TableColumn<?, ?> dateCol;
+        private TableColumn<LecNotices, String> dateCol;
 
         @FXML
-        private TableColumn<?, ?> noticeCol;
+        private TableColumn<LecNotices, String> noticeCol;
 
         @FXML
         private TextArea msg;
+
 
         @FXML
         void NoticeAction(ActionEvent event) {
@@ -294,8 +286,6 @@ public class lecCtrl {
 
         }
 
-        @FXML
-        private Button docDeleteBtn;
 
         @FXML
         void deleteDocumentsInCourse(ActionEvent event) {
@@ -310,23 +300,16 @@ public class lecCtrl {
 
     @FXML
     private Pane homeLecPane;
-        @FXML
-        private HBox HboxForLec_contact;
+
             @FXML
             private Label l_contact;
 
-        @FXML
-        private HBox HboxForLec_email;
             @FXML
             private Label l_email;
 
-        @FXML
-        private HBox HboxForLec_id;
             @FXML
             private Label l_id;
 
-        @FXML
-        private HBox HboxForLec_name;
             @FXML
             private Label l_name;
 
@@ -337,63 +320,29 @@ public class lecCtrl {
         }
 
 
-    //For ButtonPane
-    @FXML
-    private Pane ButtonPane;
-
-        @FXML
-        private HBox navicontent;
-
-    @FXML
-    private Button homeBtn;
-
-    @FXML
-    private Button updocBtn;
-
-    @FXML
-    private Button upmarksBtn;
-
-    @FXML
-    private Button stdetBtn;
-
-    @FXML
-    private Button stelBtn;
-
-    @FXML
-    private Button resultBtn;
-
-    @FXML
-    private Button logoutbtn;
 
 
-
-
-
-
-/*
-=======
->>>>>>> main
-=======
->>>>>>> 3c085d5215363e64ee3fcce5b2c3326ba43f039d
-    @FXML
-    private Label l;
-    @FXML
-    void btn(ActionEvent event) {
-        l.setText("Kamal");
-    }
-<<<<<<< HEAD
-<<<<<<< HEAD
-*/
 
     private String userSession(){
         LoginController login = new LoginController();
         return login.LETG;
     }
 
-    public void loginToLecturer(ActionEvent event) throws IOException {
+    public void loginToLecturer(ActionEvent event1) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lecturer.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event1.getSource()).getScene().getWindow();
         scene = new Scene(root);
+
+        //                    X & Y move access from mouse
+        root.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+        root.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
+
         stage.setScene(scene);
         stage.show();
     }
@@ -403,7 +352,50 @@ public class lecCtrl {
         LoginController o = new LoginController();
         o.logout(event);
     }
+        //Before edit 1
+//
+//    @FXML
+//    void imgUpload(ActionEvent event)throws IOException, SQLException {
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.getExtensionFilters().addAll(
+//                new FileChooser.ExtensionFilter("Image Files","*.png", "*.jpg", "*.gif")
+//        );
+//
+//        File selectdFile = fileChooser.showOpenDialog(null);
+//        if (selectdFile != null){
+//            //Fill the image with selected one
+//            Image profImg = new Image(selectdFile.toURI().toString());
+//            circle.setFill(new ImagePattern(profImg));
+//
+//            //save the selected image to img folder
+//            File imgFolder = new File("img");
+//            if(!imgFolder.exists()){
+//                imgFolder.mkdirs();
+//            }
+//
+//            File destinationFile = new File(imgFolder,selectdFile.getName());
+//            Files.copy(selectdFile.toPath(),destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+//
+//            String imagePath = "img/"+selectdFile.getName();
+//            String sqlForUpdateImage = "Update lecture SET Image = ? Where Lec_id = ?";
+//
+//            try{
+//                lecturerConnect DB = new lecturerConnect();
+//                PreparedStatement pst = DB.connect().prepareStatement(sqlForUpdateImage);
+//                pst.setString(1,imagePath);
+//                pst.setString(2,userSession());
+//                pst.executeQuery();
+//                //dislayImageFromDB();
+//            }catch(SQLException ex){
+//                Logger lgr = Logger.getLogger(lecCtrl.class.getName());
+//                lgr.log(Level.SEVERE,ex.getMessage(),ex);
+//            }
+//        }
+//    }
 
+
+    //After edit 2
+    private String profImagePath = "img/account.png"; // Default path
 
     @FXML
     void imgUpload(ActionEvent event)throws IOException, SQLException {
@@ -417,6 +409,7 @@ public class lecCtrl {
             //Fill the image with selected one
             Image image = new Image(selectdFile.toURI().toString());
             circle.setFill(new ImagePattern(image));
+            profImg.setImage(image);
 
             //save the selected image to img folder
             File imgFolder = new File("img");
@@ -435,14 +428,48 @@ public class lecCtrl {
                 PreparedStatement pst = DB.connect().prepareStatement(sqlForUpdateImage);
                 pst.setString(1,imagePath);
                 pst.setString(2,userSession());
-                pst.executeQuery();
-                //dislayImageFromDB();
+                pst.executeUpdate();
+                displayImageFromDB();
+
+                // Update the profImagePath variable
+                profImagePath = imagePath;
             }catch(SQLException ex){
                 Logger lgr = Logger.getLogger(lecCtrl.class.getName());
                 lgr.log(Level.SEVERE,ex.getMessage(),ex);
             }
         }
     }
+
+
+
+
+
+
+
+    //Before edit 1
+
+//    @FXML
+//    void deleteImage(ActionEvent event) {
+//        lecturerConnect DB = new lecturerConnect();
+//        try {
+//            String sql = "update lecture set Image = NULL where Lec_id = '"+userSession()+"'";
+//            PreparedStatement ptr = DB.connect().prepareStatement(sql);
+//            ptr.executeUpdate();
+//
+//            String path = "img/account.png";
+//            File imageFile = new File(path);
+//            Image image = new Image(imageFile.toURI().toString());
+////            profImg.setId(new ImagePattern(image).toString());
+//            circle.setFill(new ImagePattern(image));
+//            displayImageFromDB();
+//        }catch (Exception e){
+//            System.out.println(e);
+//        }
+//    }
+
+
+    //      After Edit 2
+//
     @FXML
     void deleteImage(ActionEvent event) {
         lecturerConnect DB = new lecturerConnect();
@@ -455,18 +482,25 @@ public class lecCtrl {
             File imageFile = new File(path);
             Image image = new Image(imageFile.toURI().toString());
             circle.setFill(new ImagePattern(image));
+            profImg.setImage(image);
             displayImageFromDB();
         }catch (Exception e){
             System.out.println(e);
         }
     }
 
+
+
+
+    //Before edit 1
+
+
     @FXML
     public void displayImageFromDB() {
         try {
             // Retrieve the image path from the database for the specific student
-            String sql = "SELECT Image FROM student WHERE Std_id = ?";
-            studentConnect DB = new studentConnect();
+            String sql = "SELECT Image FROM lecture WHERE Lec_id = ?";
+            lecturerConnect DB = new lecturerConnect();
 
             PreparedStatement pst = DB.connect().prepareStatement(sql);
             pst.setString(1, userSession());
@@ -504,6 +538,44 @@ public class lecCtrl {
         }
     }
 
+//
+//    @FXML
+//    void updateLectureData(ActionEvent event) {
+//        try {
+//            String sql = "SELECT * FROM lecture WHERE Lec_id = ?";
+//            lecturerConnect DB = new lecturerConnect();
+//
+//
+//            if(edit_email.getText().isEmpty() && edit_number.getText().isEmpty()){
+//
+//                PreparedStatement pst = DB.connect().prepareStatement(sql);
+//                pst.setString(1, userSession());
+//                ResultSet rs = pst.executeQuery();
+//
+//                if (rs.next()) {
+//                    edit_email.setText(rs.getString(3));
+//                    edit_number.setText(rs.getString(5));
+//                } else {
+//                    System.out.println("No Data for the lecture with ID: " + userSession());
+//                }
+//
+//            }else{
+//                String query = "UPDATE lecture SET Email = ?, Contact = ? WHERE Lec_id = ?";
+//
+//                PreparedStatement pst = DB.connect().prepareStatement(query);
+//                pst.setString(1, edit_email.getText());
+//                pst.setString(2, edit_number.getText());
+//                pst.setString(3, userSession());
+//                pst.executeUpdate();
+//            }
+//
+//        }catch(Exception e){
+//            System.out.println(e);
+//        }
+//    }
+
+
+    // correct 2
 
     @FXML
     void updateLectureData(ActionEvent event) {
@@ -513,7 +585,7 @@ public class lecCtrl {
 
 
             if(edit_email.getText().isEmpty() && edit_number.getText().isEmpty()){
-
+                // If email and number fields are empty, retrieve the data from the database and populate the fields
                 PreparedStatement pst = DB.connect().prepareStatement(sql);
                 pst.setString(1, userSession());
                 ResultSet rs = pst.executeQuery();
@@ -521,11 +593,14 @@ public class lecCtrl {
                 if (rs.next()) {
                     edit_email.setText(rs.getString(3));
                     edit_number.setText(rs.getString(5));
+                    l_email.setText(rs.getString(3)); // Update l_email field
+                    l_contact.setText(rs.getString(5)); // Update l_contact field
                 } else {
                     System.out.println("No Data for the lecture with ID: " + userSession());
                 }
 
-            }else{
+            } else {
+                // If email and number fields are not empty, update the database and the fields
                 String query = "UPDATE lecture SET Email = ?, Contact = ? WHERE Lec_id = ?";
 
                 PreparedStatement pst = DB.connect().prepareStatement(query);
@@ -533,14 +608,283 @@ public class lecCtrl {
                 pst.setString(2, edit_number.getText());
                 pst.setString(3, userSession());
                 pst.executeUpdate();
+
+                // Update l_email and l_contact fields
+                l_email.setText(edit_email.getText());
+                l_contact.setText(edit_number.getText());
             }
 
-        }catch(Exception e){
+        } catch(Exception e){
             System.out.println(e);
         }
     }
 
 
+
+    //Inserting Marks for Mid, End, Quiz and Assignment
+
+    @FXML
+    void uploadMidMarks(ActionEvent event) {
+        String midId, midcrsId, midstdId;
+        int midMark;
+
+        midcrsId = crsId_forMid.getText();
+        midstdId = stId_forMid.getText();
+
+        if (midcrsId.isEmpty() || midstdId.isEmpty()) {
+            labelMid1.setText("All fields are required.");
+            return; // Exit the method if any field is empty
+        }
+
+        try {
+            midMark = Integer.parseInt(marks_forMid.getText());
+
+            String sqlToGetMaxMidId = "SELECT MAX(Mid_id) AS max_mid_id FROM mid";
+            String nextMidId = null;
+
+            lecturerConnect conn = new lecturerConnect();
+            Statement stmt = conn.connect().createStatement();
+            ResultSet rs = stmt.executeQuery(sqlToGetMaxMidId);
+
+            if (rs.next()) {
+                String maxMidId = rs.getString("max_mid_id");
+                if (maxMidId != null) {
+                    // Extract the number part, increment it, and format it
+                    int numPart = Integer.parseInt(maxMidId.substring(2)) + 1;
+                    nextMidId = "MD" + String.format("%03d", numPart);
+                } else {
+                    // If there are no existing entries in the table, start with MD001
+                    nextMidId = "MD001";
+                }
+            }
+
+            // Set the generated next Mid_id into the text field
+            midId_forMid.setText(nextMidId);
+
+            String sqlToInsertMidMark = "INSERT INTO mid (Mid_id, Crs_id, Mid_mark, Std_id) VALUES (?, ?, ?, ?)";
+
+            PreparedStatement pst = conn.connect().prepareStatement(sqlToInsertMidMark);
+
+            pst.setString(1, nextMidId);
+            pst.setString(2, midcrsId);
+            pst.setInt(3, midMark);
+            pst.setString(4, midstdId);
+
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected > 0) {
+                labelMid1.setText("Data inserted");
+            } else {
+                labelMid1.setText("Data entering failed!");
+            }
+        } catch (NumberFormatException e) {
+            // Handle parsing error
+            labelMid1.setText("Mark should be integer.");
+            e.printStackTrace(); // Log the exception
+        } catch (SQLException e) {
+            // Handle database error
+            labelMid1.setText("Error while inserting data.");
+            e.printStackTrace(); // Log the exception
+        }
+    }
+
+
+
+    @FXML
+    void uploadEndMarks(ActionEvent event) {
+        String endId, endcrsId, endstdId;
+        int endMark;
+
+        endcrsId = crsId_forEnd.getText();
+        endstdId = stdId_forEnd.getText();
+
+        if (endcrsId.isEmpty() || endstdId.isEmpty()) {
+            labelEnd.setText("All fields are required.");
+            return;
+        }
+
+        try {
+            endMark = Integer.parseInt(marks_forEnd.getText());
+
+            String sqlToGetMaxEndId = "SELECT MAX(End_id) AS max_end_id FROM end";
+            String nextEndId = null;
+
+            lecturerConnect conn = new lecturerConnect();
+            Statement stmt = conn.connect().createStatement();
+            ResultSet rs = stmt.executeQuery(sqlToGetMaxEndId);
+
+            if (rs.next()) {
+                String maxEndId = rs.getString("max_end_id");
+                if (maxEndId != null) {
+                    // Extract the number part, increment it, and format it
+                    int numPart = Integer.parseInt(maxEndId.substring(2)) + 1;
+                    nextEndId = "EN" + String.format("%03d", numPart);
+                } else {
+                    // If there are no existing entries in the table, start with EN001
+                    nextEndId = "EN001";
+                }
+            }
+
+            // Set the generated next End_id into the text field
+            endId_forEnd.setText(nextEndId);
+
+            String sqlToInsertEndMark = "INSERT INTO end (End_id, Crs_id, End_marks, Std_id) VALUES (?, ?, ?, ?)";
+
+            PreparedStatement pst = conn.connect().prepareStatement(sqlToInsertEndMark);
+
+            pst.setString(1, nextEndId);
+            pst.setString(2, endcrsId);
+            pst.setInt(3, endMark);
+            pst.setString(4, endstdId);
+
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected > 0) {
+                labelEnd.setText("Data inserted");
+            } else {
+                labelEnd.setText("Data entering failed!");
+            }
+        } catch (NumberFormatException e) {
+            // Handle parsing error
+            labelEnd.setText("Marks should be integer.");
+            e.printStackTrace(); // Log the exception
+        } catch (SQLException e) {
+            // Handle database error
+            labelEnd.setText("Error while inserting data.");
+            e.printStackTrace(); // Log the exception
+        }
+    }
+
+
+    @FXML
+    void uploadQuizMarks(ActionEvent event) {
+        String quizId, quizcrsId, quizstdId;
+        int quizMark, quizNo;
+
+        quizcrsId = crsId_forQuiz.getText();
+        quizstdId = stdId_forQuiz.getText();
+
+        if (quizcrsId.isEmpty() || quizstdId.isEmpty()) {
+            labelQuiz.setText("All fields are required.");
+            return;
+        }
+
+        try {
+            quizMark = Integer.parseInt(marks_forQuiz.getText());
+            quizNo = Integer.parseInt(quizNo_forQuiz.getText());
+
+            String sqlToGetMaxQuizId = "SELECT MAX(Quiz_id) AS max_quiz_id FROM quiz";
+            String nextQuizId = null;
+
+            lecturerConnect conn = new lecturerConnect();
+            Statement stmt = conn.connect().createStatement();
+            ResultSet rs = stmt.executeQuery(sqlToGetMaxQuizId);
+
+            if (rs.next()) {
+                String maxQuizId = rs.getString("max_quiz_id");
+                if (maxQuizId != null) {
+                    // Extract the number part, increment it, and format it
+                    int numPart = Integer.parseInt(maxQuizId.substring(1)) + 1;
+                    nextQuizId = "Q" + String.format("%03d", numPart);
+                } else {
+                    // If there are no existing entries in the table, start with Q001
+                    nextQuizId = "Q001";
+                }
+            }
+
+            // Set the generated next Quiz_id into the text field
+            quizId_forQuiz.setText(nextQuizId);
+
+            String sqlToInsertQuizMark = "INSERT INTO quiz (Quiz_id, Qiz_no, Qiz_mark, Std_id, Crs_id) VALUES (?, ?, ?, ?, ?)";
+
+            PreparedStatement pst = conn.connect().prepareStatement(sqlToInsertQuizMark);
+
+            pst.setString(1, nextQuizId);
+            pst.setInt(2, quizNo);
+            pst.setInt(3, quizMark);
+            pst.setString(4, quizstdId);
+            pst.setString(5, quizcrsId);
+
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected > 0) {
+                labelQuiz.setText("Data inserted");
+            } else {
+                labelQuiz.setText("Data entering failed!");
+            }
+        } catch (NumberFormatException e) {
+            // Handle parsing error
+            labelQuiz.setText("Marks should be integer.");
+            e.printStackTrace(); // Log the exception
+        } catch (SQLException e) {
+            // Handle database error
+            labelQuiz.setText("Error while inserting data.");
+            e.printStackTrace(); // Log the exception
+        }
+    }
+
+    @FXML
+    void uploadAssignmentMarks(ActionEvent event) {
+        String AsmId, AsmcrsId, AsmstdId;
+        int AsmMark, AsmNo;
+
+        AsmcrsId = crsId_forAssignment.getText();
+        AsmstdId = std_d_forAssignment.getText();
+
+        if (AsmcrsId.isEmpty() || AsmstdId.isEmpty()) {
+            labelAssignment.setText("All fields are required.");
+            return;
+        }
+
+        try {
+            AsmMark = Integer.parseInt(mark_forAssignment.getText());
+            AsmNo = Integer.parseInt(assNo_forAssignment.getText());
+
+            String sqlToGetMaxAsmId = "SELECT MAX(Asm_id) AS max_asm_id FROM assignment";
+            String nextAsmId = null;
+
+            lecturerConnect conn = new lecturerConnect();
+            Statement stmt = conn.connect().createStatement();
+            ResultSet rs = stmt.executeQuery(sqlToGetMaxAsmId);
+
+            if (rs.next()) {
+                String maxAsmId = rs.getString("max_asm_id");
+                if (maxAsmId != null) {
+                    // Extract the number part, increment it, and format it
+                    int numPart = Integer.parseInt(maxAsmId.substring(2)) + 1;
+                    nextAsmId = "AS" + String.format("%03d", numPart);
+                } else {
+                    // If there are no existing entries in the table, start with AS001
+                    nextAsmId = "AS001";
+                }
+            }
+
+            // Set the generated next Asm_id into the text field
+            assId_forAssignment.setText(nextAsmId);
+
+            String sqlToInsertAssignmentMark = "INSERT INTO assignment (Asm_id, Asm_no, Asm_mark, Std_id, Crs_id) VALUES (?, ?, ?, ?, ?)";
+
+            PreparedStatement pst = conn.connect().prepareStatement(sqlToInsertAssignmentMark);
+
+            pst.setString(1, nextAsmId);
+            pst.setInt(2, AsmNo);
+            pst.setInt(3, AsmMark);
+            pst.setString(4, AsmstdId);
+            pst.setString(5, AsmcrsId);
+
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected > 0) {
+                labelAssignment.setText("Data inserted");
+            } else {
+                labelAssignment.setText("Data entering failed!");
+            }
+        } catch (NumberFormatException e) {
+            // Handle parsing error
+            labelAssignment.setText("Mark should be integer.");
+            e.printStackTrace(); // Log the exception
+        } catch (SQLException e) {
+            // Handle database error
+            labelAssignment.setText("Error while inserting data.");
+            e.printStackTrace(); // Log the exception
+        }
+    }
 
 
     void choosePanel(String x){
@@ -656,57 +1000,38 @@ public class lecCtrl {
         }
     }
 
-    void ShowStudentResults(){
-
-        try {
-            System.out.println("Executing ShowStudentResults method...");
-            String resultQuery = "SELECT m.Std_id,m.Crs_id, m.Total_Mark, m.Grade, sg.SGPA, cg.CGPA FROM Mark m JOIN course c On m.Crs_id = c.Crs_id LEFT JOIN student_sgpa sg ON m.Std_id = sg.Std_id LEFT JOIN student_cgpa cg ON m.Std_id = cg.Std_id WHERE c.Lec_id = '" + userSession() + "'";
-            System.out.println("Query: " + resultQuery); // Print the SQL query being executed
-            lecturerConnect connect = new lecturerConnect();
-            PreparedStatement ptr = connect.connect().prepareStatement(resultQuery);
-            ResultSet result = ptr.executeQuery();
-
-            ObservableList<DataResult> studentRes = FXCollections.observableArrayList();
-            System.out.println("Std_id\tCrs_id\tTotal_Mark\tGrade\tSGPA\tCGPA");
-            while (result.next()) {
-                DataResult std = new DataResult(
-                        result.getString("Std_id"),//"Std_id"
-                        result.getString("Crs_id"),//"Crs_id"
-                        result.getInt("Total_Mark"),//"Total_Mark"
-                        result.getString("Grade"),//"Grade"
-                        result.getDouble("SGPA"),//"SGPA"
-                        result.getDouble("CGPA")//"CGPA"
-                );
-
-                studentRes.add(std);
-               // studentResultTable.setItems(studentRes); commented 4.22
 
 
-                // Print each row's data
-                System.out.println(std.getStdId() + "\t" + std.getCrsId() + "\t" + std.getTotalMark() + "\t" + std.getGrade() + "\t" + std.getSGPA() + "\t" + std.getCGPA());
-            }
 
-            System.out.println("Student results retrieved: " + studentRes.size()); // Print the number of student results retrieved
-
-            Platform.runLater(() -> {
-                //studentResultTable.setItems(studentRes); commented 4.22
-               // studentResultTable.refresh(); commented 4.22
-            });
-        } catch(Exception ex){
-            ex.printStackTrace();
-
-
-        }
-    }
 
 
     public void setValueFactory(){
-        Std_id_Details.setCellValueFactory(new PropertyValueFactory<>("Sid"));
+        //For student details
+        Std_id_Details.setCellValueFactory(new PropertyValueFactory<>("Stid"));
         Name_Details.setCellValueFactory(new PropertyValueFactory<>("Sname"));
         Email_Details.setCellValueFactory(new PropertyValueFactory<>("Semail"));
         Contact_Details.setCellValueFactory(new PropertyValueFactory<>("Scontact"));
         NIC_Details.setCellValueFactory(new PropertyValueFactory<>("Snic"));
 
+        //For student eligibility
+        Std_id_Eligibility.setCellValueFactory(new PropertyValueFactory<>("Stdid"));
+        Crs_id_Eligibility.setCellValueFactory(new PropertyValueFactory<>("Crsid"));
+        Total_Attendance_Eligibility.setCellValueFactory(new PropertyValueFactory<>("Totalattendance"));
+        CA_Mark_Eligibility.setCellValueFactory(new PropertyValueFactory<>("Camarks"));
+        Eligibility_Eligibility.setCellValueFactory(new PropertyValueFactory<>("Eligibility"));
+
+        //For student Result
+        Std_id_result.setCellValueFactory(new PropertyValueFactory<>("Sid"));
+        Crs_id_result.setCellValueFactory(new PropertyValueFactory<>("Cid"));
+        Mark_result.setCellValueFactory(new PropertyValueFactory<>("TotMark"));
+        Grade_result.setCellValueFactory(new PropertyValueFactory<>("Grade"));
+        SGPA_result.setCellValueFactory(new PropertyValueFactory<>("Sgpa"));
+        CGPA_result.setCellValueFactory(new PropertyValueFactory<>("Cgpa"));
+
+        //For lecture notices
+        noticeCol.setCellValueFactory(new PropertyValueFactory<>("Notice"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        clickCol.setCellValueFactory(new PropertyValueFactory<>("View"));
     }
 
     void showStudentDetails(){
@@ -719,7 +1044,7 @@ public class lecCtrl {
 
         try{
             lecturerConnect conn = new lecturerConnect();
-            String Query = "SELECT s.Std_id,s.Name,s.Email,s.Contact,s.NIC FROM student s JOIN Mark m ON s.Std_id = m.Std_id JOIN course c ON m.Crs_id = c.Crs_id WHERE c.Lec_id = '" + userSession() + "'";;
+            String Query = "SELECT s.Std_id,s.Name,s.Email,s.Contact,s.NIC FROM student s JOIN Mark m ON s.Std_id = m.Std_id JOIN course c ON m.Crs_id = c.Crs_id WHERE c.Lec_id = '" + userSession() + "'";
             PreparedStatement ptr = conn.connect().prepareStatement(Query);
 
             stuDetTable.getItems().clear();
@@ -733,7 +1058,7 @@ public class lecCtrl {
                 scontact = rs.getString(4);
                 snic = rs.getString(5);
 
-                System.out.println(stid+sname+semail+scontact+snic);
+                //System.out.println(stid+sname+semail+scontact+snic);
                 StDetails rec = new StDetails(stid,sname,semail,scontact,snic);
                 stuDetTable.getItems().add(rec);
             }
@@ -745,8 +1070,100 @@ public class lecCtrl {
         }
     }
 
+    void ShowStudentResults() {
+        String studentid;
+        String courseid;
+        String marks;
+        String grade;
+        String sgpa;
+        String cgpa;
+
+        try{
+            lecturerConnect conn = new lecturerConnect();
+            String que = "SELECT m.Std_id,m.Crs_id, m.Total_Mark, m.Grade, sg.SGPA, cg.CGPA FROM Mark m JOIN course c On m.Crs_id = c.Crs_id LEFT JOIN student_sgpa sg ON m.Std_id = sg.Std_id LEFT JOIN student_cgpa cg ON m.Std_id = cg.Std_id WHERE c.Lec_id = '" + userSession() + "'";
+            PreparedStatement ptr = conn.connect().prepareStatement(que);
+
+            studentResultTable.getItems().clear();
+            ResultSet rs = ptr.executeQuery(que);
+
+            while(rs.next()){
+                studentid = rs.getString(1);
+                courseid = rs.getString(2);
+                marks  = rs.getString(3);
+                grade = rs.getString(4);
+                sgpa = rs.getString(5);
+                cgpa = rs.getString(6);
+
+                System.out.println(studentid+"\t"+courseid+"\t"+marks+"\t"+grade+"\t"+sgpa+"\t"+cgpa);
+                StResults record = new StResults(studentid,courseid,marks,grade,sgpa,cgpa);
+                studentResultTable.getItems().add(record);
+            }
+        }catch(Exception err){
+            System.out.println(err);
+        }
+    }
 
 
+    public void ShowStudentEligibility(){
+        String stdid;
+        String crsid;
+        String stdtotatt;
+        String stdcamark;
+        String stdelegi;
+
+        try{
+            lecturerConnect conn = new lecturerConnect();
+            String sqlQuery = "SELECT e.Std_id,e.Crs_id,e.Total_Attendance,e.CA_Mark,e.Eligibility FROM eligibility e INNER JOIN course c ON e.Crs_id = c.Crs_id WHERE c.Lec_id = '" + userSession() + "'";
+            PreparedStatement ptr = conn.connect().prepareStatement(sqlQuery);
+
+            tableEligibility.getItems().clear();
+            ResultSet resultset = ptr.executeQuery(sqlQuery);
+
+            while(resultset.next()){
+                stdid = resultset.getString(1);
+                crsid = resultset.getString(2);
+                stdtotatt = resultset.getString(3);
+                stdcamark = resultset.getString(4);
+                stdelegi = resultset.getString(5);
+
+                //System.out.println(stdid+crsid+stdtotatt+stdcamark+stdelegi);
+                StEligibility record = new StEligibility(stdid,crsid,stdtotatt,stdcamark,stdelegi);
+                tableEligibility.getItems().add(record);
+            }
+        }catch (Exception exception){
+            System.out.println(exception);
+        }
+    }
+
+    public void showLecNotice(){
+
+        String date;
+        String notice;
+        String view;
+        String id;
+
+        try {
+            lecturerConnect conn = new lecturerConnect();
+            PreparedStatement ptr = null;
+            String query = "SELECT * FROM notice ORDER BY date DESC";
+            ptr = conn.connect().prepareStatement(query);
+
+            noticeTableLec.getItems().clear();
+            ResultSet rs = ptr.executeQuery();
+
+            while (rs.next()) {
+                date = rs.getString(4);
+                notice = rs.getString(2);
+                view = "View";
+                id = rs.getString(1);
+                LecNotices notice_record = new LecNotices(date,notice,view,id,msg);
+                noticeTableLec.getItems().add(notice_record);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+    }
 
 
 
@@ -755,10 +1172,13 @@ public class lecCtrl {
         showLectureDetails();
         showStudentDetails();
         ShowStudentResults();
+        ShowStudentEligibility();
         setValueFactory();
+        showLecNotice();
+        displayImageFromDB();
+
+
+
 
     }
-
-
-
 }
