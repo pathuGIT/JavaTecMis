@@ -1,0 +1,118 @@
+.root{
+    -fx-background-color: red;
+}
+#homePane{
+    -fx-background-color: #d8fafa;
+}
+#TimetablePane{
+    -fx-background-color: #d8fafa;
+}
+#attendplane{
+    -fx-background-color: #d8fafa;
+}
+#noticepane{
+    -fx-background-color: #d8fafa;
+}
+#profilePane{
+    -fx-background-color: #d8fafa;
+}
+
+#attentable .column-header {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 2px;
+    -fx-border-color: grey;
+}
+
+#attentable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 3px 0px 3px 10px;
+}
+#attentable .table-row-cell{
+    -fx-background-color: white;
+}
+#attentable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+#timeTable.column-header{
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 2px;
+    -fx-border-color: grey;
+}
+#timeTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 3px 0px 3px 10px;
+}
+#timeTable .table-row-cell{
+    -fx-background-color: white;
+}
+#timeTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+#noticeTable.column-header{
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 2px 0px 2px 2px;
+    -fx-border-color: grey;
+}
+#noticeTable .table-cell {
+    -fx-font-size: 15px;
+    -fx-border-color: grey;
+    -fx-padding: 3px 0px 3px 10px;
+}
+#noticeTable .table-row-cell{
+    -fx-background-color: white;
+}
+#noticeTable .table-row-cell:selected {
+    -fx-background-color: #add8e6;
+}
+
+#lbl{
+    -fx-font-size: 15;
+}
+#btn{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-font-family: Corbel;
+    -fx-font-size: 14;
+    -fx-padding: 7px 7px;
+}
+#btn:hover{
+    -fx-background-color: #B6B6B6;
+    -fx-background-radius: 20;
+}
+#logoutId {
+    -fx-background-color:#2B3D50; /* Button background color */
+    -fx-background-radius: 20; /* Button border radius */
+    -fx-padding: 8px 12px; /* Button padding */
+    -fx-text-fill: white;
+}
+#logoutId:hover {
+    -fx-background-color: white; /* Button background color on hover */
+    -fx-text-fill: black;
+}
+
+#topPane{
+    -fx-background-color: #d875ff;
+}
+#leftPane{
+     -fx-background-color: #771b52;
+ }
+#left_lbl1{
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+#leftbtn{
+    -fx-background-color: #242551;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-padding: 4 15;
+}
