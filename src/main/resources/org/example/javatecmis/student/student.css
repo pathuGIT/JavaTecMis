@@ -167,3 +167,9 @@
 #ProfilePane{
     -fx-background-color: #e1e1e1;
 }
+#topicPane {
+    -fx-background-color: linear-gradient(to bottom right, rgba(255, 184, 104, 0.33), rgba(255, 255, 255, 0.07));
+    -fx-font-size: 22px;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+}

@@ -406,7 +406,7 @@ public class Student{
 
     void showStudentData(){
         try{
-            String query = "Select * from student where Std_id = '"+userSession()+"'";
+            String query = "select s.Std_id, s.Name, s.Email, s.Contact, s.NIC, s.Password, s.Status, d.Name, s.Image from student s, department d where s.Dep_id = d.Dep_id and Std_id = '"+userSession()+"'";
 
             studentConnect connect = new studentConnect();
             PreparedStatement ptr = connect.connect().prepareStatement(query);

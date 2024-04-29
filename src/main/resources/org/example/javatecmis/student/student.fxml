@@ -62,29 +62,143 @@
             </ButtonBar>
          </children>
       </Pane>
-      <Pane fx:id="ProfilePane" layoutX="339.0" layoutY="73.0" prefHeight="630.0" prefWidth="862.0">
+      <Pane fx:id="TimeTablePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
          <children>
-            <Pane layoutX="45.0" layoutY="38.0" prefHeight="419.0" prefWidth="774.0" style="-fx-background-color: white;" styleClass="f">
+            <TableView fx:id="timeTable" layoutX="213.0" layoutY="192.0" prefHeight="218.0" prefWidth="493.0">
+              <columns>
+                  <TableColumn fx:id="timeDowCol" prefWidth="203.0" text="Download" />
+                <TableColumn fx:id="timeDepCol" prefWidth="287.199951171875" text="Department" />
+              </columns>
+            </TableView>
+            <Label fx:id="Tmsg" layoutX="438.0" layoutY="48.0" prefHeight="17.0" prefWidth="253.0">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
                <children>
-                  <Circle fx:id="circle" fill="#1f93ff00" layoutX="170.0" layoutY="178.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Line endX="-85.800048828125" endY="259.0" layoutX="438.0" layoutY="160.0" startX="-85.800048828125" startY="-160.0" />
-                  <Button layoutX="107.0" layoutY="285.0" mnemonicParsing="false" onAction="#imgUpload" text="Upload" />
-                  <Button layoutX="180.0" layoutY="285.0" mnemonicParsing="false" onAction="#deleteImage" text="Delete" />
-                  <Label layoutX="417.0" layoutY="149.0" text="Email">
+                  <Label layoutX="14.0" layoutY="12.0" text="Time Table" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="AttendancePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="attTable" layoutX="119.0" layoutY="181.0" prefHeight="283.0" prefWidth="296.0">
+              <columns>
+                <TableColumn fx:id="courseCol" prefWidth="116.79998779296875" text="Course" />
+                <TableColumn fx:id="attCol" prefWidth="175.99993896484375" text="Total attendance" />
+              </columns>
+            </TableView>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" text="View Attendace" />
+               </children>
+            </Pane>
+            <ImageView fitHeight="283.0" fitWidth="342.0" layoutX="519.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/mark.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane fx:id="noticePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: #ececec;">
+         <children>
+            <TableView fx:id="noticeTable" layoutX="126.0" layoutY="154.0" prefHeight="200.0" prefWidth="491.0">
+              <columns>
+                <TableColumn fx:id="dateCol" prefWidth="133.59994506835938" text="Published Date" />
+                <TableColumn fx:id="noticeCol" prefWidth="247.20001220703125" text="Notice" />
+                  <TableColumn fx:id="clickCol" prefWidth="105.60003662109375" text="Click" />
+              </columns>
+            </TableView>
+            <TextArea fx:id="msg" layoutX="126.0" layoutY="387.0" prefHeight="168.0" prefWidth="663.0" promptText="Notice Here.." scaleShape="false" style="-fx-background-color: white;" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+               </padding>
+            </TextArea>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" text="View Notice" />
+               </children>
+            </Pane>
+         </children></Pane>
+      <Pane fx:id="GpaPane" layoutX="339.0" layoutY="73.0" prefHeight="630.0" prefWidth="862.0">
+         <children>
+            <TableView fx:id="GradeTable" layoutX="78.0" layoutY="186.0" prefHeight="311.0" prefWidth="327.0">
+              <columns>
+                <TableColumn fx:id="colname" prefWidth="161.59994506835938" text="Course" />
+                <TableColumn fx:id="colgrade" prefWidth="162.4000244140625" text="Grade" />
+              </columns>
+            </TableView>
+            <Pane layoutX="474.0" layoutY="260.0" prefHeight="180.0" prefWidth="311.0">
+               <children>
+                  <Label layoutX="25.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Type">
                      <font>
-                        <Font size="17.0" />
+                        <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="edit_email" layoutX="504.0" layoutY="149.0" prefHeight="26.0" prefWidth="180.0" />
-                  <Label layoutX="417.0" layoutY="210.0" text="Number">
+                  <Line endX="210.0" layoutX="101.0" layoutY="54.0" startX="-100.0" />
+                  <Line endX="210.0" endY="-65.60003662109375" layoutX="101.0" layoutY="184.0" startX="-101.0" startY="-65.60003662109375" />
+                  <Line endX="-37.4000244140625" endY="70.0" layoutX="156.0" layoutY="110.0" startX="-37.4000244140625" startY="-110.0" />
+                  <Label layoutX="142.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="GPA">
                      <font>
-                        <Font size="17.0" />
+                        <Font name="Calibri Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="edit_number" layoutX="504.0" layoutY="210.0" prefHeight="26.0" prefWidth="180.0" />
-                  <Button layoutX="504.0" layoutY="270.0" mnemonicParsing="false" onAction="#updateStudentData" prefHeight="30.0" prefWidth="180.0" text="Update" />
-                  <Label layoutX="112.0" layoutY="42.0" text="Edit your profile image" />
-                  <Label layoutX="504.0" layoutY="42.0" text="Edit Your persional details" />
+                  <Label layoutX="28.0" layoutY="73.0" text="CGPA : ">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="134.0" text="SGPA : ">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cgpa" layoutX="142.0" layoutY="69.0" prefHeight="30.0" prefWidth="104.0" text="answer">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="sgpa" layoutX="142.0" layoutY="130.0" prefHeight="30.0" prefWidth="104.0" text="answer">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" text="View Your GPA" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="CoursePane" layoutX="338.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0">
+         <children>
+            <ChoiceBox fx:id="mychoice" layoutX="703.0" layoutY="162.0" prefHeight="11.0" prefWidth="128.0" />
+            <Label layoutX="645.0" layoutY="166.0" text="Filter">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="courseTable" layoutX="87.0" layoutY="225.0" prefHeight="295.0" prefWidth="744.0">
+              <columns>
+                <TableColumn fx:id="colId" prefWidth="150.0" text="Course Id" />
+                <TableColumn fx:id="colName" prefWidth="200.0" text="Course Name" />
+                  <TableColumn fx:id="colType" prefWidth="150.0" text="Type" />
+                  <TableColumn fx:id="colCredit" prefWidth="90.0" text="Credit" />
+                  <TableColumn fx:id="colLecture" prefWidth="150.0" text="Lecture Name" />
+              </columns>
+            </TableView>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" text="View Your Courses" />
                </children>
             </Pane>
          </children>
@@ -205,127 +319,43 @@
                   </Label>
                </children>
             </HBox>
-            <Label layoutX="150.0" layoutY="110.0" text="Student Details">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane fx:id="CoursePane" layoutX="338.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0">
-         <children>
-            <ChoiceBox fx:id="mychoice" layoutX="702.0" layoutY="16.0" prefHeight="11.0" prefWidth="128.0" />
-            <Label layoutX="644.0" layoutY="20.0" text="Filter">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TableView fx:id="courseTable" layoutX="86.0" layoutY="131.0" prefHeight="295.0" prefWidth="744.0">
-              <columns>
-                <TableColumn fx:id="colId" prefWidth="150.0" text="Course Id" />
-                <TableColumn fx:id="colName" prefWidth="200.0" text="Course Name" />
-                  <TableColumn fx:id="colType" prefWidth="150.0" text="Type" />
-                  <TableColumn fx:id="colCredit" prefWidth="90.0" text="Credit" />
-                  <TableColumn fx:id="colLecture" prefWidth="150.0" text="Lecture Name" />
-              </columns>
-            </TableView>
-         </children>
-      </Pane>
-      <Pane fx:id="GpaPane" layoutX="339.0" layoutY="73.0" prefHeight="630.0" prefWidth="862.0">
-         <children>
-            <TableView fx:id="GradeTable" layoutX="78.0" layoutY="134.0" prefHeight="311.0" prefWidth="327.0">
-              <columns>
-                <TableColumn fx:id="colname" prefWidth="161.59994506835938" text="Course" />
-                <TableColumn fx:id="colgrade" prefWidth="162.4000244140625" text="Grade" />
-              </columns>
-            </TableView>
-            <Pane layoutX="474.0" layoutY="208.0" prefHeight="180.0" prefWidth="311.0">
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
                <children>
-                  <Label layoutX="25.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Type">
-                     <font>
-                        <Font name="Calibri Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Line endX="210.0" layoutX="101.0" layoutY="54.0" startX="-100.0" />
-                  <Line endX="210.0" endY="-65.60003662109375" layoutX="101.0" layoutY="184.0" startX="-101.0" startY="-65.60003662109375" />
-                  <Line endX="-37.4000244140625" endY="70.0" layoutX="156.0" layoutY="110.0" startX="-37.4000244140625" startY="-110.0" />
-                  <Label layoutX="142.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="GPA">
-                     <font>
-                        <Font name="Calibri Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="28.0" layoutY="73.0" text="CGPA : ">
-                     <font>
-                        <Font name="Calibri" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="28.0" layoutY="134.0" text="SGPA : ">
-                     <font>
-                        <Font name="Calibri" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="cgpa" layoutX="142.0" layoutY="69.0" prefHeight="30.0" prefWidth="104.0" text="answer">
-                     <font>
-                        <Font name="Calibri" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="sgpa" layoutX="142.0" layoutY="130.0" prefHeight="30.0" prefWidth="104.0" text="answer">
-                     <font>
-                        <Font name="Calibri" size="18.0" />
-                     </font>
-                  </Label>
+                  <Label layoutX="14.0" layoutY="12.0" text="Profile Details" />
                </children>
             </Pane>
          </children>
       </Pane>
-      <Pane fx:id="noticePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: #ececec;">
+      <Pane fx:id="ProfilePane" layoutX="339.0" layoutY="73.0" prefHeight="630.0" prefWidth="862.0">
          <children>
-            <TableView fx:id="noticeTable" layoutX="196.0" layoutY="76.0" prefHeight="200.0" prefWidth="491.0">
-              <columns>
-                <TableColumn fx:id="dateCol" prefWidth="133.59994506835938" text="Published Date" />
-                <TableColumn fx:id="noticeCol" prefWidth="247.20001220703125" text="Notice" />
-                  <TableColumn fx:id="clickCol" prefWidth="105.60003662109375" text="Click" />
-              </columns>
-            </TableView>
-            <TextArea fx:id="msg" layoutX="128.0" layoutY="369.0" prefHeight="168.0" prefWidth="663.0" promptText="Notice Here.." scaleShape="false" style="-fx-background-color: white;" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor>
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
-               </padding>
-            </TextArea>
-         </children></Pane>
-      <Pane fx:id="AttendancePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="attTable" layoutX="121.0" layoutY="92.0" prefHeight="283.0" prefWidth="296.0">
-              <columns>
-                <TableColumn fx:id="courseCol" prefWidth="116.79998779296875" text="Course" />
-                <TableColumn fx:id="attCol" prefWidth="175.99993896484375" text="Total attendance" />
-              </columns>
-            </TableView>
-            <ImageView fitHeight="283.0" fitWidth="342.0" layoutX="516.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@image/mark.png" />
-               </image>
-            </ImageView>
-         </children></Pane>
-      <Pane fx:id="TimeTablePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="timeTable" layoutX="191.0" layoutY="122.0" prefHeight="218.0" prefWidth="493.0">
-              <columns>
-                <TableColumn fx:id="timeDepCol" prefWidth="287.199951171875" text="Department" />
-                  <TableColumn fx:id="timeDowCol" prefWidth="203.0" text="Download" />
-              </columns>
-            </TableView>
-            <Label fx:id="Tmsg" layoutX="438.0" layoutY="48.0" prefHeight="17.0" prefWidth="253.0">
-               <font>
-                  <Font name="Arial" size="16.0" />
-               </font>
-            </Label>
+            <Pane layoutX="65.0" layoutY="123.0" prefHeight="419.0" prefWidth="774.0" style="-fx-background-color: white;" styleClass="f">
+               <children>
+                  <Circle fx:id="circle" fill="#1f93ff00" layoutX="170.0" layoutY="178.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Line endX="-85.800048828125" endY="259.0" layoutX="438.0" layoutY="160.0" startX="-85.800048828125" startY="-160.0" />
+                  <Button layoutX="107.0" layoutY="285.0" mnemonicParsing="false" onAction="#imgUpload" text="Upload" />
+                  <Button layoutX="180.0" layoutY="285.0" mnemonicParsing="false" onAction="#deleteImage" text="Delete" />
+                  <Label layoutX="417.0" layoutY="149.0" text="Email">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="edit_email" layoutX="504.0" layoutY="149.0" prefHeight="26.0" prefWidth="180.0" />
+                  <Label layoutX="417.0" layoutY="210.0" text="Number">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="edit_number" layoutX="504.0" layoutY="210.0" prefHeight="26.0" prefWidth="180.0" />
+                  <Button layoutX="504.0" layoutY="270.0" mnemonicParsing="false" onAction="#updateStudentData" prefHeight="30.0" prefWidth="180.0" text="Update" />
+                  <Label layoutX="112.0" layoutY="42.0" text="Edit your profile image" />
+                  <Label layoutX="504.0" layoutY="42.0" text="Edit Your persional details" />
+               </children>
+            </Pane>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" text="Update Your Profile" />
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
