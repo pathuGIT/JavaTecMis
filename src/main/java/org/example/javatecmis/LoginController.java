@@ -31,6 +31,7 @@ public class LoginController {
     public  String tg;
     public static String pwd;
 
+    public static String offtg ;
     public static String STDG ;
     public static String LETG;
 
@@ -103,6 +104,7 @@ public class LoginController {
                     break;
 
                 } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Technical_Officer")) {
+                    offtg = tg;
                     System.out.println("hel");
                     techCtrl ad = new techCtrl();
                     ad.loginToTechofficer(event1);
