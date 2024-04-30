@@ -1,0 +1,26 @@
+#btn_add:hover{
+    -fx-background-color: #65B741;
+}
+#btn_edit:hover{
+    -fx-background-color: #00215E;
+}
+#btn_delete:hover{
+    -fx-background-color: #C40C0C;
+}
+#couse_table.column-header{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #313131;
+}
+#couse_table.table-cell {
+    -fx-font-size: 18px;
+    -fx-border-color: #313131;
+    -fx-padding: 3px 0px 3px 15px;
+}
+#couse_table.table-row-cell:selected {
+    -fx-background-color: #99e0fa;
+}
+#couse_table.table-row-cell{
+    -fx-background-color: white;
+}
