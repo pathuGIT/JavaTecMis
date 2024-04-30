@@ -41,6 +41,7 @@
                   <Image url="@image/bell.png" />
                </image>
             </ImageView>
+            <Label fx:id="stdText" layoutX="145.0" layoutY="244.0" text="Student" />
          </children>
       </Pane>
       <Pane fx:id="topPane" layoutX="338.0" layoutY="-2.0" prefHeight="74.0" prefWidth="862.0">
@@ -60,26 +61,6 @@
                   <Button fx:id="btn" mnemonicParsing="false" onAction="#Gpa" prefHeight="26.0" prefWidth="252.0" text="Student GPA" />
                </buttons>
             </ButtonBar>
-         </children>
-      </Pane>
-      <Pane fx:id="TimeTablePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="timeTable" layoutX="213.0" layoutY="192.0" prefHeight="218.0" prefWidth="493.0">
-              <columns>
-                  <TableColumn fx:id="timeDowCol" prefWidth="203.0" text="Download" />
-                <TableColumn fx:id="timeDepCol" prefWidth="287.199951171875" text="Department" />
-              </columns>
-            </TableView>
-            <Label fx:id="Tmsg" layoutX="438.0" layoutY="48.0" prefHeight="17.0" prefWidth="253.0">
-               <font>
-                  <Font name="Arial" size="16.0" />
-               </font>
-            </Label>
-            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
-               <children>
-                  <Label layoutX="14.0" layoutY="12.0" text="Time Table" />
-               </children>
-            </Pane>
          </children>
       </Pane>
       <Pane fx:id="AttendancePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
@@ -354,6 +335,26 @@
             <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
                <children>
                   <Label layoutX="14.0" layoutY="12.0" text="Update Your Profile" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="TimeTablePane" layoutX="339.0" layoutY="72.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="timeTable" layoutX="213.0" layoutY="192.0" prefHeight="218.0" prefWidth="493.0">
+              <columns>
+                  <TableColumn fx:id="timeDowCol" prefWidth="203.0" text="Download" />
+                <TableColumn fx:id="timeDepCol" prefWidth="287.199951171875" text="Department" />
+              </columns>
+            </TableView>
+            <Label fx:id="Tmsg" layoutX="453.0" layoutY="158.0" prefHeight="17.0" prefWidth="253.0">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" text="Time Table" />
                </children>
             </Pane>
          </children>
