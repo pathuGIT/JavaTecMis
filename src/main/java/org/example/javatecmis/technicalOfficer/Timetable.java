@@ -21,13 +21,16 @@ public class Timetable {
     private String dwPath = null;
     private Button dwnld = null;
     private Label Tmsg;
+    String exe = null;
 
-    public Timetable(String id, String department, String dwPath, Button dwnld, Label Tmsg) {
+    public Timetable(String id, String department, String dwPath, Button dwnld, Label Tmsg,String exe) {
         this.id = id;
         this.department = department;
         this.dwPath = dwPath;
         this.dwnld = dwnld;
         this.Tmsg = Tmsg;
+        this.exe = exe;
+
     }
 
     public String getDepartment() {
@@ -56,9 +59,11 @@ public class Timetable {
         String fileUrl = "https://drive.usercontent.google.com/u/0/uc?id="+path+"&export=download";
         FileChooser file = new FileChooser();
         Path selectedFile = file.showSaveDialog(stage).toPath();
+        String URL = selectedFile.toString()+"."+exe;
+        System.out.println(URL);
 
         try {
-            downloadFile(fileUrl, selectedFile.toString());
+            downloadFile(fileUrl, URL);
             System.out.println("File downloaded successfully.");
             Tmsg.setStyle("-fx-text-fill: #21c721;");
             Tmsg.setText("Successfully Downloaded.");

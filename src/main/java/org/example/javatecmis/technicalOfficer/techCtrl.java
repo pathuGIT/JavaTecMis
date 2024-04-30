@@ -528,6 +528,7 @@ public void setValueFactory(){
         String id;
         String department;
         String dwPath;
+        String exe;
         try {
             techConnect conn = new techConnect();
             PreparedStatement ptr = null;
@@ -541,7 +542,8 @@ public void setValueFactory(){
                 id = rs.getString(1);
                 department = rs.getString(2);
                 dwPath = rs.getString(3);
-                Timetable notice_record = new Timetable(id,department,dwPath,dwnld,Tmsg);
+                exe = rs.getString(4);
+                Timetable notice_record = new Timetable(id,department,dwPath,dwnld,Tmsg,exe);
                 timeTable.getItems().add(notice_record);
             }
         }catch (Exception e){

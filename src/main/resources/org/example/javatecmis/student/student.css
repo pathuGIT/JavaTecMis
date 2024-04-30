@@ -173,3 +173,9 @@
     -fx-font-family: Calibri;
     -fx-font-weight: bold;
 }
+#stdText{
+    -fx-font-size: 15px;
+    -fx-font-family: Calibri;
+    /*-fx-font-weight: reguler;*/
+    -fx-text-fill: white;
+}
