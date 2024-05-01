@@ -42,6 +42,7 @@ public class techCtrl {
     private double yOffset = 0;
     private Stage stage;
     private Scene scene;
+    String passName;
 
     @FXML
     private Label l;
@@ -132,6 +133,8 @@ public class techCtrl {
     private  Label attendlable;
     @FXML
     private Label notyup;
+    @FXML
+    private Label passname;
 
 
     @FXML
@@ -146,7 +149,7 @@ public class techCtrl {
         scene.getStylesheets().add(getClass().getResource("technical.css").toExternalForm());
 
 
-//                    X & Y move access from mouse
+//      X & Y move access from mouse
         root.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
@@ -212,6 +215,7 @@ public class techCtrl {
                 homePane.setVisible(false);
                 noticepane.setVisible(false);
                 profilePane.setVisible(false);
+                showAttendancetec();
                 break;
             case "timetable":
                 TimetablePane.setVisible(true);
@@ -259,8 +263,10 @@ public void setValueFactory(){
         updateTOprofile();
         displayImageFromDB();
         showAttendancetec();
+        passname.setText(passName);
     }
     void showAttendancetec(){
+        System.out.println("Hello att");
         String tgnum;
         String course;
         String count;
@@ -637,6 +643,7 @@ public void setValueFactory(){
                 officermail.setText((result.getString(6)));
                 //profName.setText(result.getString(2));
 
+                passName = result.getString(2);
             }
         }catch (Exception e){
             System.out.println(e);
