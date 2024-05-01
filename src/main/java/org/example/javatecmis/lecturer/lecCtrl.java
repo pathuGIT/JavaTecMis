@@ -17,9 +17,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.javatecmis.LoginController;
 import org.example.javatecmis.connect.lecturerConnect;
-import org.example.javatecmis.connect.studentConnect;
-import org.example.javatecmis.lecturer.LecNotices;
 //import org.example.javatecmis.student.Notice;
+import org.example.javatecmis.connect.studentConnect;
+import org.example.javatecmis.student.Medical;
 import org.example.javatecmis.student.Student;
 
 import java.io.File;
@@ -270,6 +270,9 @@ public class lecCtrl {
         @FXML
         private TextArea msg;
 
+        @FXML
+        private TextField serchcrsId;
+
 
         @FXML
         void NoticeAction(ActionEvent event) {
@@ -294,8 +297,23 @@ public class lecCtrl {
             @FXML
             private Button deletedocbtn;
 
+    @FXML
+    private Pane medicalPane;
 
+    @FXML
+    private TableView<leMedical> medical;
 
+    @FXML
+    private TableColumn<leMedical, String > mstatus;
+
+    @FXML
+    private TableColumn<leMedical, String> mstdid;
+
+    @FXML
+    private TableColumn<leMedical, String> mcsid;
+
+    @FXML
+    private TableColumn<leMedical, String> mdate;
 
     @FXML
     void uploadDocumentsForCourse(ActionEvent event) {
@@ -406,6 +424,7 @@ public class lecCtrl {
     public void loginToLecturer(ActionEvent event1) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lecturer.fxml")));
         stage = (Stage) ((Node) event1.getSource()).getScene().getWindow();
+
         scene = new Scene(root);
 
         //                    X & Y move access from mouse
@@ -866,6 +885,7 @@ public class lecCtrl {
                 resLecPane.setVisible(false);
                 noticePane.setVisible(false);
                 upmarksLecPane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
 
             case "uploadDocuments":
@@ -877,6 +897,7 @@ public class lecCtrl {
                 resLecPane.setVisible(false);
                 noticePane.setVisible(false);
                 upmarksLecPane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
 
             case "uploadMarks":
@@ -888,6 +909,7 @@ public class lecCtrl {
                 resLecPane.setVisible(false);
                 noticePane.setVisible(false);
                 upmarksLecPane.setVisible(true);
+                medicalPane.setVisible(false);
                 break;
 
             case "studentDetails":
@@ -899,6 +921,7 @@ public class lecCtrl {
                 resLecPane.setVisible(false);
                 noticePane.setVisible(false);
                 upmarksLecPane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
 
             case "studentEligibility":
@@ -910,6 +933,7 @@ public class lecCtrl {
                 resLecPane.setVisible(false);
                 noticePane.setVisible(false);
                 upmarksLecPane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
 
             case "studentResult":
@@ -921,6 +945,7 @@ public class lecCtrl {
                 resLecPane.setVisible(true);
                 noticePane.setVisible(false);
                 upmarksLecPane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
 
             case "lectureProfile":
@@ -932,6 +957,7 @@ public class lecCtrl {
                 resLecPane.setVisible(false);
                 noticePane.setVisible(false);
                 upmarksLecPane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
 
             case "lectureNotice":
@@ -943,8 +969,72 @@ public class lecCtrl {
                 resLecPane.setVisible(false);
                 noticePane.setVisible(true);
                 upmarksLecPane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
 
+            case "medical":
+                homeLecPane.setVisible(false);
+                profileLecPane.setVisible(false);
+                updocLecPane.setVisible(false);
+                stuDetLecPane.setVisible(false);
+                stuElLecPane.setVisible(false);
+                resLecPane.setVisible(false);
+                noticePane.setVisible(false);
+                upmarksLecPane.setVisible(false);
+                medicalPane.setVisible(true);
+                ShowMedical("Default");
+                break;
+
+        }
+    }
+
+    public String COURSE;
+    @FXML
+    public void medicalShow(ActionEvent event){
+        choosePanel("medical");
+    }
+
+    @FXML
+    void mSearch(ActionEvent event) {
+        String crs_id = serchcrsId.getText();
+        //String query = "select * from medical where std_id = ?";
+        ShowMedical(crs_id);
+    }
+
+    void ShowMedical(String getCrs_id) {
+        String st_id;
+        String crs_id;
+        String date;
+        String status;
+        String query;
+        try {
+            lecturerConnect conn = new lecturerConnect();
+            PreparedStatement ptr = null;
+            if(getCrs_id == "Default"){
+                query = "select * from medical where crs_id = ?";
+                ptr = conn.connect().prepareStatement(query);
+                ptr.setString(1,COURSE);
+            }else{
+                query = "select * from medical where crs_id = ? and std_id = ?";
+                ptr = conn.connect().prepareStatement(query);
+                ptr.setString(1,COURSE);
+                ptr.setString(2,serchcrsId.getText());
+            }
+
+            medical.getItems().clear();
+            ResultSet rs = ptr.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(rs.getString(1)+rs.getString(2)+rs.getString(3)+rs.getString(4));
+                st_id = rs.getString(1);
+                crs_id = rs.getString(2);
+                date = rs.getString(3);
+                status = rs.getString(4);
+                leMedical med_record = new leMedical(st_id,crs_id,date,status);
+                medical.getItems().add(med_record);
+            }
+        }catch (Exception e){
+            System.out.println(e);
         }
     }
 
@@ -1007,6 +1097,12 @@ public class lecCtrl {
         noticeCol.setCellValueFactory(new PropertyValueFactory<>("Notice"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("Date"));
         clickCol.setCellValueFactory(new PropertyValueFactory<>("View"));
+
+
+        mstdid.setCellValueFactory(new PropertyValueFactory<>("Std_id"));
+        mcsid.setCellValueFactory(new PropertyValueFactory<>("Crs_id"));
+        mdate.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        mstatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
     }
 
     void showStudentDetails(){
@@ -1095,6 +1191,7 @@ public class lecCtrl {
             ResultSet resultset = ptr.executeQuery(sqlQuery);
 
             while(resultset.next()){
+                COURSE = resultset.getString(2);
                 stdid = resultset.getString(1);
                 crsid = resultset.getString(2);
                 stdtotatt = resultset.getString(3);
@@ -1151,7 +1248,7 @@ public class lecCtrl {
         setValueFactory();
         showLecNotice();
         displayImageFromDB();
-
+        ShowMedical("Default");
 
 
 

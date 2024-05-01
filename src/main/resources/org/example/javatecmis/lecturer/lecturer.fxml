@@ -50,9 +50,9 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox prefHeight="197.0" prefWidth="300.0">
+                  <VBox prefHeight="196.0" prefWidth="300.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="0.0" prefWidth="298.0">
+                        <HBox alignment="CENTER" prefHeight="101.0" prefWidth="300.0">
                            <children>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -62,7 +62,7 @@
                                     <Insets top="50.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Button fx:id="lecprofileBtn" mnemonicParsing="false" onAction="#LectureProfileAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@style.css" text="Lecture Profile" textFill="WHITE">
+                              <Button fx:id="lecprofileBtn" mnemonicParsing="false" onAction="#LectureProfileAction" prefHeight="46.0" prefWidth="180.0" stylesheets="@style.css" text="Lecture Profile" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="20.0" top="50.0" />
                                  </HBox.margin>
@@ -72,7 +72,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" layoutY="5.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -80,6 +80,20 @@
                                  </image>
                               </ImageView>
                               <Button fx:id="noticeBtn" mnemonicParsing="false" onAction="#NoticeAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@style.css" text="Notice" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@bell.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="noticeBtn" mnemonicParsing="false" onAction="#medicalShow" prefHeight="35.0" prefWidth="180.0" stylesheets="@style.css" text="Medical" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -388,6 +402,25 @@
                </font>
             </Label>
          </children></Pane>
+      <Pane fx:id="medicalPane" layoutX="300.0" layoutY="86.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
+         <children>
+            <TextField fx:id="serchcrsId" layoutX="545.0" layoutY="126.0" promptText="Student Id" />
+            <Button fx:id="msearchbtn" layoutX="452.0" layoutY="124.0" mnemonicParsing="false" onAction="#mSearch" prefHeight="25.0" prefWidth="62.0" text="Search" />
+            <TableView fx:id="medical" layoutX="158.0" layoutY="177.0" prefHeight="260.0" prefWidth="538.0">
+               <columns>
+                  <TableColumn fx:id="mstdid" prefWidth="130.40008544921875" text="Student Id" />
+                  <TableColumn fx:id="mcsid" prefWidth="116.00006103515625" text="Course Id" />
+                  <TableColumn fx:id="mdate" prefWidth="139.199951171875" text="Date" />
+                  <TableColumn fx:id="mstatus" prefWidth="148.0" text="Status" />
+               </columns>
+            </TableView>
+            <Pane fx:id="topicPane" layoutX="84.0" layoutY="46.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" text="View Student Medical" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
       <Pane fx:id="homeLecPane" layoutX="300.0" layoutY="86.0" prefHeight="614.0" prefWidth="904.0" style="-fx-background-color: white;">
          <children>
             <HBox fx:id="HboxForLec_id" layoutX="55.0" layoutY="129.0" prefHeight="35.0" prefWidth="575.0" style="-fx-border-color: green; -fx-background-color: #f0f0f0;">

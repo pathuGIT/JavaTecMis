@@ -40,6 +40,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
+                  <Button fx:id="btn" mnemonicParsing="false" onAction="#AddMedical" text="Add Medical">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
               </buttons>
             </ButtonBar>
          </children>
@@ -192,6 +197,58 @@
             </TableView>
          </children>
       </Pane>
+      <Pane fx:id="TimetablePane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0">
+         <children>
+            <TableView fx:id="timeTable" layoutX="144.0" layoutY="188.0" prefHeight="207.0" prefWidth="503.0">
+              <columns>
+                <TableColumn fx:id="timeDepCol" prefWidth="296.800048828125" text="Department" />
+                <TableColumn fx:id="timeDowCol" prefWidth="203.199951171875" text="Download" />
+              </columns>
+            </TableView>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="5.0" prefHeight="40.0" prefWidth="280.0" text="Technical Officer Deatails" />
+               </children>
+            </Pane>
+            <Label fx:id="Tmsg" layoutX="426.0" layoutY="51.0" prefHeight="26.0" prefWidth="249.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="medicalPane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0" style="-fx-background-color: #d8fafa;">
+         <children>
+            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="5.0" prefHeight="40.0" prefWidth="280.0" text="Add Medical" />
+               </children>
+            </Pane>
+            <Label layoutX="148.0" layoutY="237.0" text="Student Id">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="msid" layoutX="281.0" layoutY="233.0" />
+            <Label layoutX="148.0" layoutY="273.0" text="Course Id">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="csid" layoutX="281.0" layoutY="269.0" />
+            <Label layoutX="148.0" layoutY="314.0" text="Date">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="mdate" layoutX="281.0" layoutY="310.0" />
+            <Label layoutX="148.0" layoutY="351.0" text="Medical Status">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="mststus" layoutX="281.0" layoutY="347.0" />
+            <Button layoutX="148.0" layoutY="395.0" mnemonicParsing="false" onAction="#Add" text="ADD" />
+            <Label fx:id="err" layoutX="150.0" layoutY="183.0" prefHeight="17.0" prefWidth="238.0" textFill="RED" />
+            <Button layoutX="229.0" layoutY="395.0" mnemonicParsing="false" onAction="#clear" text="Clear" />
+         </children>
+      </Pane>
       <Pane fx:id="homePane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0">
          <children>
             <Pane fx:id="topicPane" layoutX="99.0" layoutY="63.0" prefHeight="50.0" prefWidth="432.0">
@@ -275,22 +332,6 @@
                   </Label>
                </children>
             </HBox>
-         </children>
-      </Pane>
-      <Pane fx:id="TimetablePane" layoutX="281.0" layoutY="79.0" prefHeight="620.0" prefWidth="918.0">
-         <children>
-            <TableView fx:id="timeTable" layoutX="144.0" layoutY="188.0" prefHeight="207.0" prefWidth="503.0">
-              <columns>
-                <TableColumn fx:id="timeDepCol" prefWidth="296.800048828125" text="Department" />
-                <TableColumn fx:id="timeDowCol" prefWidth="203.199951171875" text="Download" />
-              </columns>
-            </TableView>
-            <Pane fx:id="topicPane" layoutX="65.0" layoutY="58.0" prefHeight="50.0" prefWidth="432.0">
-               <children>
-                  <Label layoutX="20.0" layoutY="5.0" prefHeight="40.0" prefWidth="280.0" text="Technical Officer Deatails" />
-               </children>
-            </Pane>
-            <Label fx:id="Tmsg" layoutX="426.0" layoutY="51.0" prefHeight="26.0" prefWidth="249.0" />
          </children>
       </Pane>
    </children>
