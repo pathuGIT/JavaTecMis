@@ -535,39 +535,44 @@ public class adminCtrl {
         std_dep1 = st_in_dep.getText();
         std_contact1 = st_in_mobile.getText();
         std_pass1 = st_in_pass1.getText();
+        if(!(std_id1.isEmpty())){
+            try {
+                String sql = "INSERT INTO student(Std_id,Name,Email,NIC,Dep_id,Contact,Password) VALUES (?,?,?,?,?,?,?)";
+                adminConnect conn = new adminConnect();
+                PreparedStatement pst = conn.connect().prepareStatement(sql);
 
-        try {
-            String sql = "INSERT INTO student(Std_id,Name,Email,NIC,Dep_id,Contact,Password) VALUES (?,?,?,?,?,?,?)";
-            adminConnect conn = new adminConnect();
-            PreparedStatement pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,std_id1);
+                pst.setString(2,std_name1);
+                pst.setString(3,std_email1);
+                pst.setString(4,std_nic1);
+                pst.setString(5,std_dep1);
+                pst.setString(6,std_contact1);
+                pst.setString(7,std_pass1);
+                pst.executeUpdate();
 
-            pst.setString(1,std_id1);
-            pst.setString(2,std_name1);
-            pst.setString(3,std_email1);
-            pst.setString(4,std_nic1);
-            pst.setString(5,std_dep1);
-            pst.setString(6,std_contact1);
-            pst.setString(7,std_pass1);
-            pst.executeUpdate();
+                Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
+                add_alert.setTitle("Student details");
+                add_alert.setHeaderText("Student Form");
+                add_alert.setContentText("Succsessfull Insert");
+                add_alert.showAndWait();
 
-            Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
-            add_alert.setTitle("Student details");
-            add_alert.setHeaderText("Student Form");
-            add_alert.setContentText("Succsessfull Insert");
-            add_alert.showAndWait();
+                st_in_regno.setText("Enter Reg_no");
+                st_in_name.setText("Enter Name");
+                st_in_email.setText("Enter Email");
+                st_in_nic.setText("Enter NIC ");
+                st_in_dep.setText("Enter department");
+                st_in_mobile.setText("Enter Mobile Number");
+                st_in_pass1.setText("Enter Password");
 
-            st_in_regno.setText("Enter Reg_no");
-            st_in_name.setText("Enter Name");
-            st_in_email.setText("Enter Email");
-            st_in_nic.setText("Enter NIC ");
-            st_in_dep.setText("Enter department");
-            st_in_mobile.setText("Enter Mobile Number");
-            st_in_pass1.setText("Enter Password");
-
-            StuTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                StuTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("Fill field");
+        }
+
     }
     public void StuTable(){
         adminConnect conn = new adminConnect();
@@ -635,22 +640,28 @@ public class adminCtrl {
         String stu_id = st_in_regno.getText();
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
-        try{
-            String sql = "DELETE FROM student WHERE Std_id=?";
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,stu_id);
-            pst.executeUpdate();
+        if(!(stu_id.isEmpty())){
+            try{
+                String sql = "DELETE FROM student WHERE Std_id=?";
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,stu_id);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Student details");
-            alert.setHeaderText("Student Form");
-            alert.setContentText("Successfully Deleted");
-            alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Student details");
+                alert.setHeaderText("Student Form");
+                alert.setContentText("Successfully Deleted");
+                alert.showAndWait();
 
-            StuTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                StuTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else {
+            field_text.setText("fill ID");
+        }
+
     }
 
     @FXML
@@ -666,30 +677,36 @@ public class adminCtrl {
 
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
-        try{
-            String sql = "UPDATE student SET Std_id=?, Name=?, Email=?, NIC=?, Dep_id=?, Contact=?, Password=? WHERE Std_id=?";
+        if(!(std_id1.isEmpty())){
+            try{
+                String sql = "UPDATE student SET Std_id=?, Name=?, Email=?, NIC=?, Dep_id=?, Contact=?, Password=? WHERE Std_id=?";
 
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,std_id1);
-            pst.setString(2,std_name1);
-            pst.setString(3,std_email1);
-            pst.setString(4,std_nic1);
-            pst.setString(5,std_dep1);
-            pst.setString(6,std_contact1);
-            pst.setString(7,std_pass1);
-            pst.setString(8,std_id1);
-            pst.executeUpdate();
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,std_id1);
+                pst.setString(2,std_name1);
+                pst.setString(3,std_email1);
+                pst.setString(4,std_nic1);
+                pst.setString(5,std_dep1);
+                pst.setString(6,std_contact1);
+                pst.setString(7,std_pass1);
+                pst.setString(8,std_id1);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Student details");
-            alert.setHeaderText("Student Form");
-            alert.setContentText("Successfully Edited");
-            alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Student details");
+                alert.setHeaderText("Student Form");
+                alert.setContentText("Successfully Edited");
+                alert.showAndWait();
 
-            StuTable();
-        }catch (SQLException e){
-            throw new RuntimeException(e);
+                StuTable();
+            }catch (SQLException e){
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("Fill the filds");
+        }
+
     }
     //++++++++++++++++++++++student search++++++++++++++++++++++++++++++
     @FXML
@@ -778,28 +795,34 @@ public class adminCtrl {
         lec_dep = lec_in_dep.getText();
 
         String sql = "INSERT INTO lecture(Lec_id,Name,Email,Password,Contact,Dep_id) VALUE(?,?,?,?,?,?);";
-        try{
-            adminConnect conn = new adminConnect();
-            PreparedStatement pst = conn.connect().prepareStatement(sql);
+        if(!(lec_id.isEmpty())){
+            try{
+                adminConnect conn = new adminConnect();
+                PreparedStatement pst = conn.connect().prepareStatement(sql);
 
-            pst.setString(1,lec_id);
-            pst.setString(2,lec_name);
-            pst.setString(3,lec_mail);
-            pst.setString(4,lec_pass);
-            pst.setString(5,lec_cont);
-            pst.setString(6,lec_dep);
-            pst.executeUpdate();
+                pst.setString(1,lec_id);
+                pst.setString(2,lec_name);
+                pst.setString(3,lec_mail);
+                pst.setString(4,lec_pass);
+                pst.setString(5,lec_cont);
+                pst.setString(6,lec_dep);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Lecturer Details");
-            alert.setHeaderText("Lecturer Form");
-            alert.setContentText("Successfully Added");
-            alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Lecturer Details");
+                alert.setHeaderText("Lecturer Form");
+                alert.setContentText("Successfully Added");
+                alert.showAndWait();
 
-            LecTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                LecTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("fill Fields");
+        }
+
     }
 
     @FXML
@@ -808,20 +831,26 @@ public class adminCtrl {
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
         String sql = "DELETE FROM lecture WHERE Lec_id=?";
-        try{
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,lec_id);
-            pst.executeUpdate();
+        if(!(lec_id.isEmpty())){
+            try{
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,lec_id);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Lecturer details");
-            alert.setHeaderText("Lecturer Form");
-            alert.setContentText("Successfully Deleted");
-            alert.showAndWait();
-            LecTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Lecturer details");
+                alert.setHeaderText("Lecturer Form");
+                alert.setContentText("Successfully Deleted");
+                alert.showAndWait();
+                LecTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("fill ID");
+        }
+
     }
 
     @FXML
@@ -837,27 +866,33 @@ public class adminCtrl {
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
         String sql = "UPDATE lecture SET Lec_id=?, Name=?, Email=?, Password=?, Contact=?, Dep_id=? WHERE Lec_id=?";
-        try{
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,lec_id);
-            pst.setString(2,lec_name);
-            pst.setString(3,lec_mail);
-            pst.setString(4,lec_pass);
-            pst.setString(5,lec_cont);
-            pst.setString(6,lec_dep);
-            pst.setString(7,lec_id);
-            pst.executeUpdate();
+        if(!(lec_id.isEmpty())){
+            try{
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,lec_id);
+                pst.setString(2,lec_name);
+                pst.setString(3,lec_mail);
+                pst.setString(4,lec_pass);
+                pst.setString(5,lec_cont);
+                pst.setString(6,lec_dep);
+                pst.setString(7,lec_id);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Lecturer Details");
-            alert.setHeaderText("Lecturer Form");
-            alert.setContentText("Successfully Updated");
-            alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Lecturer Details");
+                alert.setHeaderText("Lecturer Form");
+                alert.setContentText("Successfully Updated");
+                alert.showAndWait();
 
-            LecTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                LecTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else {
+            field_text.setText("fill fields");
+        }
+
     }
     @FXML
     void Lecture_search(ActionEvent event) {
@@ -948,26 +983,32 @@ public class adminCtrl {
         String sql ="INSERT INTO course(Crs_id,Name,Type,Credit,Dep_id,Lec_id) VALUE(?,?,?,?,?,?);";
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
-        try{
-            pst = conn.connect().prepareStatement(sql);
+        if(!(co_id.isEmpty())){
+            try{
+                pst = conn.connect().prepareStatement(sql);
 
-            pst.setString(1,co_id);
-            pst.setString(2,co_name);
-            pst.setString(3,co_type);
-            pst.setString(4,co_credit);
-            pst.setString(5,co_depID);
-            pst.setString(6,co_lecID);
-            pst.executeUpdate();
+                pst.setString(1,co_id);
+                pst.setString(2,co_name);
+                pst.setString(3,co_type);
+                pst.setString(4,co_credit);
+                pst.setString(5,co_depID);
+                pst.setString(6,co_lecID);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Courses Details");
-            alert.setHeaderText("Courses Form");
-            alert.setContentText("Successfully Added");
-            alert.showAndWait();
-            CoTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Courses Details");
+                alert.setHeaderText("Courses Form");
+                alert.setContentText("Successfully Added");
+                alert.showAndWait();
+                CoTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else {
+            field_text.setText("Fill all fields");
+        }
+
     }
 
     @FXML
@@ -976,20 +1017,26 @@ public class adminCtrl {
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
         String sql = "DELETE FROM course WHERE Crs_id=?";
-        try{
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,co_id);
-            pst.executeUpdate();
+        if(!(co_id.isEmpty())){
+            try{
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,co_id);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Courses details");
-            alert.setHeaderText("Courses Form");
-            alert.setContentText("Successfully Deleted");
-            alert.showAndWait();
-            CoTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Courses details");
+                alert.setHeaderText("Courses Form");
+                alert.setContentText("Successfully Deleted");
+                alert.showAndWait();
+                CoTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("Enter Id");
+        }
+
     }
 
     @FXML
@@ -1005,27 +1052,33 @@ public class adminCtrl {
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
         String sql = "UPDATE course SET Crs_id=?, Name=?, Type=?, Credit=?, Dep_id=?,Lec_id=? WHERE Crs_id=?";
-        try{
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,co_id);
-            pst.setString(2,co_name);
-            pst.setString(3,co_type);
-            pst.setString(4,co_credit);
-            pst.setString(5,co_depID);
-            pst.setString(6,co_lecID);
-            pst.setString(7,co_id);
-            pst.executeUpdate();
+        if(!(co_id.isEmpty())){
+            try{
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,co_id);
+                pst.setString(2,co_name);
+                pst.setString(3,co_type);
+                pst.setString(4,co_credit);
+                pst.setString(5,co_depID);
+                pst.setString(6,co_lecID);
+                pst.setString(7,co_id);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Course Details");
-            alert.setHeaderText("Course Form");
-            alert.setContentText("Successfully Updated");
-            alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Course Details");
+                alert.setHeaderText("Course Form");
+                alert.setContentText("Successfully Updated");
+                alert.showAndWait();
 
-            CoTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                CoTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("Fill the Filds");
+        }
+
     }
     //+++++++++++++++++++++++++Notice++++++++++++++++++++++++++++++
     public void NoTable(){

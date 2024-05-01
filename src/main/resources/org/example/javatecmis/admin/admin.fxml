@@ -165,349 +165,6 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane fx:id="lecturepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="lecture_table" layoutX="14.0" layoutY="14.0" prefHeight="339.0" prefWidth="841.0">
-               <columns>
-                  <TableColumn fx:id="lec_id" prefWidth="77.60000610351562" text="Lec_id" />
-                  <TableColumn fx:id="lec_name" prefWidth="120.80001831054688" text="Name" />
-                  <TableColumn fx:id="lec_email" prefWidth="150.39993286132812" text="Email" />
-                  <TableColumn fx:id="lec_pass" prefWidth="142.39996337890625" text="Password" />
-                  <TableColumn fx:id="lec_cont" prefWidth="144.79998779296875" text="Contact" />
-                  <TableColumn fx:id="lec_dep" prefWidth="274.39996337890625" text="Department" />
-               </columns>
-            </TableView>
-            <Label layoutX="14.0" layoutY="394.0" prefHeight="21.0" prefWidth="85.0" text="Lec_id">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="423.0" prefHeight="21.0" prefWidth="85.0" text="Name">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="454.0" prefHeight="21.0" prefWidth="85.0" text="Email">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="484.0" prefHeight="21.0" prefWidth="85.0" text="Password">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="512.0" prefHeight="21.0" prefWidth="85.0" text="Contact">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="540.0" prefHeight="21.0" prefWidth="100.0" text="Department">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="lec_in_id" layoutX="169.0" layoutY="392.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="lec_in_email" layoutX="169.0" layoutY="452.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="lec_in_pass" layoutX="169.0" layoutY="482.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="lec_in_con" layoutX="169.0" layoutY="510.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="lec_in_dep" layoutX="169.0" layoutY="538.0" prefHeight="25.0" prefWidth="205.0" />
-            <Button fx:id="btn_add" layoutX="401.0" layoutY="414.0" mnemonicParsing="false" onAction="#lecture_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_edit" layoutX="401.0" layoutY="463.0" mnemonicParsing="false" onAction="#lecture_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_delete" layoutX="401.0" layoutY="514.0" mnemonicParsing="false" onAction="#lecture_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Text fx:id="imp_msg" layoutX="14.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D01 = Information and Comminication Technology D02 =  Bio System Technology D03 = Engeneering Technology D04 = Multy Dicyplinary" wrappingWidth="546.9366455078125" />
-            <TextField fx:id="lec_in_name" layoutX="169.0" layoutY="422.0" prefHeight="25.0" prefWidth="205.0" />
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
-      <Pane fx:id="cousepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="couse_table" layoutX="14.0" layoutY="22.0" prefHeight="322.0" prefWidth="841.0">
-              <columns>
-                <TableColumn fx:id="co_id" prefWidth="93.5999755859375" text="Crs_id" />
-                <TableColumn fx:id="co_name" prefWidth="140.0" text="Name" />
-                  <TableColumn fx:id="co_type" prefWidth="93.5999755859375" text="Type" />
-                  <TableColumn fx:id="co_credit" prefWidth="66.4000244140625" text="Credit" />
-                  <TableColumn fx:id="co_depID" prefWidth="96.79998779296875" text="Dep_id" />
-                  <TableColumn fx:id="co_dep" prefWidth="172.79998779296875" text="Department" />
-                  <TableColumn fx:id="co_lecID" prefWidth="63.19989013671875" text="Lec_id" />
-                  <TableColumn fx:id="co_lecNAME" prefWidth="113.0" text="Lec_Name" />
-              </columns>
-            </TableView>
-            <Label layoutX="16.0" layoutY="400.0" text="Name">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="18.0" layoutY="369.0" text="Crs_Id">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="16.0" layoutY="436.0" text="Type">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="16.0" layoutY="472.0" text="Credit">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="co_in_regno1" layoutX="160.0" layoutY="368.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="co_in_name1" layoutX="160.0" layoutY="402.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="co_in_type1" layoutX="160.0" layoutY="438.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="co_in_credit1" layoutX="160.0" layoutY="474.0" prefHeight="25.0" prefWidth="205.0" />
-            <Label layoutX="16.0" layoutY="509.0" text="Dep_id">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="co_in_dep1" layoutX="160.0" layoutY="511.0" prefHeight="25.0" prefWidth="205.0" />
-            <Button fx:id="btn_add" layoutX="392.0" layoutY="417.0" mnemonicParsing="false" onAction="#couse_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_edit" layoutX="392.0" layoutY="469.0" mnemonicParsing="false" onAction="#couse_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_delete" layoutX="392.0" layoutY="519.0" mnemonicParsing="false" onAction="#couse_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="18.0" layoutY="543.0" text="Lec_id">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="co_in_lecid1" layoutX="162.0" layoutY="545.0" prefHeight="25.0" prefWidth="205.0" />
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
-      <Pane fx:id="homepane" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="73.0" layoutY="46.0" mnemonicParsing="false" onAction="#student_pane" prefHeight="97.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Student" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <DropShadow height="25.0" radius="12.0" width="25.0" />
-               </effect>
-               <opaqueInsets>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </opaqueInsets>
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/Student%20Male.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="73.0" layoutY="176.0" mnemonicParsing="false" onAction="#lecture_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Lecturers" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/Training.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <effect>
-                  <DropShadow height="25.0" radius="12.0" width="25.0" />
-               </effect>
-            </Button>
-            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="255.0" layoutY="46.0" mnemonicParsing="false" onAction="#student_search_pain" prefHeight="97.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Student Search" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <DropShadow height="25.0" radius="12.0" width="25.0" />
-               </effect>
-               <opaqueInsets>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </opaqueInsets>
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/Search.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="255.0" layoutY="176.0" mnemonicParsing="false" onAction="#lecture_search_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Lecturers Search" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/Search%20Client.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BOTTOM_CENTER" layoutX="73.0" layoutY="328.0" mnemonicParsing="false" onAction="#couse_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Couses" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Button alignment="BOTTOM_CENTER" layoutX="255.0" layoutY="328.0" mnemonicParsing="false" onAction="#nitice_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Notice" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <ImageView fitHeight="65.0" fitWidth="100.0" layoutX="280.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <Button alignment="BOTTOM_CENTER" layoutX="73.0" layoutY="497.0" mnemonicParsing="false" onAction="#timetable_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Time Table" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Button alignment="BOTTOM_CENTER" layoutX="255.0" layoutY="497.0" mnemonicParsing="false" onAction="#officer_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Technical Officer" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
-      <Pane fx:id="studentpain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="student_table" layoutX="18.0" layoutY="23.0" prefHeight="322.0" prefWidth="835.0">
-              <columns>
-                <TableColumn fx:id="st_regno" prefWidth="97.5999755859375" text="Student Reg_No" />
-                <TableColumn fx:id="st_name" prefWidth="103.99990844726562" text="Name" />
-                  <TableColumn fx:id="st_mail" prefWidth="142.4000244140625" text="E-Mail" />
-                  <TableColumn fx:id="st_nic" minWidth="2.40008544921875" prefWidth="135.20001220703125" text="National Identy Card" />
-                  <TableColumn fx:id="st_dep1" prefWidth="160.79998779296875" text="Department" />
-                  <TableColumn fx:id="st_mobile" prefWidth="97.60003662109375" text="Contact Number" />
-                  <TableColumn fx:id="st_pass" prefWidth="110.0" text="Password" />
-              </columns>
-            </TableView>
-            <Label layoutX="54.0" layoutY="386.0" text="Name">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="355.0" text="Reg.No">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="54.0" layoutY="422.0" text="E-Mail">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="54.0" layoutY="458.0" text="NIC">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="st_in_regno" layoutX="198.0" layoutY="354.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_name" layoutX="198.0" layoutY="388.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_email" layoutX="198.0" layoutY="424.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_nic" layoutX="198.0" layoutY="460.0" prefHeight="25.0" prefWidth="205.0" />
-            <Label layoutX="54.0" layoutY="495.0" text="Department">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="st_in_dep" layoutX="198.0" layoutY="497.0" prefHeight="25.0" prefWidth="205.0" />
-            <Button fx:id="btn_add" layoutX="431.0" layoutY="389.0" mnemonicParsing="false" onAction="#student_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_edit" layoutX="431.0" layoutY="441.0" mnemonicParsing="false" onAction="#student_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_delete" layoutX="431.0" layoutY="491.0" mnemonicParsing="false" onAction="#student_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="56.0" layoutY="529.0" text="Contact Number">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="st_in_mobile" layoutX="200.0" layoutY="531.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_pass1" layoutX="200.0" layoutY="559.0" prefHeight="25.0" prefWidth="205.0" />
-            <Label layoutX="56.0" layoutY="558.0" text="Password">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="field_text1" layoutX="270.0" layoutY="591.0" prefHeight="17.0" prefWidth="61.0" />
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
       <Pane fx:id="officerpane" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
          <effect>
             <DropShadow />
@@ -734,6 +391,384 @@
                </font>
             </Button>
             <Label fx:id="field_text" layoutX="247.0" layoutY="584.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="studentpain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="student_table" layoutX="18.0" layoutY="23.0" prefHeight="322.0" prefWidth="835.0">
+              <columns>
+                <TableColumn fx:id="st_regno" prefWidth="97.5999755859375" text="Student Reg_No" />
+                <TableColumn fx:id="st_name" prefWidth="103.99990844726562" text="Name" />
+                  <TableColumn fx:id="st_mail" prefWidth="142.4000244140625" text="E-Mail" />
+                  <TableColumn fx:id="st_nic" minWidth="2.40008544921875" prefWidth="135.20001220703125" text="National Identy Card" />
+                  <TableColumn fx:id="st_dep1" prefWidth="160.79998779296875" text="Department" />
+                  <TableColumn fx:id="st_mobile" prefWidth="97.60003662109375" text="Contact Number" />
+                  <TableColumn fx:id="st_pass" prefWidth="110.0" text="Password" />
+              </columns>
+            </TableView>
+            <Label layoutX="54.0" layoutY="386.0" text="Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="355.0" text="Reg.No">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="422.0" text="E-Mail">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="458.0" text="NIC">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="st_in_regno" layoutX="198.0" layoutY="354.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_name" layoutX="198.0" layoutY="388.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_email" layoutX="198.0" layoutY="424.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_nic" layoutX="198.0" layoutY="460.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label layoutX="54.0" layoutY="495.0" text="Department">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="st_in_dep" layoutX="198.0" layoutY="497.0" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="btn_add" layoutX="431.0" layoutY="389.0" mnemonicParsing="false" onAction="#student_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_edit" layoutX="431.0" layoutY="441.0" mnemonicParsing="false" onAction="#student_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_delete" layoutX="431.0" layoutY="491.0" mnemonicParsing="false" onAction="#student_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="56.0" layoutY="529.0" text="Contact Number">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="st_in_mobile" layoutX="200.0" layoutY="531.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_pass1" layoutX="200.0" layoutY="559.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label layoutX="56.0" layoutY="558.0" text="Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="field_text1" layoutX="270.0" layoutY="591.0" prefHeight="17.0" prefWidth="61.0" />
+            <Label fx:id="field_text" layoutX="287.0" layoutY="591.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="lecturepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="lecture_table" layoutX="14.0" layoutY="14.0" prefHeight="339.0" prefWidth="841.0">
+               <columns>
+                  <TableColumn fx:id="lec_id" prefWidth="77.60000610351562" text="Lec_id" />
+                  <TableColumn fx:id="lec_name" prefWidth="120.80001831054688" text="Name" />
+                  <TableColumn fx:id="lec_email" prefWidth="150.39993286132812" text="Email" />
+                  <TableColumn fx:id="lec_pass" prefWidth="142.39996337890625" text="Password" />
+                  <TableColumn fx:id="lec_cont" prefWidth="144.79998779296875" text="Contact" />
+                  <TableColumn fx:id="lec_dep" prefWidth="274.39996337890625" text="Department" />
+               </columns>
+            </TableView>
+            <Label layoutX="14.0" layoutY="370.0" prefHeight="21.0" prefWidth="85.0" text="Lec_id">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="399.0" prefHeight="21.0" prefWidth="85.0" text="Name">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="430.0" prefHeight="21.0" prefWidth="85.0" text="Email">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="460.0" prefHeight="21.0" prefWidth="85.0" text="Password">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="488.0" prefHeight="21.0" prefWidth="85.0" text="Contact">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="516.0" prefHeight="21.0" prefWidth="100.0" text="Department">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lec_in_id" layoutX="169.0" layoutY="368.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_email" layoutX="169.0" layoutY="428.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_pass" layoutX="169.0" layoutY="458.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_con" layoutX="169.0" layoutY="486.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="lec_in_dep" layoutX="169.0" layoutY="514.0" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="btn_add" layoutX="401.0" layoutY="390.0" mnemonicParsing="false" onAction="#lecture_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_edit" layoutX="401.0" layoutY="439.0" mnemonicParsing="false" onAction="#lecture_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_delete" layoutX="401.0" layoutY="490.0" mnemonicParsing="false" onAction="#lecture_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="imp_msg" layoutX="23.0" layoutY="597.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D01 = Information and Comminication Technology D02 =  Bio System Technology D03 = Engeneering Technology D04 = Multy Dicyplinary" wrappingWidth="546.9366455078125" />
+            <TextField fx:id="lec_in_name" layoutX="169.0" layoutY="398.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label fx:id="field_text" layoutX="258.0" layoutY="563.0" />
+            <Label fx:id="field_text" layoutX="258.0" layoutY="546.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="cousepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="couse_table" layoutX="14.0" layoutY="22.0" prefHeight="322.0" prefWidth="841.0">
+              <columns>
+                <TableColumn fx:id="co_id" prefWidth="93.5999755859375" text="Crs_id" />
+                <TableColumn fx:id="co_name" prefWidth="140.0" text="Name" />
+                  <TableColumn fx:id="co_type" prefWidth="93.5999755859375" text="Type" />
+                  <TableColumn fx:id="co_credit" prefWidth="66.4000244140625" text="Credit" />
+                  <TableColumn fx:id="co_depID" prefWidth="96.79998779296875" text="Dep_id" />
+                  <TableColumn fx:id="co_dep" prefWidth="172.79998779296875" text="Department" />
+                  <TableColumn fx:id="co_lecID" prefWidth="63.19989013671875" text="Lec_id" />
+                  <TableColumn fx:id="co_lecNAME" prefWidth="113.0" text="Lec_Name" />
+              </columns>
+            </TableView>
+            <Label layoutX="16.0" layoutY="400.0" text="Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="18.0" layoutY="369.0" text="Crs_Id">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="436.0" text="Type">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="472.0" text="Credit">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="co_in_regno1" layoutX="160.0" layoutY="368.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="co_in_name1" layoutX="160.0" layoutY="402.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="co_in_type1" layoutX="160.0" layoutY="438.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="co_in_credit1" layoutX="160.0" layoutY="474.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label layoutX="16.0" layoutY="509.0" text="Dep_id">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="co_in_dep1" layoutX="160.0" layoutY="511.0" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="btn_add" layoutX="392.0" layoutY="417.0" mnemonicParsing="false" onAction="#couse_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_edit" layoutX="392.0" layoutY="469.0" mnemonicParsing="false" onAction="#couse_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_delete" layoutX="392.0" layoutY="519.0" mnemonicParsing="false" onAction="#couse_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="18.0" layoutY="543.0" text="Lec_id">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="co_in_lecid1" layoutX="162.0" layoutY="545.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label fx:id="field_text" layoutX="250.0" layoutY="581.0" prefHeight="17.0" prefWidth="42.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="homepane" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="65.0" layoutY="127.0" mnemonicParsing="false" onAction="#student_pane" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Student" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow height="25.0" radius="12.0" width="25.0" />
+               </effect>
+               <opaqueInsets>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </opaqueInsets>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/Student%20Male.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="65.0" layoutY="327.0" mnemonicParsing="false" onAction="#lecture_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Lecturers" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/Training.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow height="25.0" radius="12.0" width="25.0" />
+               </effect>
+            </Button>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="247.0" layoutY="127.0" mnemonicParsing="false" onAction="#student_search_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Student Search" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow height="25.0" radius="12.0" width="25.0" />
+               </effect>
+               <opaqueInsets>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </opaqueInsets>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/Search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="247.0" layoutY="327.0" mnemonicParsing="false" onAction="#lecture_search_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Lecturers Search" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/Search%20Client.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="439.0" layoutY="127.0" mnemonicParsing="false" onAction="#couse_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Couses" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/Course%20Assign.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="621.0" layoutY="127.0" mnemonicParsing="false" onAction="#nitice_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Notice" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/Noticeboard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="65.0" fitWidth="100.0" layoutX="280.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="447.0" layoutY="327.0" mnemonicParsing="false" onAction="#timetable_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Time Table" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/Time.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="629.0" layoutY="327.0" mnemonicParsing="false" onAction="#officer_pain" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Technical Officer" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/Man%20Police%20Officer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
          <effect>
             <DropShadow />
