@@ -6,6 +6,10 @@
     -fx-background-color: #00002c;
 }
 
+#logoutbtn:hover{
+    -fx-background-color: #c71313;
+}
+
 .button{
     -fx-background-color: #242551;
     -fx-background-radius: 45;
@@ -18,15 +22,7 @@
 }
 
 
-/*
-.lout:hover{
-    -fx-background-color: #ffffff;
-    color: #111111;
-
-}
-*/
-
 .navi {
-    -fx-background-color: #fca903;
+    -fx-background-color: #c6fc03;
 }
 
