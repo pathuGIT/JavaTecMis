@@ -41,6 +41,9 @@ import java.util.logging.Logger;
 import static java.lang.Character.getName;
 
 public class adminCtrl {
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     int myIndex;
     int id;
     private Stage stage;
@@ -1571,11 +1574,21 @@ public class adminCtrl {
         l.setText("Kamal");
     }
 
-    public void loginToAdmin(ActionEvent event) throws IOException {
+    public void loginToAdmin(ActionEvent event1) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("admin.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event1.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("admin.css").toExternalForm());
+
+        //      X & Y move access from mouse
+        root.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+        root.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
         stage.setScene(scene);
         stage.show();
     }
