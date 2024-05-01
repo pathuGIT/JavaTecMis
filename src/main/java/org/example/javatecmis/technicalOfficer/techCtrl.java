@@ -128,6 +128,10 @@ public class techCtrl {
     Button dwnld;
     @FXML
     private Label Tmsg;
+    @FXML
+    private  Label attendlable;
+    @FXML
+    private Label notyup;
 
 
     @FXML
@@ -343,14 +347,64 @@ public void setValueFactory(){
                 pst.setString(2, r_num.getText());
                 pst.setString(3, c_num.getText());
                 pst.setString(4, ai_num.getText());
-                pst.executeUpdate();
+                int rowsAffected = pst.executeUpdate();
+                if (rowsAffected > 0) {
+                    attendlable.setText("Successfully updated.");
+                } else {
+                    attendlable.setText("No records updated.");
+                }
+                //pst.executeUpdate();
             }
 
         }catch(Exception e){
             System.out.println(e);
         }
     }
+    @FXML
+    void insertattendance(){
+        try {
+            String sql = "SELECT * FROM attendance WHERE A_id = ?";
+            techConnect DB = new techConnect();
 
+
+            if(r_num.getText().isEmpty() && c_num.getText().isEmpty()&& co_num.getText().isEmpty()&& ai_num.getText().isEmpty()){
+
+                PreparedStatement pst = DB.connect().prepareStatement(sql);
+                pst.setString(1,ai_num.getText());
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    ai_num.setText(rs.getString(1));
+                    r_num.setText(rs.getString(3));
+                    c_num.setText(rs.getString(4));
+                    co_num.setText(rs.getString(2));
+
+                } else {
+                    System.out.println("No Data for the student with ID: " + ai_num);
+                }
+
+            }else{
+                String query = "INSERT INTO attendance (A_id,Count,Std_id,Crs_id) VALUES  (  ?,  ? ,  ? , ?)";
+
+                PreparedStatement pst = DB.connect().prepareStatement(query);
+                pst.setString(2, co_num.getText());
+                pst.setString(3, r_num.getText());
+                pst.setString(4,c_num.getText());
+                pst.setString(1,ai_num.getText());
+                int rowsAffected = pst.executeUpdate();
+                if (rowsAffected > 0) {
+                    attendlable.setText("Successfully updated.");
+                } else {
+                    attendlable.setText("No records updated.");
+                }
+                pst.executeUpdate();
+            }
+
+        }catch(Exception e){
+            System.out.println(e);
+
+        }
+    }
     @FXML
     void updateTOprofile(){
         System.out.println("call");
@@ -382,10 +436,17 @@ public void setValueFactory(){
                 pst.setString(2, upcontact.getText());
                 pst.setString(3, userSession());
                 pst.executeUpdate();
+                int rowsAffected = pst.executeUpdate();
+                if (rowsAffected > 0) {
+                    notyup.setText("Successfully updated.");
+                } else {
+                    notyup.setText("No records updated.");
+                }
             }
 
         }catch(Exception e){
             System.out.println(e);
+
         }
     }
 
@@ -424,9 +485,18 @@ public void setValueFactory(){
                 pst.setString(2, userSession());
                 pst.executeUpdate();
                 displayImageFromDB();
+                int rowsAffected = pst.executeUpdate();
+                if (rowsAffected > 0) {
+                    notyup.setText("Successfully updated Image.");
+                } else {
+                    notyup.setText("No Image updated.");
+                }
+
+
             } catch (SQLException ex) {
                 Logger lgr = Logger.getLogger(Student.class.getName());
                 lgr.log(Level.SEVERE, ex.getMessage(), ex);
+
             }
         }
     }
