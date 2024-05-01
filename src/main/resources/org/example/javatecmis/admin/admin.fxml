@@ -14,23 +14,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: rgb(237, 241, 242);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javatecmis.admin.adminCtrl">
    <children>
-      <Pane prefHeight="700.0" prefWidth="338.0" style="-fx-background-color: #e63946;">
-         <children>
-            <Label fx:id="l" alignment="CENTER" layoutX="101.0" layoutY="286.0" prefHeight="34.0" prefWidth="85.0" style="-fx-font-weight: bold;" text="Admin" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
       <Pane layoutX="338.0" prefHeight="74.0" prefWidth="862.0" style="-fx-background-color: #ee7600;">
          <children>
             <Button layoutX="735.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="100.0" style="-fx-background-color: #000000; -fx-background-radius: 16; -fx-border-color: white; -fx-border-radius: 16; -fx-border-width: 1;" text="Logout" textFill="WHITE">
@@ -176,97 +165,6 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane fx:id="noticepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="notice_table" layoutX="14.0" layoutY="14.0" prefHeight="329.0" prefWidth="847.0">
-              <columns>
-                <TableColumn fx:id="no_topic" prefWidth="175.19998168945312" text="Topic" />
-                  <TableColumn fx:id="no_notice" prefWidth="493.60003662109375" text="Notice" />
-                  <TableColumn fx:id="no_date" prefWidth="116.7999267578125" text="Date" />
-                  <TableColumn fx:id="no_id" prefWidth="60.7999267578125" text="ID" />
-              </columns>
-            </TableView>
-            <Label layoutX="14.0" layoutY="388.0" text="Name">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="453.0" prefHeight="27.0" prefWidth="61.0" text="Notice">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="no_in_name" layoutX="158.0" layoutY="390.0" prefHeight="25.0" prefWidth="205.0" />
-            <Button fx:id="btn_add" layoutX="389.0" layoutY="381.0" mnemonicParsing="false" onAction="#notice_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <TextArea fx:id="no_in_notice" layoutX="158.0" layoutY="462.0" prefHeight="133.0" prefWidth="205.0" />
-            <Label layoutX="16.0" layoutY="420.0" text="Date">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="355.0" text="Id">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="no_in_id" layoutX="158.0" layoutY="357.0" prefHeight="25.0" prefWidth="205.0" />
-            <DatePicker fx:id="no_in_date" layoutX="158.0" layoutY="421.0" prefHeight="25.0" prefWidth="205.0" />
-            <Button fx:id="btn_delete" layoutX="389.0" layoutY="433.0" mnemonicParsing="false" onAction="#notice_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
-      <Pane fx:id="timetablepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="time_table" layoutX="14.0" layoutY="14.0" prefHeight="347.0" prefWidth="835.0">
-              <columns>
-                <TableColumn fx:id="tt_id" prefWidth="105.5999755859375" text="ID" />
-                <TableColumn fx:id="tt_dep" prefWidth="316.0000305175781" text="Department" />
-                  <TableColumn fx:id="tt_url" prefWidth="412.79998779296875" text="URL" />
-              </columns>
-            </TableView>
-            <Label layoutX="14.0" layoutY="422.0" text="Department">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tt_in_dep" layoutX="158.0" layoutY="424.0" prefHeight="25.0" prefWidth="205.0" />
-            <Button fx:id="btn_add" layoutX="389.0" layoutY="391.0" mnemonicParsing="false" onAction="#timetable_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_delete" layoutX="389.0" layoutY="442.0" mnemonicParsing="false" onAction="#timetable_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="14.0" layoutY="389.0" text="Id">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tt_in_id" layoutX="158.0" layoutY="391.0" prefHeight="25.0" prefWidth="205.0" />
-            <Label layoutX="14.0" layoutY="456.0" text="URL">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tt_in_url" layoutX="158.0" layoutY="458.0" prefHeight="25.0" prefWidth="205.0" />
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
       <Pane fx:id="lecturepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
          <children>
             <TableView fx:id="lecture_table" layoutX="14.0" layoutY="14.0" prefHeight="339.0" prefWidth="841.0">
@@ -406,81 +304,6 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane fx:id="studentpain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
-         <children>
-            <TableView fx:id="student_table" layoutX="18.0" layoutY="23.0" prefHeight="347.0" prefWidth="835.0">
-              <columns>
-                <TableColumn fx:id="st_regno" prefWidth="97.5999755859375" text="Student Reg_No" />
-                <TableColumn fx:id="st_name" prefWidth="103.99990844726562" text="Name" />
-                  <TableColumn fx:id="st_mail" prefWidth="142.4000244140625" text="E-Mail" />
-                  <TableColumn fx:id="st_nic" minWidth="2.40008544921875" prefWidth="135.20001220703125" text="National Identy Card" />
-                  <TableColumn fx:id="st_dep1" prefWidth="160.79998779296875" text="Department" />
-                  <TableColumn fx:id="st_mobile" prefWidth="97.60003662109375" text="Contact Number" />
-                  <TableColumn fx:id="st_pass" prefWidth="110.0" text="Password" />
-              </columns>
-            </TableView>
-            <Label layoutX="56.0" layoutY="419.0" text="Name">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="58.0" layoutY="388.0" text="Reg.No">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="455.0" text="E-Mail">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="491.0" text="NIC">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="st_in_regno" layoutX="200.0" layoutY="387.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_name" layoutX="200.0" layoutY="421.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_email" layoutX="200.0" layoutY="457.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_nic" layoutX="200.0" layoutY="493.0" prefHeight="25.0" prefWidth="205.0" />
-            <Label layoutX="56.0" layoutY="528.0" text="Department">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="st_in_dep" layoutX="200.0" layoutY="530.0" prefHeight="25.0" prefWidth="205.0" />
-            <Button fx:id="btn_add" layoutX="432.0" layoutY="436.0" mnemonicParsing="false" onAction="#student_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_edit" layoutX="432.0" layoutY="488.0" mnemonicParsing="false" onAction="#student_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_delete" layoutX="432.0" layoutY="538.0" mnemonicParsing="false" onAction="#student_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="58.0" layoutY="562.0" text="Contact Number">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="st_in_mobile" layoutX="202.0" layoutY="564.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="st_in_pass1" layoutX="202.0" layoutY="592.0" prefHeight="25.0" prefWidth="205.0" />
-            <Label layoutX="58.0" layoutY="591.0" text="Password">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
       <Pane fx:id="homepane" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
          <children>
             <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="73.0" layoutY="46.0" mnemonicParsing="false" onAction="#student_pane" prefHeight="97.0" prefWidth="150.0" style="-fx-background-color: #092635; -fx-background-radius: 16;" text="Student" textFill="WHITE">
@@ -609,6 +432,82 @@
             <DropShadow />
          </effect>
       </Pane>
+      <Pane fx:id="studentpain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="student_table" layoutX="18.0" layoutY="23.0" prefHeight="322.0" prefWidth="835.0">
+              <columns>
+                <TableColumn fx:id="st_regno" prefWidth="97.5999755859375" text="Student Reg_No" />
+                <TableColumn fx:id="st_name" prefWidth="103.99990844726562" text="Name" />
+                  <TableColumn fx:id="st_mail" prefWidth="142.4000244140625" text="E-Mail" />
+                  <TableColumn fx:id="st_nic" minWidth="2.40008544921875" prefWidth="135.20001220703125" text="National Identy Card" />
+                  <TableColumn fx:id="st_dep1" prefWidth="160.79998779296875" text="Department" />
+                  <TableColumn fx:id="st_mobile" prefWidth="97.60003662109375" text="Contact Number" />
+                  <TableColumn fx:id="st_pass" prefWidth="110.0" text="Password" />
+              </columns>
+            </TableView>
+            <Label layoutX="54.0" layoutY="386.0" text="Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="355.0" text="Reg.No">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="422.0" text="E-Mail">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="458.0" text="NIC">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="st_in_regno" layoutX="198.0" layoutY="354.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_name" layoutX="198.0" layoutY="388.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_email" layoutX="198.0" layoutY="424.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_nic" layoutX="198.0" layoutY="460.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label layoutX="54.0" layoutY="495.0" text="Department">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="st_in_dep" layoutX="198.0" layoutY="497.0" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="btn_add" layoutX="431.0" layoutY="389.0" mnemonicParsing="false" onAction="#student_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_edit" layoutX="431.0" layoutY="441.0" mnemonicParsing="false" onAction="#student_edit" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: blue;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_delete" layoutX="431.0" layoutY="491.0" mnemonicParsing="false" onAction="#student_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="56.0" layoutY="529.0" text="Contact Number">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="st_in_mobile" layoutX="200.0" layoutY="531.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="st_in_pass1" layoutX="200.0" layoutY="559.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label layoutX="56.0" layoutY="558.0" text="Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="field_text1" layoutX="270.0" layoutY="591.0" prefHeight="17.0" prefWidth="61.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
       <Pane fx:id="officerpane" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
          <effect>
             <DropShadow />
@@ -645,16 +544,16 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="to_in_regno" layoutX="155.0" layoutY="307.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="to_in_name" layoutX="155.0" layoutY="341.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="to_in_email" layoutX="155.0" layoutY="377.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="to_in_nic" layoutX="155.0" layoutY="413.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="to_in_regno" layoutX="155.0" layoutY="307.0" prefHeight="25.0" prefWidth="205.0" style="-fx-background-radius: 20;" />
+            <TextField fx:id="to_in_name" layoutX="155.0" layoutY="341.0" prefHeight="25.0" prefWidth="205.0" style="-fx-background-radius: 20;" />
+            <TextField fx:id="to_in_email" layoutX="155.0" layoutY="377.0" prefHeight="25.0" prefWidth="205.0" style="-fx-background-radius: 20;" />
+            <TextField fx:id="to_in_nic" layoutX="155.0" layoutY="413.0" prefHeight="25.0" prefWidth="205.0" style="-fx-background-radius: 20;" />
             <Label layoutX="11.0" layoutY="448.0" text="Contact">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="to_in_dep" layoutX="155.0" layoutY="450.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="to_in_dep" layoutX="155.0" layoutY="450.0" prefHeight="25.0" prefWidth="205.0" style="-fx-background-radius: 20;" />
             <Button fx:id="btn_add1" layoutX="387.0" layoutY="356.0" mnemonicParsing="false" onAction="#officer_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
@@ -675,14 +574,170 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="to_in_mobile" layoutX="157.0" layoutY="484.0" prefHeight="25.0" prefWidth="205.0" />
-            <TextField fx:id="to_in_pass" layoutX="157.0" layoutY="512.0" prefHeight="25.0" prefWidth="205.0" />
+            <TextField fx:id="to_in_mobile" layoutX="157.0" layoutY="484.0" prefHeight="25.0" prefWidth="205.0" style="-fx-background-radius: 20;" />
+            <TextField fx:id="to_in_pass" layoutX="157.0" layoutY="512.0" prefHeight="25.0" prefWidth="205.0" style="-fx-background-radius: 20;" />
             <Label layoutX="13.0" layoutY="511.0" text="Gender">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
+            <Label fx:id="field_text" layoutX="225.0" layoutY="538.0" prefHeight="17.0" prefWidth="61.0" />
          </children>
+      </Pane>
+      <Pane fx:id="homeleftpain" prefHeight="700.0" prefWidth="338.0" style="-fx-background-color: #e63946;">
+         <children>
+            <Label fx:id="l" alignment="CENTER" layoutX="75.0" layoutY="205.0" prefHeight="39.0" prefWidth="189.0" style="-fx-font-weight: bold;" text="Admin" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Circle fx:id="imgC1" fill="DODGERBLUE" layoutX="169.0" layoutY="129.0" radius="64.0" stroke="BLACK" strokeType="INSIDE">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Button layoutX="75.0" layoutY="582.0" mnemonicParsing="false" onAction="#admin_pane" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #ee7600; -fx-background-radius: 20;" text="Acount" textFill="WHITE" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="adminpane" prefHeight="700.0" prefWidth="338.0" style="-fx-background-color: #e63946;">
+         <children>
+            <Label fx:id="l1" alignment="CENTER" layoutX="75.0" layoutY="14.0" prefHeight="39.0" prefWidth="189.0" style="-fx-font-weight: bold;" text="Admin" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="117.0" layoutY="221.0" mnemonicParsing="false" onAction="#img_updadte" style="-fx-background-color: #ee7600; -fx-background-radius: 20;" text="update" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button layoutX="182.0" layoutY="221.0" mnemonicParsing="false" onAction="#img_delete" style="-fx-background-color: #ee7600; -fx-background-radius: 20;" text="Delete" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Label layoutX="67.0" layoutY="305.0" text="User Name" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="67.0" layoutY="350.0" text="Password" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ad_in_name" layoutX="169.0" layoutY="306.0" style="-fx-background-radius: 20;" />
+            <TextField fx:id="ad_in_pass" layoutX="169.0" layoutY="351.0" style="-fx-background-radius: 20;" />
+            <Circle fx:id="imgC" fill="DODGERBLUE" layoutX="169.0" layoutY="129.0" radius="64.0" stroke="BLACK" strokeType="INSIDE">
+               <effect>
+                  <DropShadow />
+               </effect></Circle>
+            <Button layoutX="75.0" layoutY="582.0" mnemonicParsing="false" onAction="#admin_update" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #ee7600; -fx-background-radius: 20;" text="Update" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button layoutX="75.0" layoutY="622.0" mnemonicParsing="false" onAction="#homego" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #ee7600; -fx-background-radius: 20;" text="Home" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="timetablepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="time_table" layoutX="14.0" layoutY="14.0" prefHeight="347.0" prefWidth="835.0">
+              <columns>
+                <TableColumn fx:id="tt_id" prefWidth="105.5999755859375" text="ID" />
+                <TableColumn fx:id="tt_dep" prefWidth="316.0000305175781" text="Department" />
+                  <TableColumn fx:id="tt_url" prefWidth="412.79998779296875" text="URL" />
+              </columns>
+            </TableView>
+            <Label layoutX="14.0" layoutY="422.0" text="Department">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tt_in_dep" layoutX="158.0" layoutY="424.0" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="btn_add" layoutX="389.0" layoutY="391.0" mnemonicParsing="false" onAction="#timetable_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_delete" layoutX="389.0" layoutY="442.0" mnemonicParsing="false" onAction="#timetable_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="14.0" layoutY="389.0" text="Id">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tt_in_id" layoutX="158.0" layoutY="391.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label layoutX="14.0" layoutY="456.0" text="URL">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tt_in_url" layoutX="158.0" layoutY="458.0" prefHeight="25.0" prefWidth="205.0" />
+            <Label fx:id="field_text" layoutX="247.0" layoutY="490.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="noticepain" layoutX="338.0" layoutY="74.0" prefHeight="630.0" prefWidth="862.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="notice_table" layoutX="14.0" layoutY="14.0" prefHeight="329.0" prefWidth="847.0">
+              <columns>
+                <TableColumn fx:id="no_topic" prefWidth="175.19998168945312" text="Topic" />
+                  <TableColumn fx:id="no_notice" prefWidth="493.60003662109375" text="Notice" />
+                  <TableColumn fx:id="no_date" prefWidth="116.7999267578125" text="Date" />
+                  <TableColumn fx:id="no_id" prefWidth="60.7999267578125" text="ID" />
+              </columns>
+            </TableView>
+            <Label layoutX="14.0" layoutY="388.0" text="Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="453.0" prefHeight="27.0" prefWidth="61.0" text="Notice">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="no_in_name" layoutX="158.0" layoutY="390.0" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="btn_add" layoutX="389.0" layoutY="381.0" mnemonicParsing="false" onAction="#notice_add" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="no_in_notice" layoutX="158.0" layoutY="462.0" prefHeight="111.0" prefWidth="205.0" />
+            <Label layoutX="16.0" layoutY="420.0" text="Date">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="355.0" text="Id">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="no_in_id" layoutX="158.0" layoutY="357.0" prefHeight="25.0" prefWidth="205.0" />
+            <DatePicker fx:id="no_in_date" layoutX="158.0" layoutY="421.0" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="btn_delete" layoutX="389.0" layoutY="433.0" mnemonicParsing="false" onAction="#notice_delete" prefHeight="41.0" prefWidth="85.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="field_text" layoutX="247.0" layoutY="584.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
       </Pane>
    </children>
 </AnchorPane>

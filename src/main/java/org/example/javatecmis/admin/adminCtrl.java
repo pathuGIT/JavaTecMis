@@ -10,20 +10,35 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.javatecmis.LoginController;
 import org.example.javatecmis.connect.adminConnect;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
+import org.example.javatecmis.connect.studentConnect;
+import org.example.javatecmis.student.Student;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.nio.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.lang.Character.getName;
 
 public class adminCtrl {
     int myIndex;
@@ -321,6 +336,15 @@ public class adminCtrl {
     @FXML
     private TextField to_in_regno;
 
+    //+++++++++++++++++++++admin edit+++++++++++++++++++++
+    @FXML
+    private Circle imgC;
+    @FXML
+    private Circle imgC1;
+    @FXML
+    private TextField ad_in_name;
+    @FXML
+    private TextField ad_in_pass;
 
     @FXML
     // Pains
@@ -341,6 +365,13 @@ public class adminCtrl {
     private Pane timetablepain;
     @FXML
     private Pane officerpane;
+    @FXML
+    private Pane adminpane;
+    @FXML
+    private Pane homeleftpain;
+    //error msg label
+    @FXML
+    private Label field_text;
 
 
     //@FXML
@@ -351,6 +382,7 @@ public class adminCtrl {
     public void initialize(){
         //StuTable();
         homepane.setVisible(true);
+        homeleftpain.setVisible(true);
         studentpain.setVisible(false);
         lecturepain.setVisible(false);
         studentSearchPain.setVisible(false);
@@ -359,11 +391,14 @@ public class adminCtrl {
         noticepain.setVisible(false);
         timetablepain.setVisible(false);
         officerpane.setVisible(false);
+        adminpane.setVisible(false);
+        displayImageFromDB();
 
     }
     @FXML
     void home_pane(ActionEvent event) {
         homepane.setVisible(true);
+        homeleftpain.setVisible(true);
         studentpain.setVisible(false);
         lecturepain.setVisible(false);
         lectureSearchPain.setVisible(false);
@@ -372,6 +407,7 @@ public class adminCtrl {
         noticepain.setVisible(false);
         timetablepain.setVisible(false);
         officerpane.setVisible(false);
+        adminpane.setVisible(false);
     }
     //------Student details display part +++Student pane ++++ ---------
     @FXML
@@ -475,6 +511,18 @@ public class adminCtrl {
         homepane.setVisible(false);
         lecturepain.setVisible(false);
         TecOfficer();
+    }
+    @FXML
+    void admin_pane(ActionEvent event){
+        adminpane.setVisible(true);
+        homeleftpain.setVisible(false);
+        displayImageFromDB();
+    }
+    @FXML
+    void homego(ActionEvent event){
+        adminpane.setVisible(false);
+        homeleftpain.setVisible(true);
+        displayImageFromDB();
     }
 
     @FXML
@@ -1030,23 +1078,29 @@ public class adminCtrl {
         no_notice = no_in_notice.getText();
         date = no_in_date.getValue();
         String sql = "INSERT INTO notice(topic,notice,date) VALUES (?,?,?)";
-        try{
-            adminConnect conn = new adminConnect();
-            PreparedStatement pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,no_topic);
-            pst.setString(2,no_notice);
-            pst.setObject(3,date);
-            pst.executeUpdate();
+        if(!(no_topic.isEmpty())){
+            try{
+                adminConnect conn = new adminConnect();
+                PreparedStatement pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,no_topic);
+                pst.setString(2,no_notice);
+                pst.setObject(3,date);
+                pst.executeUpdate();
 
-            Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
-            add_alert.setTitle("Notice details");
-            add_alert.setHeaderText("Notice Form");
-            add_alert.setContentText("Successful Insert");
-            add_alert.showAndWait();
-            NoTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
+                add_alert.setTitle("Notice details");
+                add_alert.setHeaderText("Notice Form");
+                add_alert.setContentText("Successful Insert");
+                add_alert.showAndWait();
+                NoTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("fill All Filds");
+        }
+
     }
 
     @FXML
@@ -1055,20 +1109,26 @@ public class adminCtrl {
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
         String sql = "DELETE FROM notice WHERE nId=?";
-        try{
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,no_id);
-            pst.executeUpdate();
+        if(!(no_id.isEmpty())){
+            try{
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,no_id);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Notice details");
-            alert.setHeaderText("Notice Form");
-            alert.setContentText("Successfully Deleted");
-            alert.showAndWait();
-            NoTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Notice details");
+                alert.setHeaderText("Notice Form");
+                alert.setContentText("Successfully Deleted");
+                alert.showAndWait();
+                NoTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("Enter Id");
+        }
+
     }
     //++++++++++++++++++++++Timetable Table+++++++++++++++++++++++++++
 
@@ -1113,22 +1173,28 @@ public class adminCtrl {
         tt_dep1 = tt_in_dep.getText();
         tt_url1 = tt_in_url.getText();
         String sql = "INSERT INTO timetable(department,path_id) VALUE(?,?)";
-        try{
-            adminConnect conn = new adminConnect();
-            PreparedStatement pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,tt_dep1);
-            pst.setString(2,tt_url1);
-            pst.executeUpdate();
+        if(!(tt_dep1.isEmpty())){
+            try{
+                adminConnect conn = new adminConnect();
+                PreparedStatement pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,tt_dep1);
+                pst.setString(2,tt_url1);
+                pst.executeUpdate();
 
-            Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
-            add_alert.setTitle("Time Table details");
-            add_alert.setHeaderText("Time Table Form");
-            add_alert.setContentText("Successful Insert");
-            add_alert.showAndWait();
-            TmTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
+                add_alert.setTitle("Time Table details");
+                add_alert.setHeaderText("Time Table Form");
+                add_alert.setContentText("Successful Insert");
+                add_alert.showAndWait();
+                TmTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("Fill the Filed");
+        }
+
     }
     @FXML
     void timetable_delete(ActionEvent event) {
@@ -1136,20 +1202,26 @@ public class adminCtrl {
         adminConnect conn = new adminConnect();
         PreparedStatement pst;
         String sql = "DELETE FROM timetable WHERE id=?";
-        try{
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,tt_id2);
-            pst.executeUpdate();
+        if(!(tt_id2.isEmpty())){
+            try{
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,tt_id2);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Time Table details");
-            alert.setHeaderText("Time table Form");
-            alert.setContentText("Successfully Deleted");
-            alert.showAndWait();
-            TmTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Time Table details");
+                alert.setHeaderText("Time table Form");
+                alert.setContentText("Successfully Deleted");
+                alert.showAndWait();
+                TmTable();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("Enter ID Filed");
+        }
+
     }
     //++++++++++++++++++++++++++Technical Officer+++++++++++++++++++
 
@@ -1213,49 +1285,165 @@ public class adminCtrl {
         email = to_in_mobile.getText();
         gender = to_in_pass.getText();
         String sql = "INSERT INTO technical_officer(ID,Name,Username,Password,Contact,Email,Gender) VALUE (?,?,?,?,?,?,?);";
-        try{
-            adminConnect conn = new adminConnect();
-            PreparedStatement pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,id);
-            pst.setString(2,name);
-            pst.setString(3,u_name);
-            pst.setString(4,pass);
-            pst.setString(5,contact);
-            pst.setString(6,email);
-            pst.setString(7,gender);
-            pst.executeUpdate();
-            Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
-            add_alert.setTitle("Technical Officer details");
-            add_alert.setHeaderText("Technical Officer Form");
-            add_alert.setContentText("Successful Insert");
-            add_alert.showAndWait();
-            TecOfficer();
+        if(!(id.isEmpty())){
+            try{
+                adminConnect conn = new adminConnect();
+                PreparedStatement pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,id);
+                pst.setString(2,name);
+                pst.setString(3,u_name);
+                pst.setString(4,pass);
+                pst.setString(5,contact);
+                pst.setString(6,email);
+                pst.setString(7,gender);
+                pst.executeUpdate();
+                Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
+                add_alert.setTitle("Technical Officer details");
+                add_alert.setHeaderText("Technical Officer Form");
+                add_alert.setContentText("Successful Insert");
+                add_alert.showAndWait();
+                TecOfficer();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else{
+            field_text.setText("Fill All Fields");
         }
 
+
+    }
+    //++++++++++++++++++++++++Imageupload part++++++++++++++++++
+    @FXML
+    public void displayImageFromDB() {
+        try {
+            // Retrieve the image path from the database for the specific student
+            String sql = "SELECT Image FROM admin WHERE id = ?";
+            adminConnect DB = new adminConnect();
+            int id = 1;
+            PreparedStatement pst = DB.connect().prepareStatement(sql);
+            pst.setInt(1,id);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                if(rs.getString("Image") != null){
+                    String relativeImagePath = rs.getString("Image");
+                    String absoluteImagePath = Paths.get(System.getProperty("user.dir"), relativeImagePath).toString();
+
+                    File imageFile = new File(absoluteImagePath);
+                    if (imageFile.exists()) {
+                        Image image = new Image(imageFile.toURI().toString());
+                        imgC.setFill(new ImagePattern(image));
+                        imgC1.setFill(new ImagePattern(image));
+                    } else {
+                        System.out.println("Image file not found: " + absoluteImagePath);
+                    }
+                }else{
+                    String path = "img/account.png";
+                    File imageFile = new File(path);
+                    Image image = new Image(imageFile.toURI().toString());
+                    imgC.setFill(new ImagePattern(image));
+                    imgC1.setFill(new ImagePattern(image));
+                }
+
+            } else {
+                //System.out.println("");
+            }
+        } catch (SQLException ex) {
+            Logger lgr = Logger.getLogger(Student.class.getName());
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        }
+    }
+
+    @FXML
+    void img_updadte(ActionEvent event){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            // Display the selected image in a Circle
+            Image image = new Image(selectedFile.toURI().toString());
+            imgC.setFill(new ImagePattern(image));
+
+
+            File imgFolder = new File("img");
+            if (!imgFolder.exists()) {
+                imgFolder.mkdirs();
+            }
+            File destinationFile = new File(imgFolder, selectedFile.getName());
+            try {
+                Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            String imagePath = "img/" + selectedFile.getName(); // Relative path to the 'img' folder
+            String sql = "UPDATE admin SET Image = ? WHERE id = ?";
+            String id = "1";
+            try {
+                adminConnect DB = new adminConnect();
+
+                PreparedStatement pst = DB.connect().prepareStatement(sql);
+                pst.setString(1, imagePath);
+                pst.setString(2, id);
+                pst.executeUpdate();
+                displayImageFromDB();
+            } catch (SQLException ex) {
+                Logger lgr = Logger.getLogger(Student.class.getName());
+                lgr.log(Level.SEVERE, ex.getMessage(), ex);
+            }
+        }
+    }
+    @FXML
+    void img_delete(ActionEvent event){
+        adminConnect DB = new adminConnect();
+
+        try {
+            String sql = "update admin set Image = NULL";
+            PreparedStatement ptr = DB.connect().prepareStatement(sql);
+            ptr.executeUpdate();
+
+            String path = "img/account.png";
+            File imageFile = new File(path);
+            Image image = new Image(imageFile.toURI().toString());
+            imgC.setFill(new ImagePattern(image));
+            displayImageFromDB();
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     @FXML
     void officer_delete(ActionEvent event) {
         String id = to_in_regno.getText();
+        System.out.println(id);
         adminConnect conn = new adminConnect();
         String sql = "DELETE FROM technical_officer WHERE ID=?;";
-        try{
-            PreparedStatement pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,id);
-            pst.executeUpdate();
+        if(!(id.isEmpty())){
+            try{
+                PreparedStatement pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,id);
+                pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Technical Officer details");
-            alert.setHeaderText("Technical Officer Form");
-            alert.setContentText("Successfully Deleted");
-            alert.showAndWait();
-            TecOfficer();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Technical Officer details");
+                alert.setHeaderText("Technical Officer Form");
+                alert.setContentText("Successfully Deleted");
+                alert.showAndWait();
+                TecOfficer();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            field_text.setText("Enter ID Filed");
+        }
+
     }
 
     @FXML
@@ -1270,24 +1458,51 @@ public class adminCtrl {
         gender = to_in_pass.getText();
         adminConnect conn = new adminConnect();
         String sql = "UPDATE technical_officer SET ID=?, Name=?, Username=?, Password=?, Contact=?, Email=?, Gender=? WHERE ID=?;";
-        try{
-            PreparedStatement pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,id);
-            pst.setString(2,name);
-            pst.setString(3,u_name);
-            pst.setString(4,pass);
-            pst.setString(5,contact);
-            pst.setString(6,email);
-            pst.setString(7,gender);
-            pst.setString(8,id);
-            pst.executeUpdate();
+        if(!(id.isEmpty())){
+            try{
+                PreparedStatement pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,id);
+                pst.setString(2,name);
+                pst.setString(3,u_name);
+                pst.setString(4,pass);
+                pst.setString(5,contact);
+                pst.setString(6,email);
+                pst.setString(7,gender);
+                pst.setString(8,id);
+                pst.executeUpdate();
+                Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
+                add_alert.setTitle("Technical Officer details");
+                add_alert.setHeaderText("Technical Officer Form");
+                add_alert.setContentText("Successful Insert");
+                add_alert.showAndWait();
+                TecOfficer();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Technical Officer Details");
-            alert.setHeaderText("Technical Officer Form");
-            alert.setContentText("Successfully Updated");
-            alert.showAndWait();
-            TecOfficer();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else{
+            field_text.setText("Fill All fields");
+        }
+
+    }
+    @FXML
+    public void admin_update(){
+        adminConnect conn = new adminConnect();
+        String name = ad_in_name.getText();
+        String pss = ad_in_pass.getText();
+        PreparedStatement pst;
+        try{
+            String sql = "update admin set username =?, password =? where id=1";
+            pst = conn.connect().prepareStatement(sql);
+            pst.setString(1,name);
+            pst.setString(2,pss);
+            pst.executeUpdate();
+            Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
+            add_alert.setTitle("Admin details");
+            add_alert.setHeaderText("Admin Form");
+            add_alert.setContentText("Successful");
+            add_alert.showAndWait();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
