@@ -135,6 +135,8 @@ public class techCtrl {
     private Label notyup;
     @FXML
     private Label passname;
+    @FXML
+    private Pane medicalPane;
 
 
     @FXML
@@ -197,7 +199,10 @@ public class techCtrl {
     void homeFun(ActionEvent event) {
         choosePanel("home");
     }
-
+    @FXML
+    void AddMedical(ActionEvent event){
+        choosePanel("medical");
+    }
 
     void choosePanel(String  x){
         switch (x){
@@ -207,6 +212,7 @@ public class techCtrl {
                 homePane.setVisible(true);
                 noticepane.setVisible(false);
                 profilePane.setVisible(false);
+                medicalPane.setVisible(false);
 
                 break;
             case "attendance":
@@ -215,6 +221,7 @@ public class techCtrl {
                 homePane.setVisible(false);
                 noticepane.setVisible(false);
                 profilePane.setVisible(false);
+                medicalPane.setVisible(false);
                 showAttendancetec();
                 break;
             case "timetable":
@@ -223,6 +230,7 @@ public class techCtrl {
                 homePane.setVisible(false);
                 noticepane.setVisible(false);
                 profilePane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
             case "profile":
                 TimetablePane.setVisible(false);
@@ -230,6 +238,7 @@ public class techCtrl {
                 homePane.setVisible(false);
                 noticepane.setVisible(false);
                 profilePane.setVisible(true);
+                medicalPane.setVisible(false);
                 break;
             case "notice":
                 TimetablePane.setVisible(false);
@@ -237,6 +246,15 @@ public class techCtrl {
                 homePane.setVisible(false);
                 noticepane.setVisible(true);
                 profilePane.setVisible(false);
+                medicalPane.setVisible(false);
+                break;
+            case "medical":
+                TimetablePane.setVisible(false);
+                attendplane.setVisible(false);
+                homePane.setVisible(false);
+                noticepane.setVisible(false);
+                profilePane.setVisible(false);
+                medicalPane.setVisible(true);
                 break;
         }
     }
@@ -265,6 +283,53 @@ public void setValueFactory(){
         showAttendancetec();
         passname.setText(passName);
     }
+
+    @FXML
+    private Label err;
+
+    @FXML
+    private TextField mdate;
+
+    @FXML
+    private TextField msid;
+
+    @FXML
+    private TextField csid;
+
+    @FXML
+    private TextField mststus;
+
+    @FXML
+    public void Add(ActionEvent event){
+        try{
+            techConnect conn = new techConnect();
+            String query = "INSERT INTO medical (std_id, crs_id, date, medical_status) VALUES (?, ?,?,?)";
+            PreparedStatement ptr = conn.connect().prepareStatement(query);
+            ptr.setString(1,msid.getText());
+            ptr.setString(2,csid.getText());
+            ptr.setString(3,mdate.getText());
+            ptr.setString(4,mststus.getText());
+            ptr.executeUpdate();
+            err.setText("Medical Add Successfull!!");
+
+        }catch (Exception e){
+            err.setText("Something wrong!!");
+        }
+    }
+
+    @FXML
+    public void clear(ActionEvent event){
+        try{
+            msid.setText("");
+            csid.setText("");
+            mdate.setText("");
+            mststus.setText("");
+
+        }catch (Exception e){
+            err.setText("Something wrong!!");
+        }
+    }
+
     void showAttendancetec(){
         System.out.println("Hello att");
         String tgnum;

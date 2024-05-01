@@ -67,6 +67,8 @@ public class Student{
     @FXML
     private Pane GpaPane;
     @FXML
+    private Pane medicalPane;
+    @FXML
     private Circle userImg;
     @FXML
     private Circle circle;
@@ -147,6 +149,26 @@ public class Student{
     @FXML
     private TableColumn<Attendance, String> attCol;
 
+    @FXML
+    private TableView<Medical> medical;
+
+    @FXML
+    private TableColumn<Medical, String > mstatus;
+
+    @FXML
+    private TableColumn<Medical, String> mstdid;
+
+    @FXML
+    private TableColumn<Medical, String> mcsid;
+
+    @FXML
+    private TableColumn<Medical, String> mdate;
+
+    @FXML
+    private Button msearchbtn;
+
+    @FXML
+    private TextField serchcrsId;
 
     private String userSession(){
         LoginController login = new LoginController();
@@ -307,6 +329,7 @@ public class Student{
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
                 TimeTablePane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
             case "course":
                 HomePanelId.setVisible(false);
@@ -316,6 +339,7 @@ public class Student{
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
                 TimeTablePane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
             case "attendance":
                 HomePanelId.setVisible(false);
@@ -325,6 +349,7 @@ public class Student{
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
                 TimeTablePane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
             case "gpa":
                 HomePanelId.setVisible(false);
@@ -334,6 +359,7 @@ public class Student{
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
                 TimeTablePane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
             case "profile":
                 HomePanelId.setVisible(false);
@@ -343,6 +369,7 @@ public class Student{
                 ProfilePane.setVisible(true);
                 noticePane.setVisible(false);
                 TimeTablePane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
             case "notice":
                 HomePanelId.setVisible(false);
@@ -352,6 +379,7 @@ public class Student{
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(true);
                 TimeTablePane.setVisible(false);
+                medicalPane.setVisible(false);
                 break;
             case "timeTable":
                 HomePanelId.setVisible(false);
@@ -361,6 +389,18 @@ public class Student{
                 ProfilePane.setVisible(false);
                 noticePane.setVisible(false);
                 TimeTablePane.setVisible(true);
+                medicalPane.setVisible(false);
+                break;
+            case "medical":
+                HomePanelId.setVisible(false);
+                CoursePane.setVisible(false);
+                AttendancePane.setVisible(false);
+                GpaPane.setVisible(false);
+                ProfilePane.setVisible(false);
+                noticePane.setVisible(false);
+                TimeTablePane.setVisible(false);
+                medicalPane.setVisible(true);
+                ShowMedical("Default");
                 break;
         }
     }
@@ -402,6 +442,11 @@ public class Student{
     @FXML
     void timeTable(){
         choosePanel("timeTable");
+    }
+
+    @FXML
+    void medical(){
+        choosePanel("medical");
     }
 
     void showStudentData(){
@@ -449,6 +494,7 @@ public class Student{
         showNotice();
         showAttendance();
         showTimetable();
+        ShowMedical(value);
     }
 
     public void setValueFactory(){
@@ -466,6 +512,10 @@ public class Student{
         attCol.setCellValueFactory(new PropertyValueFactory<>("Att"));
         timeDepCol.setCellValueFactory(new PropertyValueFactory<>("Department"));
         timeDowCol.setCellValueFactory(new PropertyValueFactory<>("Dwnld"));
+        mstdid.setCellValueFactory(new PropertyValueFactory<>("Std_id"));
+        mcsid.setCellValueFactory(new PropertyValueFactory<>("Crs_id"));
+        mdate.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        mstatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
     }
 
     //Get course details from course table and display in the courseTable
@@ -631,5 +681,47 @@ public class Student{
             System.out.println(e);
         }
 
+    }
+    @FXML
+    void mSearch(ActionEvent event) {
+        String crs_id = serchcrsId.getText();
+        //String query = "select * from medical where std_id = ?";
+        ShowMedical(crs_id);
+    }
+
+    void ShowMedical(String getCrs_id) {
+        String st_id;
+        String crs_id;
+        String date;
+        String status;
+        String query;
+        try {
+            studentConnect conn = new studentConnect();
+            PreparedStatement ptr = null;
+            if(getCrs_id == "Default"){
+                query = "select * from medical where std_id = ?";
+                ptr = conn.connect().prepareStatement(query);
+                ptr.setString(1,userSession());
+            }else{
+                query = "select * from medical where std_id = ? and crs_id = ?";
+                ptr = conn.connect().prepareStatement(query);
+                ptr.setString(1,userSession());
+                ptr.setString(2,getCrs_id);
+            }
+
+            medical.getItems().clear();
+            ResultSet rs = ptr.executeQuery();
+
+            while (rs.next()) {
+                st_id = rs.getString(1);
+                crs_id = rs.getString(2);
+                date = rs.getString(3);
+                status = rs.getString(4);
+                Medical med_record = new Medical(st_id,crs_id,date,status);
+                medical.getItems().add(med_record);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 }

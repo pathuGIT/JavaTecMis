@@ -92,6 +92,7 @@ public class LoginController {
                     stage.show();
 
                 } else if (userName.getText().equals(tg) && userPwd.getText().equals(pwd) && result.getString(3).equals("Admin")) {
+                    System.out.println(userName.getText()+" "+userPwd.getText());
                     adminCtrl ad = new adminCtrl();
                     ad.loginToAdmin(event1);
                     break;
