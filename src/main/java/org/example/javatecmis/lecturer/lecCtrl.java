@@ -276,23 +276,95 @@ public class lecCtrl {
             choosePanel("lectureNotice");
         }
 
+
+        @FXML
+        private Pane updocLecPane;
+            @FXML
+            private TextField updocMatname;
+
+            @FXML
+            private TextField updocCoursecode;
+
+            @FXML
+            private Label hidelabel;
+
+            @FXML
+            private Button documentUpdateBtn;
+
+            @FXML
+            private Button deletedocbtn;
+
+
+
+
     @FXML
-    private Pane updocLecPane;
-        @FXML
-        private Button documentUpdateBtn;
+    void uploadDocumentsForCourse(ActionEvent event) {
+        String docName = updocMatname.getText().trim();
+        String courseCode = updocCoursecode.getText().trim();
 
-        @FXML
-        void uploadDocumentsForCourse(ActionEvent event) {
-
+        // Check if text fields are empty
+        if (docName.isEmpty() || courseCode.isEmpty()) {
+            hidelabel.setText("Please fill in all fields!");
+            return; // Exit method if fields are empty
         }
 
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Document to Upload");
+        File selectedFile = fileChooser.showOpenDialog(null);
 
-        @FXML
-        void deleteDocumentsInCourse(ActionEvent event) {
+        if (selectedFile != null) {
+            String filePath = selectedFile.getAbsolutePath();
 
+            try {
+                lecturerConnect conn = new lecturerConnect();
+                String insertQuery = "INSERT INTO lecmaterials (Crs_id, Doc_Name, upload_path) VALUES (?, ?, ?)";
+                PreparedStatement pst = conn.connect().prepareStatement(insertQuery);
+                pst.setString(1, courseCode);
+                pst.setString(2, docName);
+                pst.setString(3, filePath);
+
+                int rowsAffected = pst.executeUpdate();
+                if (rowsAffected > 0) {
+                    hidelabel.setText("Document uploaded successfully!");
+                } else {
+                    hidelabel.setText("Failed to upload document!");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                hidelabel.setText("Error: Failed to upload document!");
+                // Handle any SQL exceptions
+            }
+        } else {
+            hidelabel.setText("No file selected!");
         }
+    }
 
-        @FXML
+
+    @FXML
+    void deleteDocument(ActionEvent event) {
+        String docNameToDelete = updocMatname.getText(); // Assuming you use the document name to identify the document to delete
+
+        try {
+            lecturerConnect conn = new lecturerConnect();
+            String deleteQuery = "DELETE FROM lecmaterials WHERE Doc_Name=?";
+            PreparedStatement pst = conn.connect().prepareStatement(deleteQuery);
+            pst.setString(1, docNameToDelete);
+
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected > 0) {
+                hidelabel.setText("Document deleted successfully!");
+            } else {
+                hidelabel.setText("Failed to delete document!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            hidelabel.setText("Error: Failed to delete document!");
+            // Handle any SQL exceptions
+        }
+    }
+
+
+    @FXML
         void uploadDocumentAction(ActionEvent event) {
             choosePanel("uploadDocuments");
         }
@@ -312,6 +384,9 @@ public class lecCtrl {
 
             @FXML
             private Label l_name;
+
+            @FXML
+            private Label l_coursename;
 
         @FXML
         void homeAction(ActionEvent event) {
@@ -352,49 +427,7 @@ public class lecCtrl {
         LoginController o = new LoginController();
         o.logout(event);
     }
-        //Before edit 1
-//
-//    @FXML
-//    void imgUpload(ActionEvent event)throws IOException, SQLException {
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.getExtensionFilters().addAll(
-//                new FileChooser.ExtensionFilter("Image Files","*.png", "*.jpg", "*.gif")
-//        );
-//
-//        File selectdFile = fileChooser.showOpenDialog(null);
-//        if (selectdFile != null){
-//            //Fill the image with selected one
-//            Image profImg = new Image(selectdFile.toURI().toString());
-//            circle.setFill(new ImagePattern(profImg));
-//
-//            //save the selected image to img folder
-//            File imgFolder = new File("img");
-//            if(!imgFolder.exists()){
-//                imgFolder.mkdirs();
-//            }
-//
-//            File destinationFile = new File(imgFolder,selectdFile.getName());
-//            Files.copy(selectdFile.toPath(),destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-//
-//            String imagePath = "img/"+selectdFile.getName();
-//            String sqlForUpdateImage = "Update lecture SET Image = ? Where Lec_id = ?";
-//
-//            try{
-//                lecturerConnect DB = new lecturerConnect();
-//                PreparedStatement pst = DB.connect().prepareStatement(sqlForUpdateImage);
-//                pst.setString(1,imagePath);
-//                pst.setString(2,userSession());
-//                pst.executeQuery();
-//                //dislayImageFromDB();
-//            }catch(SQLException ex){
-//                Logger lgr = Logger.getLogger(lecCtrl.class.getName());
-//                lgr.log(Level.SEVERE,ex.getMessage(),ex);
-//            }
-//        }
-//    }
 
-
-    //After edit 2
     private String profImagePath = "img/account.png"; // Default path
 
     @FXML
@@ -442,34 +475,6 @@ public class lecCtrl {
 
 
 
-
-
-
-
-    //Before edit 1
-
-//    @FXML
-//    void deleteImage(ActionEvent event) {
-//        lecturerConnect DB = new lecturerConnect();
-//        try {
-//            String sql = "update lecture set Image = NULL where Lec_id = '"+userSession()+"'";
-//            PreparedStatement ptr = DB.connect().prepareStatement(sql);
-//            ptr.executeUpdate();
-//
-//            String path = "img/account.png";
-//            File imageFile = new File(path);
-//            Image image = new Image(imageFile.toURI().toString());
-////            profImg.setId(new ImagePattern(image).toString());
-//            circle.setFill(new ImagePattern(image));
-//            displayImageFromDB();
-//        }catch (Exception e){
-//            System.out.println(e);
-//        }
-//    }
-
-
-    //      After Edit 2
-//
     @FXML
     void deleteImage(ActionEvent event) {
         lecturerConnect DB = new lecturerConnect();
@@ -538,44 +543,7 @@ public class lecCtrl {
         }
     }
 
-//
-//    @FXML
-//    void updateLectureData(ActionEvent event) {
-//        try {
-//            String sql = "SELECT * FROM lecture WHERE Lec_id = ?";
-//            lecturerConnect DB = new lecturerConnect();
-//
-//
-//            if(edit_email.getText().isEmpty() && edit_number.getText().isEmpty()){
-//
-//                PreparedStatement pst = DB.connect().prepareStatement(sql);
-//                pst.setString(1, userSession());
-//                ResultSet rs = pst.executeQuery();
-//
-//                if (rs.next()) {
-//                    edit_email.setText(rs.getString(3));
-//                    edit_number.setText(rs.getString(5));
-//                } else {
-//                    System.out.println("No Data for the lecture with ID: " + userSession());
-//                }
-//
-//            }else{
-//                String query = "UPDATE lecture SET Email = ?, Contact = ? WHERE Lec_id = ?";
-//
-//                PreparedStatement pst = DB.connect().prepareStatement(query);
-//                pst.setString(1, edit_email.getText());
-//                pst.setString(2, edit_number.getText());
-//                pst.setString(3, userSession());
-//                pst.executeUpdate();
-//            }
-//
-//        }catch(Exception e){
-//            System.out.println(e);
-//        }
-//    }
 
-
-    // correct 2
 
     @FXML
     void updateLectureData(ActionEvent event) {
@@ -585,7 +553,7 @@ public class lecCtrl {
 
 
             if(edit_email.getText().isEmpty() && edit_number.getText().isEmpty()){
-                // If email and number fields are empty, retrieve the data from the database and populate the fields
+
                 PreparedStatement pst = DB.connect().prepareStatement(sql);
                 pst.setString(1, userSession());
                 ResultSet rs = pst.executeQuery();
@@ -600,7 +568,7 @@ public class lecCtrl {
                 }
 
             } else {
-                // If email and number fields are not empty, update the database and the fields
+
                 String query = "UPDATE lecture SET Email = ?, Contact = ? WHERE Lec_id = ?";
 
                 PreparedStatement pst = DB.connect().prepareStatement(query);
@@ -609,7 +577,7 @@ public class lecCtrl {
                 pst.setString(3, userSession());
                 pst.executeUpdate();
 
-                // Update l_email and l_contact fields
+                // Update l_email and l_contact
                 l_email.setText(edit_email.getText());
                 l_contact.setText(edit_number.getText());
             }
@@ -983,10 +951,13 @@ public class lecCtrl {
     void showLectureDetails(){
         try{
             String query = "SELECT * FROM lecture where Lec_id = '"+userSession()+"'";
+            String query2 = "SELECT course.Name FROM course JOIN lecture ON course.Lec_id = lecture.Lec_id WHERE lecture.Lec_id ='"+userSession()+"' LIMIT 1";
             lecturerConnect connect = new lecturerConnect();
             PreparedStatement ptr = connect.connect().prepareStatement(query);
-            ResultSet result = ptr.executeQuery();
+            PreparedStatement ptr2 = connect.connect().prepareStatement(query2);
 
+            ResultSet result = ptr.executeQuery();
+            ResultSet result2 = ptr2.executeQuery();
             while(result.next()){
                 l_id.setText(result.getString(1));
                 l_name.setText(result.getString(2));
@@ -994,6 +965,10 @@ public class lecCtrl {
                 l_contact.setText((result.getString(5)));
                 profName.setText(result.getString(2));
 
+
+            }
+            while(result2.next()){
+                l_coursename.setText(result2.getString(1));
             }
         }catch (Exception e){
             System.out.println(e);
@@ -1094,7 +1069,7 @@ public class lecCtrl {
                 sgpa = rs.getString(5);
                 cgpa = rs.getString(6);
 
-                System.out.println(studentid+"\t"+courseid+"\t"+marks+"\t"+grade+"\t"+sgpa+"\t"+cgpa);
+                //System.out.println(studentid+"\t"+courseid+"\t"+marks+"\t"+grade+"\t"+sgpa+"\t"+cgpa);
                 StResults record = new StResults(studentid,courseid,marks,grade,sgpa,cgpa);
                 studentResultTable.getItems().add(record);
             }
