@@ -1545,20 +1545,23 @@ public class adminCtrl {
         String name = ad_in_name.getText();
         String pss = ad_in_pass.getText();
         PreparedStatement pst;
-        try{
-            String sql = "update admin set username =?, password =? where id=1";
-            pst = conn.connect().prepareStatement(sql);
-            pst.setString(1,name);
-            pst.setString(2,pss);
-            pst.executeUpdate();
-            Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
-            add_alert.setTitle("Admin details");
-            add_alert.setHeaderText("Admin Form");
-            add_alert.setContentText("Successful");
-            add_alert.showAndWait();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if(!(name.isEmpty() && pss.isEmpty())){
+            try{
+                String sql = "update admin set username =?, password =? where id=1";
+                pst = conn.connect().prepareStatement(sql);
+                pst.setString(1,name);
+                pst.setString(2,pss);
+                pst.executeUpdate();
+                Alert add_alert = new Alert(Alert.AlertType.INFORMATION);
+                add_alert.setTitle("Admin details");
+                add_alert.setHeaderText("Admin Form");
+                add_alert.setContentText("Successful");
+                add_alert.showAndWait();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
 
     @FXML
